@@ -4,9 +4,9 @@ require_once __DIR__ . '/Product.php';
 
 class Database
 {
-    private $host = ""; 
+    private $host = "localhost"; // Mimmi: localhost 
     private $user = "root";
-    private $pass = ""; 
+    private $pass = "root"; // Mimmi: root
     private $db = "sms_db";
 
     private $conn;
