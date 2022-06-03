@@ -1,0 +1,9 @@
+# dependencies
+
+/src
+/vendor
+
+/Classes/DatabaseConnection.php
+
+
+google-config.php
