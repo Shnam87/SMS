@@ -10,6 +10,25 @@ Template::header("SMS");
 ?>
 
 <div class="products-container">
+    <?php foreach($products as $product): ?>
+    <div class="card-wrapper">
+        <div class="card-img">IMAGE</div>
+        <h2>
+            <a class="products-title-link" href="/sms/pages/product.php?id=<?= $product->id ?>">
+                <?= $product->title ?>
+            </a>
+        </h2>
+        <p><?= $product->description ?></p>
+        <h4><?= $product->price ?></h4>
+        <form action="/sms/scripts/add-to-cart.php" method="post">
+            <input type="hidden" name="id" value="<?= $product->id ?>">
+            <input class="btn btn-add" type="submit" value="Add to cart">
+        </form>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<div class="products-container">
     <table class="products-table">
         <thead>
             <tr>
