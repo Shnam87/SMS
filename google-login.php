@@ -42,7 +42,7 @@ if (isset($_GET["code"])) {
         }
 
         $user = new User($data['email']);
-        $db = new Database();
+        $db = new DatabaseUsers();
 
         $user->id = $db->getGoogleUser($user);
 

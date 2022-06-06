@@ -1,10 +1,39 @@
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0.3% 0.5%;
+    padding: 0.3% 0.5%;
 }
 
 html{
     background-color: rgb(140, 155, 150);
+}
+
+.google-btn {
+    background-image: url("./btn_google_signin.png");
+    width: 191px;
+    height: 46px;
+    border: none;
+
+}
+
+.login-field,
+.registering-field {
+    box-shadow: -10px 10px 10px grey, 10px 10px 10px grey;
+    width: 200px;
+    height: 30px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+
+}
+
+.btn {
+    box-shadow: -10px 10px 10px grey, 10px 10px 10px grey;
+    width: 100px;
+    height: 40px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
 }
