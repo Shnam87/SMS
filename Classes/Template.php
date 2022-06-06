@@ -58,6 +58,6 @@ class Template {
             </footer>       
         </body>
     </html>
-
+    
     <?php  }    
 }
