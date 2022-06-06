@@ -45,14 +45,14 @@ class Template {
                 </div>
                 <div className='footer-box box-3'>
                     <h3 className='footer-h3'>Contact</h3>
-                    <p className='footer-p'><a href="mailto:shoetropolis@shoetropolis.com">Email us</a></p>
-                    <p className='footer-p'><a href="tel:+46725720236">+46(0)851992310</a></p>
+                    <p className='footer-p'><a href="mailto:sms@sms.com">Email us</a></p>
+                    <p className='footer-p'><a href="tel:+4686736000">08 - 673 60 00</a></p>
                 </div>
                 </div>
                 <div className='footer-row'>
                 <p className='footer-socials'><a href=''><BsFacebook  /></a> <a href=''> <BsInstagram /></a> <a href=''> <BsTwitter /></a> <a href=''><BsYoutube /></a> <a href=''><BsPinterest /></a></p>
-                <p>Shoetropolis, Inc. | All Rights Reserved &copy;{new Date().getFullYear()}</p>
-                <p>The content of this site is copyright-protected and is property of Shoetropolis, Inc. Shoetropolis' business concept is to offer fashion and quality at the best price in a sustainable way.</p>
+                <p>SMS | All Rights Reserved &copy; 2022</p>
+                <p>The content of this site is copyright-protected and is property of SMS. SMS' business concept is to offer function and quality at the best price in a sustainable way.</p>
                 </div>
             </div>
         </footer>   
