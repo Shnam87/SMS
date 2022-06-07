@@ -92,7 +92,6 @@ Template::header("SMS");
 
 Template::footer();
 ?>
-</body>
-</html>
+
 
     
