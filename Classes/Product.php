@@ -1,8 +1,8 @@
 <?php
+require_once __DIR__ . "/DatabaseConnection.php";
 
 class Product
 {
-
     public $id;
     public $title;
     public $description;
