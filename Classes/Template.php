@@ -45,7 +45,7 @@ class Template
             <?php if (!$isLoggedIn) : ?>
                 <h3>Register or login to your account to be able to complete your purchase.</h3>
             <?php else : ?>
-                <h3>Welcome<i><?= $_SESSION['user']->username ?> </i> </h3>
+                <h3>Welcome <i><?= $_SESSION['user']->username ?>!</i> </h3>
             <?php endif; ?>
         <?php  }
 
