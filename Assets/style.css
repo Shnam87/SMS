@@ -125,6 +125,22 @@ nav {
     margin: 1rem;
 }
 
+/*===========================*/
+/*========== ADMIN ==========*/
+/*===========================*/
+
+#admin-user-container{
+    border: 2px solid blue;
+}
+
+#admin-product-container{
+    border: 2px solid orange;
+}
+
+#admin-order-container{
+    border: 2px solid rebeccapurple;
+}
+
 /*============================*/
 /*========== FOOTER ==========*/
 /*============================*/
