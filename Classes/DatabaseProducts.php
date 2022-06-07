@@ -41,8 +41,35 @@ class DatabaseProducts extends DatabaseConnection{
     }
 
     // CREATE
+    public function create_product(Product $product)
+    {
+        $query = "INSERT INTO products (title, description, price) VALUES (?, ?, ?)";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        $title = $product->title;
+        $description = $product->description;
+        $price = $product->price;
+
+        $stmt->bind_param("ssi", $title, $description, $price); 
+        $success = $stmt->execute(); 
+
+        return $success;
+    }
 
     // UPDATE
+    public function update_product(Product $product){
+        $query  = "UPDATE products SET title = ?, description = ?, price = ? WHERE id = ?";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("ssii", $product->title, $product->description, $product->price, $product->id); 
+        return $stmt->execute();
+    }
 
-    // DELETE
+    // DELET
+    public function delete_product($id){
+        $query  = "DELETE FROM products WHERE id = ?";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("i", $id); 
+        return $stmt->execute();
+    }
 }
