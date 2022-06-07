@@ -9,12 +9,16 @@
 
 
 html{
+    display: flex;
+    justify-content: space-evenly;
     background-color: #fff;
 }
 
-nav {
-    margin: 0.3% 0.5%;
-    padding: 0.3% 0.5%;
+nav,
+.nav-link, .nav-p,
+.header-text {
+    margin: 0.3% 0.7%;
+   
 }
 
 .google-btn {
@@ -22,22 +26,28 @@ nav {
     width: 191px;
     height: 46px;
     border: none;
+    margin: 1.5% 1.5% 3%;
 
 }
 
 .login-field,
 .registering-field {
     box-shadow: -10px 10px 10px grey, 10px 10px 10px grey;
+    margin: 1.5%;
+    padding: 0.5%;
     width: 200px;
-    height: 30px;
+    height: 35px;
     border: none;
     outline: none;
     font-size: 18px;
 
 }
 
-.btn {
+.btn-login,
+.btn-register {
     box-shadow: -10px 10px 10px grey, 10px 10px 10px grey;
+    margin: 1.5% 1.5% 3%;
+    padding: 0.5%;
     width: 100px;
     height: 40px;
     border: none;

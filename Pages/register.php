@@ -10,7 +10,7 @@ Template::header("Registering");
 <form action="/sms/Scripts/registering.php" method="post">
     <input type="text" class="registering-field" required name="username" placeholder="Username" autofocus> <br>
     <input type="password" class="registering-field" required name="password" placeholder="Password"> <br>
-    <input type="submit" class="btn" value="Register"> <br>
+    <input type="submit" class="btn-register" value="Register"> <br>
 </form>
 
 <?php    
