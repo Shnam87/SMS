@@ -30,11 +30,33 @@ class Template {
     
     public static function footer() 
     { ?>
-        <footer>
-            Copyright SMS 2022
-        </footer>
-            
-    </body>
+            <footer>
+                <div class='main-footer'>
+                    <div class='footer-container'>
+                    <div class='footer-box box-1'>
+                        <h3 class='footer-h3'>About</h3>
+                        <p class='footer-p'><a href=''>Our mission explained</a></p>
+                        <p class='footer-p'><a href=''>Annual charity report</a></p>
+                    </div>
+                    <div class='footer-box box-2'>
+                        <h3 class='footer-h3'>Info</h3>
+                        <p class='footer-p'><a href=''>Shipping and tracking</a></p>
+                        <p class='footer-p'><a href=''>FAQs</a></p>
+                    </div>
+                    <div class='footer-box box-3'>
+                        <h3 class='footer-h3'>Contact</h3>
+                        <p class='footer-p'><a href="mailto:sms@sms.com">Email us</a></p>
+                        <p class='footer-p'><a href="tel:+4686736000">08 - 673 60 00</a></p>
+                    </div>
+                    </div>
+                    <div class='footer-row'>
+                    <p class='footer-socials'><a href=''><BsFacebook  /></a> <a href=''> <BsInstagram /></a> <a href=''> <BsTwitter /></a> <a href=''><BsYoutube /></a> <a href=''><BsPinterest /></a></p>
+                    <p>SMS | All Rights Reserved &copy; 2022</p>
+                    <p>The content of this site is copyright-protected and is property of SMS. SMS' business concept is to offer function and quality at the best price in a sustainable way.</p>
+                    </div>
+                </div>
+            </footer>       
+        </body>
     </html>
 
     <?php  }    
