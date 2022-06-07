@@ -38,7 +38,7 @@ class Template
                 <a href="/sms">Home</a> |
                 <a href="/sms/pages/products.php">Products</a> |
                 <a href="/sms/pages/contact.php">Contact</a> |
-                <a href="/sms/scripts/logging-ut.php">Logout</a>
+                <a href="/sms/scripts/logging-out.php">Logout</a>
             <?php endif; ?>
             </nav>
             <hr>
