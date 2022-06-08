@@ -40,13 +40,14 @@ Template::header("SMS");
     <h2>FOR RODUCTS</h2>
 
 
-
-    <form action="/sms/scripts/post-product.php" method="post">
-        <input type="text" name="title" placeholder="Name">
-        <textarea type="text" name="description" rows="5" cols="100" placeholder="Description"></textarea>
-        <input type="number" name="price" placeholder="Price">
-        <input type="submit" value="Save">
-    </form>
+    <div class="product-form-container">
+        <form action="/sms/scripts/post-product.php" method="post">
+            <input type="text" name="title" placeholder="Name">
+            <input type="number" name="price" placeholder="Price">
+            <textarea type="text" name="description" rows="5" cols="100" placeholder="Description"></textarea>
+            <input type="submit" value="Save">
+        </form>
+    </div>
 
     <table class="products-table">
         <thead>
@@ -75,21 +76,19 @@ Template::header("SMS");
                     <p><?= $product->price ?></p>
                 </td>
                 <td>
-                <form action="/sms/scripts/delete-product.php" method="post">
-                    <input type="hidden" name="id" value="<?= $product->id ?>">
-                    <input class="btn-add" type="submit" value="Delete">
-                </form>
-
-       
-
-                <form action="/sms/pages/update-product.php?id=<?= $product->id; ?>" method="post">
-                    <input type="hidden" name="id" value="<?= $product->id ?>">
-                    <input class="btn-add" type="submit" value="Update">
-                </form>
-
-
                 
+                    <form action="/sms/scripts/delete-product.php" method="post">
+                        <input type="hidden" name="id" value="<?= $product->id ?>">
+                        <input class="btn-add" type="submit" value="Delete">
+                    </form>
 
+        
+
+                    <form action="/sms/pages/update-product.php?id=<?= $product->id; ?>" method="post">
+                        <input type="hidden" name="id" value="<?= $product->id ?>">
+                        <input class="btn-add" type="submit" value="Update">
+                    </form>
+            
                 </td>
             </tr>
         <?php endforeach; ?>
