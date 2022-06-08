@@ -3,7 +3,8 @@ require_once __DIR__ . "/DatabaseConnection.php";
 require_once __DIR__ . "/User.php";
 
 
-class DatabaseUsers extends DatabaseConnection{
+class DatabaseUsers extends DatabaseConnection
+{
 
     public function addUser(User $user)
     {

@@ -1,9 +1,9 @@
 <?php
-
 require_once __DIR__ ."/DatabaseConnection.php";
 require_once __DIR__ ."/Product.php";
 
-class DatabaseProducts extends DatabaseConnection{
+class DatabaseProducts extends DatabaseConnection
+{
 
     // GET ONE 
     public function get_product_by_id($id){

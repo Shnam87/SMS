@@ -141,6 +141,84 @@ nav {
     border: 2px solid rebeccapurple;
 }
 
+
+/*========== ADMIN / ORDERS ==========*/
+
+#admin-order-container{
+    width: 100%;
+    border: 2px solid orange;
+}
+.admin-order-wrapper {
+    border: 2px solid yellowgreen;
+    width: 70%;
+    margin: 0.5rem;
+    /* padding: 0.5rem; */
+    text-align: center;
+}
+
+.order-table {
+    width: 90%;
+    margin: auto;
+}
+
+.order-fieldset {
+    border-radius: 5px; 
+}
+
+
+.order-legend{
+    text-align: left;
+    margin: 1rem;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    font-size: 150%;
+}
+
+.order-table-head {
+    font-weight: 900;
+    border-bottom: 2px solid black;
+}
+
+.admin-order-edit-link{
+    text-decoration: none;
+    border: 2px solid #4f6b38;
+    background-color: #b1de8c;
+    color: black;
+}
+
+.order-btn {
+    border: 2px solid red;
+    background-color: pink;
+    color: black;
+    font-size: 1rem;
+}
+
+/* .create-task-edit-link, .create-btn {
+    background-color: #cce5cc;
+} */
+
+/* .edit-task-container, .show-task-container {
+    width: 70%;
+    margin: auto;
+    padding: 2rem;
+    align-self: center;
+    align-items: center;
+}
+
+.edit-task-box, .show-task-box{
+    text-align: center;
+}
+
+.show-task-btns {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+.task-btns-item {
+    margin: 0 1rem 0 1rem;
+} */
+
 /*============================*/
 /*========== FOOTER ==========*/
 /*============================*/

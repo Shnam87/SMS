@@ -40,7 +40,7 @@ Template::header("SMS");
             <div class="card-btn">
                 <form action="/sms/scripts/add-to-cart.php" method="post">
                     <input type="hidden" name="id" value="<?= $product->id ?>">
-                    <input class="btn btn-add" type="submit" value="Add to cart">
+                    <input class="btn-add" type="submit" value="Add to cart">
                 </form>
             </div>
         </div> 
