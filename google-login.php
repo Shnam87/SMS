@@ -44,7 +44,7 @@ if (isset($_GET["code"])) {
         $user = new User($data['email']);
         $db = new DatabaseUsers();
 
-        $user->id = $db->getGoogleUser($user);
+        $user = $db->getGoogleUser($user);
 
         $_SESSION["loggedIn"] = true;
         $_SESSION["user"] = $user;

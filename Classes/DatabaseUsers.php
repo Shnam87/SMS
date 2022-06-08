@@ -46,6 +46,21 @@ class DatabaseUsers extends DatabaseConnection
         return $users;
     }
 
+    public function get_one($id)
+    {
+        $query = "SELECT * FROM users WHERE `users`.`id` = ? ";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $db_user = mysqli_fetch_assoc($result);
+
+        $user = new User($db_user["username"], $db_user["role"], $db_user['id']);
+        return $user;
+    }
+
     public function getUser($username)
     {
         $query = "SELECT * FROM users WHERE username = ?";
@@ -80,7 +95,9 @@ class DatabaseUsers extends DatabaseConnection
 
             if ($success) {
 
-                $user->id = $stmt->insert_id;
+                $user = $this->get_one($stmt->insert_id);
+
+                // $user->id = $stmt->insert_id;
             } else {
 
                 var_dump($stmt->error);
@@ -89,7 +106,8 @@ class DatabaseUsers extends DatabaseConnection
         } else {
             $user = $db_user;
         }
-        return $user->id;
+        // return $user->id;
+        return $user;
     }
 
     public function update_user(User $user)
