@@ -18,7 +18,6 @@ class DatabaseProducts extends DatabaseConnection{
 
             return $product;
     }
-
     
     // GET ALL 
     public function get_all(){
@@ -65,7 +64,7 @@ class DatabaseProducts extends DatabaseConnection{
         return $stmt->execute();
     }
 
-    // DELET
+    // DELETE
     public function delete_product($id){
         $query  = "DELETE FROM products WHERE id = ?";
         $stmt = mysqli_prepare($this->conn, $query);
