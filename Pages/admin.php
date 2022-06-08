@@ -9,13 +9,15 @@ require_once __DIR__ . "/../classes/Template.php";
 
 $users_db = new DatabaseUsers();
 // $user_role = $_SESSION['user']->user_role;
-
 $users = $users_db->get_all();
 
 //var_dump($_SESSION);
 
-// $products_db = new DatabaseProducts();
-// $products = $products_db->get_all();
+
+require_once __DIR__ . "/../classes/Product.php";
+
+$products_db = new DatabaseProducts();
+$products = $products_db->get_all();
 
 // $order_db = new DatabaseOrders();
 // $orders = $orders_db->get_all();
@@ -63,8 +65,8 @@ if (!$isLoggedIn || !$isAdmin) {
 
 
 <div id="admin-product-container">
+    <!-- 
     <h2>FOR PRODUCTS</h2>
-
     <form action="" class="add-product">
         <p class="admin-header">Please enter the details and an image of the product:</p>
         <div>
@@ -81,20 +83,70 @@ if (!$isLoggedIn || !$isAdmin) {
         </div>
         <input type="submit" class="btn btn-delete" value="Add product">
     </form>
+ -->
+
+    <h2>FOR RODUCTS</h2>
+    <div class="product-form-container">
+        <form action="/sms/scripts/post-product.php" method="post">
+            <input type="text" name="title" placeholder="Name">
+            <input type="number" name="price" placeholder="Price">
+            <textarea type="text" name="description" rows="5" cols="100" placeholder="Description"></textarea>
+            <input type="submit" value="Save">
+        </form>
+    </div>
+
+    <table class="products-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="products-table-head">Name</th>
+                <th class="products-table-head">Description</th>
+                <th class="products-table-head">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($products as $product) : ?>
+                <tr>
+                    <td>
+                        <p>IMAGE</p>
+                    </td>
+                    <td>
+                        <a class="products-title-link" href="/sms/pages/product.php?id=<?= $product->id ?>">
+                            <?= $product->title ?>
+                        </a>
+                    </td>
+                    <td>
+                        <p><?= $product->description ?></p>
+                    </td>
+                    <td>
+                        <p><?= $product->price ?></p>
+                    </td>
+                    <td>
+
+                        <form action="/sms/scripts/delete-product.php" method="post">
+                            <input type="hidden" name="id" value="<?= $product->id ?>">
+                            <input class="btn-add" type="submit" value="Delete">
+                        </form>
 
 
+
+                        <form action="/sms/pages/update-product.php?id=<?= $product->id; ?>" method="post">
+                            <input type="hidden" name="id" value="<?= $product->id ?>">
+                            <input class="btn-add" type="submit" value="Update">
+                        </form>
+
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+
+    </table>
 </div>
 
 <div id="admin-order-container">
     <h2>FOR ORDERS</h2>
     <p>tabell - visa alla orders (db)</p>
 </div>
-
-
-
-
-
-
 
 <?php
 Template::footer();
