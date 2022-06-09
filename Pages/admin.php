@@ -24,6 +24,8 @@ require_once __DIR__ . "/../classes/Template.php";
 
 $order_db = new DatabaseOrders();
 $orders = $order_db->get_all();
+$statuses = $order_db->statuses();
+
 
 
 Template::header("SMS");
@@ -74,46 +76,24 @@ Template::header("SMS");
                             </p>
                         </td> 
                         <td>
-                            <!-- <p><?= $order->date ?></p> -->
                             <form action="/sms/scripts/post-edit-order.php" method="post">
+                                <label for=""><?= $order->date ?></label>
                                 <input type="text" name="order-date" value="<?= $order->date ?>" placeholder="Date">
+                                <label for=""><?= $order->status ?></label>
                                 <select name="order-status">
-                                    <option value="<?= $order->status ?>"><?= $order->status ?></option>
-                                    <option value="<?= $order->status ?>">packaged</option>
-                                    <option value="<?= $order->status ?>">shipped</option>
-                                    <option value="<?= $order->status ?>">delivered</option>
+                                    <option value="">Status</option>
+                                    <?php foreach($statuses as $status): ?>
+                                        <option name="order-status" value="<?= $status->status; ?>"><?= $status; ?></option>
+                                    <?php endforeach; ?> 
                                 </select>
                                  <input type="hidden" name="order-id" value="<?= $order->id ?>">
+                                 
                                  <input type="submit" value="Update">
                             </form>
                         </td>
-                        <!-- <td> -->
-                            <!-- <p><?= $order->status ?></p> -->
-                            <!-- <form action="/sms/scripts/post-edit-order.php<?= $order->id ?>" method="post">
-                                <select name="order-status">
-                                    <option value="<?= $order->status ?>"><?= $order->status ?></option>
-                                    <option value="<?= $order->status ?>">packaged</option>
-                                    <option value="<?= $order->status ?>">shipped</option>
-                                    <option value="<?= $order->status ?>">delivered</option>
-                                </select>
-                                <input type="hidden" name="order-id" value="<?= $order->id ?>">
-                                            <input type="text" name="order-status" value="<?= $order->status ?>">
-                            </form> -->
-                        <!-- </td> -->
                         <td>
                             <p><?= $order->user_id ?></p>
                         </td>
-                     
-                        <!-- <td>
-                            <a class="admin-order-edit-link" href="/sms/pages/admin-edit-order.php?id=<?= $order->id ?>">Edit</a>
-                        </td> -->
-
-                        <!-- <td>
-                            <form action="/sms/pages/edit-order.php?id=<?= $order->id ?>" method="post">
-                                <input type="hidden" name="id" value="<?= $order->id ?>">
-                                <input class="admin-order-edit" type="submit" value="Edit">
-                            </form>
-                        </td> -->
                         <td>
                             <form action="/sms/scripts/post-delete-order.php" method="post">
                                 <input type="hidden" name="order-id" value="<?= $order->id ?>">
@@ -126,8 +106,7 @@ Template::header("SMS");
             </table>
 
 
-  
-
+        <!-- BACKUP TABLE DATA -->
             <!-- <table class="order-table">
                 <thead>
                     <tr>

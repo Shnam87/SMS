@@ -16,7 +16,7 @@ if(isset($_POST["order-date"]) && isset($_POST["order-status"]) && isset($_POST[
     $order = new Order($_POST["order-id"], $_POST["order-date"], $_POST["order-status"]);
 
     $id = $_POST["order-id"];
-    $success = $db->update($order, $id);   
+    $success = $db->update($order, $order_status, $id);   
     
 } else{
     echo "Invalid input.";
@@ -25,7 +25,7 @@ if(isset($_POST["order-date"]) && isset($_POST["order-status"]) && isset($_POST[
 if($success){
     header("Location: /sms/pages/admin.php");
 } else{
-    var_dump($order);
+    echo "Error updating order.";
 }
 
 

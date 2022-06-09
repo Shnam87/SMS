@@ -23,7 +23,7 @@ class DatabaseOrders extends DatabaseConnection
      public function get_all(){
             // $query = "SELECT * from orders ORDER BY id DESC";
         $query = 
-        "SELECT orders.id, orders.date, users.username, orders.status from orders
+        "SELECT orders.id, orders.date, orders.user_id, orders.status, users.username from orders
         JOIN users ON users.id = orders.user_id
         ORDER BY orders.id DESC";
         $result = mysqli_query($this->conn, $query);
@@ -45,12 +45,12 @@ class DatabaseOrders extends DatabaseConnection
     }
 
     // UPDATE
-    public function update(Order $order, $id){
-        $query = "UPDATE orders SET `status` = ?, `date`= ? WHERE id = ?";
+    public function update(Order $order, $order_status, $order_id){
+        $query = "UPDATE orders SET `date` = ?, `status`= ? WHERE id = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
-        $stmt->bind_param("ssi", $order->date, $order->status, $id);
+        $stmt->bind_param("ssi", $order->date, $order->status, $order_id);
 
         return $stmt->execute();
     }
@@ -81,5 +81,23 @@ class DatabaseOrders extends DatabaseConnection
         } else{
             return false; 
         }
+    }
+
+    public function statuses(){
+        $query = "SELECT * FROM order_statuses";
+        $result = mysqli_query($this->conn, $query);
+        $db_order_statuses = mysqli_fetch_all($result, MYSQLI_ASSOC); 
+
+        $orders = []; 
+
+        foreach($db_order_statuses as $db_order_status){ 
+            $db_id = $db_order_status["id"];
+            $db_status = $db_order_status["status"];
+
+            $statuses[] = new Status($db_status, $db_id); 
+        }
+        
+        return $statuses;
+
     }
 }
