@@ -38,10 +38,12 @@ Template::header("SMS");
                 <h4><?= $product->price ?> SEK</h4>
             </div>
             <div class="card-btn">
-                <form action="/sms/scripts/add-to-cart.php" method="post">
-                    <input type="hidden" name="id" value="<?= $product->id ?>">
-                    <input class="btn btn-add" type="submit" value="Add to cart">
+                <form action="/sms/pages/cart.php" method="post">
+                    <input type="hidden" name="product-id" value="<?= $product->id ?>">
+                    <input class="btn-add" type="submit" value="Add to cart">
                 </form>
+
+                
             </div>
         </div> 
     <?php endforeach; ?>

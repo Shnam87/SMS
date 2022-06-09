@@ -19,8 +19,12 @@ require_once __DIR__ . "/../classes/Product.php";
 $products_db = new DatabaseProducts();
 $products = $products_db->get_all();
 
-// $order_db = new DatabaseOrders();
-// $orders = $orders_db->get_all();
+
+$order_db = new DatabaseOrders();
+$orders = $order_db->get_all();
+$statuses = $order_db->statuses();
+
+
 
 Template::header("SMS");
 ?>
@@ -144,8 +148,103 @@ if (!$isLoggedIn || !$isAdmin) {
 </div>
 
 <div id="admin-order-container">
-    <h2>FOR ORDERS</h2>
-    <p>tabell - visa alla orders (db)</p>
+    <div class="admin-order-wrapper">
+        <fieldset class="order-fieldset">
+            <legend class="order-legend">Orders</legend>
+            <table class="order-table">
+                <thead>
+                    <tr>
+                        <th class="order-table-head">Order #</th>
+                        <th class="order-table-head">Date | Status</th>
+                        <!-- <th class="order-table-head">Status</th> -->
+                        <th class="order-table-head">Customer</th> 
+                        <!-- <th class="order-table-head">Update</th>  -->
+                        <th class="order-table-head">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach($orders as $order): ?>
+                    <tr>
+                        <td>
+                            <p>
+                                <?= $order->id ?>
+                            </p>
+                        </td> 
+                        <td>
+                            <form action="/sms/scripts/post-edit-order.php" method="post">
+                                <label for=""><?= $order->date ?></label>
+                                <input type="text" name="order-date" value="<?= $order->date ?>" placeholder="Date">
+                                <label for=""><?= $order->status ?></label>
+                                <select name="order-status">
+                                    <option value="">Status</option>
+                                    <?php foreach($statuses as $status): ?>
+                                        <option name="order-status" value="<?= $status->status; ?>"><?= $status; ?></option>
+                                    <?php endforeach; ?> 
+                                </select>
+                                 <input type="hidden" name="order-id" value="<?= $order->id ?>">
+                                 
+                                 <input type="submit" value="Update">
+                            </form>
+                        </td>
+                        <td>
+                            <p><?= $order->user_id ?></p>
+                        </td>
+                        <td>
+                            <form action="/sms/scripts/post-delete-order.php" method="post">
+                                <input type="hidden" name="order-id" value="<?= $order->id ?>">
+                                <input class="order-btn btn-delete" type="submit" value="Delete">
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+
+
+        <!-- BACKUP TABLE DATA -->
+            <!-- <table class="order-table">
+                <thead>
+                    <tr>
+                        <th class="order-table-head">Order #</th>
+                        <th class="order-table-head">Date</th>
+                        <th class="order-table-head">User ID</th> 
+                        <th class="order-table-head">Status</th>
+                        <th class="order-table-head">Update</th> 
+                        <th class="order-table-head">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach($orders as $order): ?>
+                    <tr>
+                        <td>
+                            <p>
+                                <?= $order->id ?>
+                            </p>
+                        </td> 
+                        <td>
+                            <p><?= $order->date ?></p>
+                        </td>
+                        <td>
+                            <p><?= $order->user_id ?></p>
+                        </td>
+                        <td>
+                            <p><?= $order->status ?></p>
+                        </td>
+                        <td>
+                            <a class="admin-order-edit-link" href="/sms/pages/admin-edit-order.php?id=<?= $order->id ?>">Edit</a>
+                        </td>
+                        <td>
+                            <form action="/sms/scripts/post-delete-order.php" method="post">
+                                <input type="hidden" name="id" value="<?= $order->id ?>">
+                                <input class="order-btn btn-delete" type="submit" value="Delete">
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table> -->
+        </fieldset>
+    </div> 
 </div>
 
 <?php
