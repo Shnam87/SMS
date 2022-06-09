@@ -89,11 +89,11 @@ Template::header("SMS");
                             </form> -->
                         </td>
                         <td>
-                            <a class="admin-order-edit-link" href="/sms/pages/edit-order.php?id=<?= $order->id ?>">Edit</a>
+                            <a class="admin-order-edit-link" href="/sms/pages/admin-edit-order.php?id=<?= $order->id ?>">Edit</a>
                         </td>
                         <td>
                             <form action="/sms/scripts/post-delete-order.php" method="post">
-                                <input type="hidden" name="id" value="<?= $order->id ?>">
+                                <input type="hidden" name="order-id" value="<?= $order->id ?>">
                                 <input class="order-btn btn-delete" type="submit" value="Delete">
                             </form>
                         </td>
