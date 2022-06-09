@@ -88,9 +88,25 @@ Template::header("SMS");
                                 <input type="text" name="order-status" value="<?= $order->status ?>">
                             </form> -->
                         </td>
-                        <td>
+                        <!-- <td>
                             <a class="admin-order-edit-link" href="/sms/pages/admin-edit-order.php?id=<?= $order->id ?>">Edit</a>
+                        </td> -->
+
+                        <td>
+                            <form action="/sms/pages/edit-order.php?id=<?= $order->id ?>" method="post">
+                                <input type="hidden" name="id" value="<?= $order->id ?>">
+                                <input class="admin-order-edit" type="submit" value="Edit">
+                            </form>
                         </td>
+
+
+
+
+                    
+
+
+
+
                         <td>
                             <form action="/sms/scripts/post-delete-order.php" method="post">
                                 <input type="hidden" name="order-id" value="<?= $order->id ?>">
