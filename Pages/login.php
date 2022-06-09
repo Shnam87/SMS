@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__ ."/../Classes/Template.php";
 // require_once __DIR__ . "/../Classes/DatabaseUsers.php";
 require_once __DIR__ . "/../google-config.php";
@@ -13,7 +14,7 @@ Template::header("Logging In ...");
 <form action="/sms/Scripts/logging-in.php" method="post">
     <input type="text" class="login-field" required name="username" placeholder="Username" autofocus> <br>
     <input type="password" class="login-field" required name="password" placeholder="Password"> <br>
-    <input type="submit" class="btn" value="login"> <br>
+    <input type="submit" class="btn-login" value="login"> <br>
 </form>
 
 <h2>Or login with your google account here:</h2>

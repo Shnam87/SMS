@@ -10,6 +10,7 @@ class Template
         require_once __DIR__ . "/../google-config.php";
 
         $isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
+        $isAdmin = (isset($_SESSION["user"]->role) && $_SESSION["user"]->role == "admin");
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -27,21 +28,28 @@ class Template
             <header>
                 <h1><?= $title ?></h1>
                 <nav>
-                    <?php if (!$isLoggedIn) : ?>
-                        <a href="/sms">Home</a> |
-                        <a href="/sms/pages/products.php">Products</a> |
-                        <a href="/sms/pages/contact.php">Contact</a> |
-                        <a href="/sms/pages/login.php">Login</a> |
-                        <a href="/sms/pages/register.php">Register</a>
-                    <?php else : ?>
-                        <p> Logged in as: <?= $_SESSION['user']->username ?> </p>
-                        <a href="/sms">Home</a> |
-                        <a href="/sms/pages/products.php">Products</a> |
-                        <a href="/sms/pages/contact.php">Contact</a> |
-                        <a href="/sms/pages/admin.php">ADMIN</a> |
-                        <a href="/sms/scripts/logging-out.php">Logout</a>
-                    <?php endif; ?>
+                <?php if (!$isLoggedIn) : ?>
+                    <a href="/sms" class="nav-link">Home</a> |
+                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
+                    <a href="/sms/pages/contact.php" class="nav-link">Contact</a> |
+                    <a href="/sms/pages/login.php" class="nav-link">Login</a> |
+                    <a href="/sms/pages/register.php" class="nav-link">Register</a>
+                <?php elseif ($isLoggedIn && $isAdmin) : ?>
+                    <p class="nav-p"> Logged in as: <?= $_SESSION['user']->username ?> </p>
+                    <a href="/sms" class="nav-link">Home</a> |
+                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
+                    <a href="/sms/pages/contact.php" class="nav-link">Contact</a> |
+                    <a href="/sms/pages/admin.php" class="nav-link">ADMIN</a> |
+                    <a href="/sms/scripts/logging-out.php" class="nav-link">Logout</a>
+                <?php else : ?>
+                    <p class="nav-p"> Logged in as: <?= $_SESSION['user']->username ?> </p>
+                    <a href="/sms" class="nav-link">Home</a> |
+                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
+                    <a href="/sms/pages/contact.php" class="nav-link">Contact</a> |
+                    <a href="/sms/scripts/logging-out.php" class="nav-link">Logout</a>
+                <?php endif; ?>
                 </nav>
+
                 <nav class="icons-contianer">
                     <button class="my-site-btn">
                         <a href="" class="material-symbols-outlined">person</a><p>Login/Register </p>
@@ -51,11 +59,13 @@ class Template
                 </nav>
             </header>
             <hr>
+            
             <?php if (!$isLoggedIn) : ?>
-                <h3>Register or login to your account to be able to complete your purchase.</h3>
+                <h3 class="header-text">Register or login to your account to be able to complete your purchase.</h3>
             <?php else : ?>
-                <h3>Welcome <i><?= $_SESSION['user']->username ?>!</i> </h3>
+                <h3 class="header-text">Welcome <i><?= $_SESSION['user']->username ?>!</i> </h3>
             <?php endif; ?>
+            
         <?php  }
 
 
