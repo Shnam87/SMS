@@ -377,4 +377,20 @@ a:hover {
     border-radius: 2px;
 }  */
 
+/*=============================*/
+/*========== MY PAGE ==========*/
+/*=============================*/
+
+.mypage-orders-container table, th, td {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+
+.mypage-orders-container th {
+    text-align: left;
+}
+
+.mypage-orders-container table{
+    width: 100%;
+}
 

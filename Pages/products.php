@@ -6,7 +6,7 @@ require_once __DIR__ . "/../classes/Template.php";
 $products_db = new DatabaseProducts();
 $products = $products_db->get_all();
 
-Template::header("SMS");
+Template::header("Products");
 ?>
 
 <div class="products-main">
@@ -23,7 +23,9 @@ Template::header("SMS");
 <div class="product-card-container">
     <?php foreach($products as $product): ?>
         <div class="product-card">
-            <div class="card-img">IMAGE</div>
+            <div class="card-img">
+                <img src="<?= $product->img_url ?>" alt="Product image">
+            </div>
             <div class="card-title">
                 <h2>
                     <a class="products-title-link" href="/sms/pages/product.php?id=<?= $product->id ?>">

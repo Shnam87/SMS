@@ -7,7 +7,7 @@ $product_id = $_GET["id"];
 $products_db = new DatabaseProducts();
 $product = $products_db->get_product_by_id($product_id);
 
-Template::header("SMS");
+Template::header("Product");
 ?>
 
 <main class="product-site-container">
@@ -20,7 +20,8 @@ Template::header("SMS");
 
     <section class="product-wrapper">
         <section class="img-container">
-            <img src="https://www.elgiganten.se/image/dv_web_D180001002838537/361908/iphone-13-pro-max-5g-smartphone-1tb-silver--pdp_zoom-3000--pdp_main-960.jpg" alt="">
+            <img src="<?= $product->img_url ?>" alt="Product image">
+            <!-- <img src="https://www.elgiganten.se/image/dv_web_D180001002838537/361908/iphone-13-pro-max-5g-smartphone-1tb-silver--pdp_zoom-3000--pdp_main-960.jpg" alt=""> -->
         </section>
 
         <section class="product-info-container">
