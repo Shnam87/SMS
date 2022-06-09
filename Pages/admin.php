@@ -58,10 +58,10 @@ Template::header("SMS");
                 <thead>
                     <tr>
                         <th class="order-table-head">Order #</th>
-                        <th class="order-table-head">Date</th>
-                        <th class="order-table-head">Status</th>
+                        <th class="order-table-head">Date | Status</th>
+                        <!-- <th class="order-table-head">Status</th> -->
                         <th class="order-table-head">Customer</th> 
-                        <th class="order-table-head">Update</th> 
+                        <!-- <th class="order-table-head">Update</th>  -->
                         <th class="order-table-head">Delete</th>
                     </tr>
                 </thead>
@@ -76,30 +76,30 @@ Template::header("SMS");
                         <td>
                             <!-- <p><?= $order->date ?></p> -->
                             <form action="/sms/scripts/post-edit-order.php" method="post">
-                                <input type="text" name="order-id" value="<?= $order->date ?>">
-                                <td>
-                                    <select name="Status">
-                                        <option value="<?= $order->status ?>"><?= $order->status ?></option>
-                                        <option value="<?= $order->status ?>">packaged</option>
-                                        <option value="<?= $order->status ?>">shipped</option>
-                                        <option value="<?= $order->status ?>">delivered</option>
-                                    </select>
-                                </td>
-                            </form>
-                        </td>
-                        <td>
-                            <!-- <p><?= $order->status ?></p> -->
-                            <!-- <form action="/sms/scripts/post-edit-order.php<?= $order->id ?>" method="post">
-                                <select name="Status">
+                                <input type="text" name="order-date" value="<?= $order->date ?>" placeholder="Date">
+                                <select name="order-status">
                                     <option value="<?= $order->status ?>"><?= $order->status ?></option>
                                     <option value="<?= $order->status ?>">packaged</option>
                                     <option value="<?= $order->status ?>">shipped</option>
                                     <option value="<?= $order->status ?>">delivered</option>
                                 </select>
+                                 <input type="hidden" name="order-id" value="<?= $order->id ?>">
+                                 <input type="submit" value="Update">
+                            </form>
+                        </td>
+                        <!-- <td> -->
+                            <!-- <p><?= $order->status ?></p> -->
+                            <!-- <form action="/sms/scripts/post-edit-order.php<?= $order->id ?>" method="post">
+                                <select name="order-status">
+                                    <option value="<?= $order->status ?>"><?= $order->status ?></option>
+                                    <option value="<?= $order->status ?>">packaged</option>
+                                    <option value="<?= $order->status ?>">shipped</option>
+                                    <option value="<?= $order->status ?>">delivered</option>
+                                </select>
+                                <input type="hidden" name="order-id" value="<?= $order->id ?>">
                                             <input type="text" name="order-status" value="<?= $order->status ?>">
                             </form> -->
-                        </td>
-                       
+                        <!-- </td> -->
                         <td>
                             <p><?= $order->user_id ?></p>
                         </td>
@@ -108,21 +108,12 @@ Template::header("SMS");
                             <a class="admin-order-edit-link" href="/sms/pages/admin-edit-order.php?id=<?= $order->id ?>">Edit</a>
                         </td> -->
 
-                        <td>
+                        <!-- <td>
                             <form action="/sms/pages/edit-order.php?id=<?= $order->id ?>" method="post">
                                 <input type="hidden" name="id" value="<?= $order->id ?>">
                                 <input class="admin-order-edit" type="submit" value="Edit">
                             </form>
-                        </td>
-
-
-
-
-                    
-
-
-
-
+                        </td> -->
                         <td>
                             <form action="/sms/scripts/post-delete-order.php" method="post">
                                 <input type="hidden" name="order-id" value="<?= $order->id ?>">

@@ -10,10 +10,10 @@ $orders = $order_db->get_all();
 
 $success = false;
 
-if(isset($_POST["order-id"]) && isset($_POST["date"]) && isset($_POST["user-id"]) && isset($_POST["status"])){
+if(isset($_POST["order-date"]) && isset($_POST["order-status"]) && isset($_POST["order-id"])){
     $db = new DatabaseOrders();
 
-    $order = new Order($_POST["order-id"], $_POST["date"], $_POST["user-id"], $_POST["status"]);
+    $order = new Order($_POST["order-id"], $_POST["order-date"], $_POST["order-status"]);
 
     $id = $_POST["order-id"];
     $success = $db->update($order, $id);   
@@ -23,9 +23,9 @@ if(isset($_POST["order-id"]) && isset($_POST["date"]) && isset($_POST["user-id"]
 }
 
 if($success){
-    header("Location: /sms/pages/edit-order.php?id=" . $_POST["order-id"]);
+    header("Location: /sms/pages/admin.php");
 } else{
-    echo "Error updating order.";
+    var_dump($order);
 }
 
 
