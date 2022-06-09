@@ -21,7 +21,11 @@ class DatabaseOrders extends DatabaseConnection
 
      // GET ALL 
      public function get_all(){
-        $query = "SELECT * from orders ORDER BY id DESC";
+            // $query = "SELECT * from orders ORDER BY id DESC";
+        $query = 
+        "SELECT orders.id, orders.date, users.username, orders.status from orders
+        JOIN users ON users.id = orders.user_id
+        ORDER BY orders.id DESC";
         $result = mysqli_query($this->conn, $query);
         $db_orders = mysqli_fetch_all($result, MYSQLI_ASSOC); 
 
@@ -29,11 +33,12 @@ class DatabaseOrders extends DatabaseConnection
 
         foreach($db_orders as $db_order){ 
             $db_id = $db_order["id"];
-            $db_user_id = $db_order["user_id"];
+                // $db_user_id = $db_order["user_id"];
+            $db_username = $db_order["username"];
             $db_status = $db_order["status"];
             $db_date = $db_order["date"];
 
-            $orders[] = new Order($db_user_id, $db_date, $db_status, $db_id); 
+            $orders[] = new Order($db_username, $db_date, $db_status, $db_id); 
         }
         
         return $orders;
