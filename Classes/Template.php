@@ -20,28 +20,36 @@ class Template
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title><?= $title ?> - Skön text</title>
             <link rel="stylesheet" href="/sms/assets/style.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         </head>
 
         <body>
-
-            <h1><?= $title ?></h1>
-
-            <nav>
-                <?php if (!$isLoggedIn) : ?>
-                    <a href="/sms">Home</a> |
-                    <a href="/sms/pages/products.php">Products</a> |
-                    <a href="/sms/pages/contact.php">Contact</a> |
-                    <a href="/sms/pages/login.php">Login</a> |
-                    <a href="/sms/pages/register.php">Register</a>
-                <?php else : ?>
-                    <p> Logged in as: <?= $_SESSION['user']->username ?> </p>
-                    <a href="/sms">Home</a> |
-                    <a href="/sms/pages/products.php">Products</a> |
-                    <a href="/sms/pages/contact.php">Contact</a> |
-                    <a href="/sms/pages/admin.php">ADMIN</a> |
-                    <a href="/sms/scripts/logging-out.php">Logout</a>
-                <?php endif; ?>
-            </nav>
+            <header>
+                <h1><?= $title ?></h1>
+                <nav>
+                    <?php if (!$isLoggedIn) : ?>
+                        <a href="/sms">Home</a> |
+                        <a href="/sms/pages/products.php">Products</a> |
+                        <a href="/sms/pages/contact.php">Contact</a> |
+                        <a href="/sms/pages/login.php">Login</a> |
+                        <a href="/sms/pages/register.php">Register</a>
+                    <?php else : ?>
+                        <p> Logged in as: <?= $_SESSION['user']->username ?> </p>
+                        <a href="/sms">Home</a> |
+                        <a href="/sms/pages/products.php">Products</a> |
+                        <a href="/sms/pages/contact.php">Contact</a> |
+                        <a href="/sms/pages/admin.php">ADMIN</a> |
+                        <a href="/sms/scripts/logging-out.php">Logout</a>
+                    <?php endif; ?>
+                </nav>
+                <nav class="icons-contianer">
+                    <button class="my-site-btn">
+                        <a href="" class="material-symbols-outlined">person</a><p>Login/Register </p>
+                    </button>
+                    <span class="material-symbols-outlined">favorite</span>
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                </nav>
+            </header>
             <hr>
             <?php if (!$isLoggedIn) : ?>
                 <h3>Register or login to your account to be able to complete your purchase.</h3>

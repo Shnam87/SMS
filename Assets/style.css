@@ -13,6 +13,53 @@ html{
     background-color: #fff;
 }
 
+header{
+    position: relative;
+}
+
+.icons-contianer{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 0;
+    top: 0;
+    gap: 10px;
+    padding: 5px;
+    
+}
+
+.icons-contianer a {
+    color: black;
+}
+
+.my-site-btn{ 
+    display: flex;
+    flex-direction: row;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    
+}
+
+.my-site-btn:hover{ 
+    display: flex;
+    flex-direction: row;
+    background: lightgray;
+
+
+}
+
+.my-site-btn p{ 
+  margin: 3px;
+}
+
+.icons-contianer a:link {
+    text-decoration: none;
+}
+
+
+
 nav {
     margin: 0.3% 0.5%;
     padding: 0.3% 0.5%;
