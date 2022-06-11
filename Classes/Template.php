@@ -26,38 +26,34 @@ class Template
 
         <body>
             <header>
-                <h1>SMS</h1>
+                <a href="/sms"><img src="../assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
                 <nav>
-                <?php if (!$isLoggedIn) : ?>
-                    <a href="/sms" class="nav-link">Home</a> |
-                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
-                    <!-- <a href="/sms/pages/contact.php" class="nav-link">Contact</a> | -->
-                  <!--   <a href="/sms/pages/login.php" class="nav-link">Login</a> |
-                    <a href="/sms/pages/register.php" class="nav-link">Register</a> -->
-                <?php elseif ($isLoggedIn && $isAdmin) : ?>
-                    <!-- <p class="nav-p"> Logged in as: <?= $_SESSION['user']->username ?> </p> -->
-                    <a href="/sms" class="nav-link">Home</a> |
-                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
-                    <!-- <a href="/sms/pages/contact.php" class="nav-link">Contact</a> | -->
-                    <a href="/sms/pages/admin.php" class="nav-link">ADMIN</a> |
-                    <!-- <a href="/sms/scripts/logging-out.php" class="nav-link">Logout</a> -->
+                <?php if ($isLoggedIn && $isAdmin): ?>
+                    <ul class="header-navbar">
+                        <li><a href="/sms" class="nav-link">Home</a></li>
+                        <li><a href="/sms/pages/products.php" class="nav-link">Products</a></li>
+                        <li><a href="/sms/pages/admin.php" class="nav-link">ADMIN</a></li>
+                    </ul>
                 <?php else : ?>
-                    <!-- <p class="nav-p"> Logged in as: <?= $_SESSION['user']->username ?> </p> -->
-                    <a href="/sms" class="nav-link">Home</a> |
-                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
-                    <!-- <a href="/sms/pages/contact.php" class="nav-link">Contact</a> | -->
-                    <!-- <a href="/sms/scripts/logging-out.php" class="nav-link">Logout</a> -->
+                    <ul class="header-navbar">
+                        <li><a href="/sms" class="nav-link">Home</a></li>
+                        <li><a href="/sms/pages/products.php" class="nav-link">Products</a></li>
+                    </ul>
                 <?php endif; ?>
                 </nav>
 
                 <nav class="icons-contianer">
                 <?php if (!$isLoggedIn) : ?>
                     <button class="my-site-btn">
-                        <a href="/sms/pages/login.php" class="material-symbols-outlined">person</a><p>Login/Register </p>
+                        <a href="/sms/pages/login.php" class="material-symbols-outlined">person
+                            <p>Login/Register</p>
+                        </a>
                     </button>
                 <?php else : ?>
                     <button class="my-site-btn">
-                        <a href="/sms/pages/my-page.php" class="material-symbols-outlined">person</a><p>My page </p>
+                        <a href="/sms/pages/my-page.php" class="material-symbols-outlined">person
+                            <p>My page </p>
+                        </a>
                     </button>
                 <?php endif; ?>
                     <a href="/sms/pages/favorite.php" class="material-symbols-outlined">favorite</a>

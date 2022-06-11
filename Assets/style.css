@@ -8,30 +8,43 @@
     padding: 0;
 }
 
-
 html{
     display: flex;
     justify-content: space-evenly;
     background-color: #fff;
 }
 
+/*============================*/
+/*========== HEADER ==========*/
+/*============================*/
+
 header{
     position: relative;
+}
+
+
+
+.sms-logo{
+    width: 300px;
+    height: 100%;
+    margin: 20px;
 }
 
 .icons-contianer{
     display: flex;
     flex-direction: row;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 10px;
+    top: 15px;
     gap: 10px;
     padding: 5px;
-    
 }
 
 .icons-contianer a {
     color: black;
+    display: inherit;
+    font-size: 25px;
+    align-items: center;
 }
 
 .my-site-btn{ 
@@ -41,19 +54,17 @@ header{
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    
 }
 
 .my-site-btn:hover{ 
     display: flex;
     flex-direction: row;
     background: lightgray;
-
-
 }
 
 .my-site-btn p{ 
   margin: 3px;
+  font-size: 14px;
 }
 
 .icons-contianer a:link {
@@ -61,12 +72,30 @@ header{
 }
 
 
+.header-navbar{
+    text-align: center;
+    padding: 30px;
+}
 
+.header-navbar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+  
+.header-navbar li{
+    display: inline;
+    margin: 10px;
+}
 
-.nav-link, .nav-p,
-.header-text {
-    margin: 0.3% 0.7%;
-   
+.header-navbar a, a:link{
+    text-decoration: none;
+    color: black;
+}
+
+.header-navbar a:link{
+    text-decoration: none;
+    
 }
 
 .google-btn {
@@ -75,7 +104,6 @@ header{
     height: 46px;
     border: none;
     margin: 1.5% 1.5% 3%;
-
 }
 
 .login-field,
@@ -310,6 +338,25 @@ img {
     background-color: #f2f2f2;
     padding: 20px;
   }
+
+
+/*=============================*/
+/*========== MY PAGE ==========*/
+/*=============================*/
+
+.mypage-orders-container table, th, td {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+
+.mypage-orders-container th {
+    text-align: left;
+}
+
+.mypage-orders-container table{
+    width: 100%;
+}
+
 /*============================*/
 /*========== FOOTER ==========*/
 /*============================*/
@@ -376,21 +423,3 @@ a:hover {
     color: black;
     border-radius: 2px;
 }  */
-
-/*=============================*/
-/*========== MY PAGE ==========*/
-/*=============================*/
-
-.mypage-orders-container table, th, td {
-    border-bottom: 1px solid black;
-    border-collapse: collapse;
-}
-
-.mypage-orders-container th {
-    text-align: left;
-}
-
-.mypage-orders-container table{
-    width: 100%;
-}
-
