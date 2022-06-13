@@ -57,37 +57,16 @@ if (!$isLoggedIn || !$isAdmin) {
             <input type="text" class="user-info" required name="username" placeholder="Username" value="<?= $user->username ?>">
             <input type="text" class="user-info" required name="role" placeholder="Role" value="<?= $user->role ?>">
             <input type="hidden" name="id" value="<?= $user->id; ?>">
+
             <input type="submit" class="btn btn-edit" value="Update User">
+            <input type="submit" class="btn btn-delete" formaction="/sms/scripts/delete-user.php" value="Delete User">
         </form>
 
-        <form method="POST" action="/sms/scripts/delete-user.php">
-            <input type="hidden" name="id" value="<?= $user->id ?>">
-            <input type="submit" class="btn btn-delete" value="Delete User">
-        </form>
     <?php endforeach; ?>
 </div>
 
 
 <div id="admin-product-container">
-    <!-- 
-    <h2>FOR PRODUCTS</h2>
-    <form action="" class="add-product">
-        <p class="admin-header">Please enter the details and an image of the product:</p>
-        <div>
-            <input type="text" required class="adminForm-input" name="" id="objName" placeholder="Product Name">
-        </div>
-        <div>
-            <input type="file" required accept="image/*" class="adminForm-input" name="" id="objImg">
-        </div>
-        <div>
-            <input type="number" required min="1" class="adminForm-input" name="" id="objPrice" placeholder="Price of the product">
-        </div>
-        <div>
-            <textarea name="" required class="adminForm-textarea" id="objDescription" cols="35" rows="4" placeholder="Product description"></textarea>
-        </div>
-        <input type="submit" class="btn btn-delete" value="Add product">
-    </form>
- -->
 
     <h2>FOR RODUCTS</h2>
     <div class="product-form-container">
@@ -157,52 +136,52 @@ if (!$isLoggedIn || !$isAdmin) {
                         <th class="order-table-head">Order #</th>
                         <th class="order-table-head">Date | Status</th>
                         <!-- <th class="order-table-head">Status</th> -->
-                        <th class="order-table-head">Customer</th> 
+                        <th class="order-table-head">Customer</th>
                         <!-- <th class="order-table-head">Update</th>  -->
                         <th class="order-table-head">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach($orders as $order): ?>
-                    <tr>
-                        <td>
-                            <p>
-                                <?= $order->id ?>
-                            </p>
-                        </td> 
-                        <td>
-                            <form action="/sms/scripts/post-edit-order.php" method="post">
-                                <label for=""><?= $order->date ?></label>
-                                <input type="text" name="order-date" value="<?= $order->date ?>" placeholder="Date">
-                                <label for=""><?= $order->status ?></label>
-                                <select name="order-status">
-                                    <option value="">Status</option>
-                                    <?php foreach($statuses as $status): ?>
-                                        <option name="order-status" value="<?= $status->status; ?>"><?= $status; ?></option>
-                                    <?php endforeach; ?> 
-                                </select>
-                                 <input type="hidden" name="order-id" value="<?= $order->id ?>">
-                                 
-                                 <input type="submit" value="Update">
-                            </form>
-                        </td>
-                        <td>
-                            <p><?= $order->user_id ?></p>
-                        </td>
-                        <td>
-                            <form action="/sms/scripts/post-delete-order.php" method="post">
-                                <input type="hidden" name="order-id" value="<?= $order->id ?>">
-                                <input class="order-btn btn-delete" type="submit" value="Delete">
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+                    <?php foreach ($orders as $order) : ?>
+                        <tr>
+                            <td>
+                                <p>
+                                    <?= $order->id ?>
+                                </p>
+                            </td>
+                            <td>
+                                <form action="/sms/scripts/post-edit-order.php" method="post">
+                                    <label for=""><?= $order->date ?></label>
+                                    <input type="text" name="order-date" value="<?= $order->date ?>" placeholder="Date">
+                                    <label for=""><?= $order->status ?></label>
+                                    <select name="order-status">
+                                        <option value="">Status</option>
+                                        <?php foreach ($statuses as $status) : ?>
+                                            <option name="order-status" value="<?= $status->status; ?>"><?= $status; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <input type="hidden" name="order-id" value="<?= $order->id ?>">
+
+                                    <input type="submit" value="Update">
+                                </form>
+                            </td>
+                            <td>
+                                <p><?= $order->user_id ?></p>
+                            </td>
+                            <td>
+                                <form action="/sms/scripts/post-delete-order.php" method="post">
+                                    <input type="hidden" name="order-id" value="<?= $order->id ?>">
+                                    <input class="order-btn btn-delete" type="submit" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
 
 
-        <!-- BACKUP TABLE DATA -->
-            <!-- <table class="order-table">
+            <-- BACKUP TABLE DATA -->
+                <!-- <table class="order-table">
                 <thead>
                     <tr>
                         <th class="order-table-head">Order #</th>
@@ -214,7 +193,7 @@ if (!$isLoggedIn || !$isAdmin) {
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach($orders as $order): ?>
+                <?php foreach ($orders as $order) : ?>
                     <tr>
                         <td>
                             <p>
@@ -244,7 +223,7 @@ if (!$isLoggedIn || !$isAdmin) {
                 </tbody>
             </table> -->
         </fieldset>
-    </div> 
+    </div>
 </div>
 
 <?php

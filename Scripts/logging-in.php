@@ -10,7 +10,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     $password = $_POST["password"];
 
     $db = new DatabaseUsers();
-    $user = $db->getUser($username);
+    $user = $db->get_one_by_username($username);
 
     if ($user) {
         $success = $user->test_password($password);

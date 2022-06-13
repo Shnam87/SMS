@@ -6,7 +6,7 @@ require_once __DIR__ . "/User.php";
 class DatabaseUsers extends DatabaseConnection
 {
 
-    public function addUser(User $user)
+    public function add_user(User $user)
     {
         $query = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
 
@@ -46,7 +46,7 @@ class DatabaseUsers extends DatabaseConnection
         return $users;
     }
 
-    public function get_one($id)
+    public function get_one_by_id($id)
     {
         $query = "SELECT * FROM users WHERE `users`.`id` = ? ";
 
@@ -61,7 +61,7 @@ class DatabaseUsers extends DatabaseConnection
         return $user;
     }
 
-    public function getUser($username)
+    public function get_one_by_username($username)
     {
         $query = "SELECT * FROM users WHERE username = ?";
 
@@ -80,9 +80,9 @@ class DatabaseUsers extends DatabaseConnection
         return $user;
     }
 
-    public function getGoogleUser(User $user)
+    public function get_google_user(User $user)
     {
-        $db_user = $this->getUser($user->username);
+        $db_user = $this->get_one_by_username($user->username);
 
         if ($db_user === null) {
             $query = "INSERT INTO users (username) VALUES ( ?)";
@@ -95,7 +95,7 @@ class DatabaseUsers extends DatabaseConnection
 
             if ($success) {
 
-                $user = $this->get_one($stmt->insert_id);
+                $user = $this->get_one_by_id($stmt->insert_id);
 
                 // $user->id = $stmt->insert_id;
             } else {
