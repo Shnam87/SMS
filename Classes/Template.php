@@ -22,50 +22,48 @@ class Template
             <title><?= $title ?> - Skön text</title>
             <link rel="stylesheet" href="/sms/assets/style.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         </head>
 
         <body>
             <header>
                 <h1><?= $title ?></h1>
                 <nav>
-                <?php if (!$isLoggedIn) : ?>
                     <a href="/sms" class="nav-link">Home</a> |
                     <a href="/sms/pages/products.php" class="nav-link">Products</a> |
-                    <a href="/sms/pages/contact.php" class="nav-link">Contact</a> |
-                    <a href="/sms/pages/login.php" class="nav-link">Login</a> |
-                    <a href="/sms/pages/register.php" class="nav-link">Register</a>
-                <?php elseif ($isLoggedIn && $isAdmin) : ?>
-                    <p class="nav-p"> Logged in as: <?= $_SESSION['user']->username ?> </p>
-                    <a href="/sms" class="nav-link">Home</a> |
-                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
-                    <a href="/sms/pages/contact.php" class="nav-link">Contact</a> |
-                    <a href="/sms/pages/admin.php" class="nav-link">ADMIN</a> |
-                    <a href="/sms/scripts/logging-out.php" class="nav-link">Logout</a>
-                <?php else : ?>
-                    <p class="nav-p"> Logged in as: <?= $_SESSION['user']->username ?> </p>
-                    <a href="/sms" class="nav-link">Home</a> |
-                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
-                    <a href="/sms/pages/contact.php" class="nav-link">Contact</a> |
-                    <a href="/sms/scripts/logging-out.php" class="nav-link">Logout</a>
-                <?php endif; ?>
+                    <?php if ($isLoggedIn && $isAdmin) : ?>
+                        <a href="/sms/pages/admin.php" class="nav-link admin-nav-link">Admin page</a>
+                    <?php endif; ?>
                 </nav>
 
                 <nav class="icons-contianer">
-                    <button class="my-site-btn">
-                        <a href="" class="material-symbols-outlined">person</a><p>Login/Register </p>
-                    </button>
+                    <?php if (!$isLoggedIn) : ?>
+                        <button class="my-site-btn">
+                            <a href="/sms/pages/login.php"><span class="material-icons">login</span>
+                            <span> Login/Register</span></a>
+                        </button>
+
+                    <?php else : ?>
+                        <button class="my-site-btn">
+                            <a href="" class="material-symbols-outlined">person</a>
+                            <p> My page</p>
+                        </button>
+                        <a href="/sms/scripts/logging-out.php"><span class="material-icons">logout</span></a>
+
+                    <?php endif; ?>
+
                     <span class="material-symbols-outlined">favorite</span>
                     <span class="material-symbols-outlined">shopping_cart</span>
                 </nav>
             </header>
             <hr>
-            
+
             <?php if (!$isLoggedIn) : ?>
                 <h3 class="header-text">Register or login to your account to be able to complete your purchase.</h3>
             <?php else : ?>
                 <h3 class="header-text">Welcome <i><?= $_SESSION['user']->username ?>!</i> </h3>
             <?php endif; ?>
-            
+
         <?php  }
 
 

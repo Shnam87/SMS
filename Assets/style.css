@@ -78,10 +78,13 @@ header{
 
 }
 
-.nav-link, .nav-p,
+.nav-link,
 .header-text {
-    margin: 0.3% 0.7%;
-   
+    margin: 1%;
+}
+
+.admin-nav-link {
+    float: right;
 }
 
 .google-btn {
@@ -137,14 +140,14 @@ header{
 #password,
 #username {
     box-sizing: border-box;
-    background-image: url("./assignment_ind_black_36dp.svg");
-    background-position: -5px 3px; 
+    background-image: url("./person_black_24dp.svg");
+    background-position: 1px 6px; 
     background-repeat: no-repeat;
-    padding: 2px 2px 2px 33px;
+    padding: 2px 2px 2px 30px;
 }
 
 #password {
-    background-image: url("./lock_black_36dp.svg");
+    background-image: url("./lock_black_24dp.svg");
 }
 
 /*==============================*/
