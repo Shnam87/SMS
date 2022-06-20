@@ -20,7 +20,7 @@ $orders = $db->get_order_by_user_id($user->id);
 Template::header("My page");
 ?>
 
-<h2>Hello <?= $_SESSION['user']->username ?>!</h2>
+<h3>Hello <?= $_SESSION['user']->username ?>!</h3>
 
 <nav>
     <a href="/sms/scripts/logging-out.php" class="nav-link">Logout</a>

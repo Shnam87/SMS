@@ -10,7 +10,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     $password = $_POST["password"];
 
     $db = new DatabaseUsers();
-    $user = $db->getUser($username);
+    $user = $db->get_one_by_username($username);
 
     if ($user) {
         $success = $user->test_password($password);
@@ -29,6 +29,6 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 if ($success) {
     header("Location: /sms");
 } else {
-    echo "Username or password is incorrect";
+    header ("Location: /sms/pages/login.php?error=wrong_login");
     die();
 }

@@ -23,52 +23,50 @@ class Template
             <title><?= $title ?></title>
             <link rel="stylesheet" href="/sms/assets/style.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         </head>
 
         <body>
             <header>
-                <a href="/sms"><img src="/../sms/assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
+                <a href="/sms"><img src="/../SMS/Assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
                 <nav>
-                <?php if ($isLoggedIn && $isAdmin): ?>
-                    <ul class="header-navbar">
-                        <li><a href="/sms" class="nav-link">Home</a></li>
-                        <li><a href="/sms/pages/products.php" class="nav-link">Products</a></li>
-                        <li><a href="/sms/pages/admin.php" class="nav-link">ADMIN</a></li>
-                    </ul>
-                <?php else : ?>
-                    <ul class="header-navbar">
-                        <li><a href="/sms" class="nav-link">Home</a></li>
-                        <li><a href="/sms/pages/products.php" class="nav-link">Products</a></li>
-                    </ul>
-                <?php endif; ?>
+                    <a href="/sms" class="nav-link">Home</a> |
+                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
+                    <?php if ($isLoggedIn && $isAdmin) : ?>
+                        <a href="/sms/pages/admin.php" class="nav-link admin-nav-link">Admin page</a>
+                    <?php endif; ?>
                 </nav>
 
                 <nav class="icons-contianer">
-                <?php if (!$isLoggedIn) : ?>
-                    <button class="my-site-btn">
-                        <a href="/sms/pages/login.php" class="material-symbols-outlined">person
-                            <p>Login/Register</p>
-                        </a>
-                    </button>
-                <?php else : ?>
-                    <button class="my-site-btn">
-                        <a href="/sms/pages/my-page.php" class="material-symbols-outlined">person
-                            <p>My page </p>
-                        </a>
-                    </button>
-                <?php endif; ?>
-                    <a href="/sms/pages/favorite.php" class="material-symbols-outlined">favorite</a>
-                    <a href="/sms/pages/cart.php" class="material-symbols-outlined">shopping_cart</a>
+                    <?php if (!$isLoggedIn) : ?>
+                        <button class="my-site-btn">
+                            <a href="/sms/pages/login.php"><span class="material-icons">login</span>
+                                <p> Login/Register</p>
+                            </a>
+                        </button>
+
+                    <?php else : ?>
+                        <button class="my-site-btn">
+                            <a href="/sms/pages/my-page.php" class="material-symbols-outlined">person
+                                <p> My page</p>
+                            </a>
+                        </button>
+                        <a href="/sms/scripts/logging-out.php"><span class="material-icons">logout</span></a>
+
+                    <?php endif; ?>
+
+                    <span class="material-symbols-outlined">favorite</span>
+                    <span class="material-symbols-outlined">shopping_cart</span>
                 </nav>
             </header>
             <hr>
-           <!--  
+
             <?php if (!$isLoggedIn) : ?>
                 <h3 class="header-text">Register or login to your account to be able to complete your purchase.</h3>
             <?php else : ?>
                 <h3 class="header-text">Welcome <i><?= $_SESSION['user']->username ?>!</i> </h3>
-            <?php endif; ?> -->
-            
+            <?php endif; ?>
+
         <?php  }
 
 

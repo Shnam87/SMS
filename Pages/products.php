@@ -19,7 +19,7 @@ Template::header("Products");
         </div>
     </div>
 </div>
-
+<?php // var_dump($products) ?>
 <div class="product-card-container">
     <?php foreach($products as $product): ?>
         <div class="product-card">

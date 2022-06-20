@@ -17,7 +17,7 @@ else{
 
 
 if($success){
-    header("Location: /sms/pages/admin");
+    header("Location: /sms/pages/admin.php");
 } else {
     echo"Error uppdating product in database";
 } */

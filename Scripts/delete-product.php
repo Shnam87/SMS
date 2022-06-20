@@ -16,7 +16,7 @@ else{
 }
 
 if($success){
-    header("Location: /sms/pages/admin");
+    header("Location: /sms/pages/admin.php");
 } else {
     echo"Error removing product from database";
 }
