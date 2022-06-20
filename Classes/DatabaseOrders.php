@@ -88,7 +88,7 @@ class DatabaseOrders extends DatabaseConnection
         $result = mysqli_query($this->conn, $query);
         $db_order_statuses = mysqli_fetch_all($result, MYSQLI_ASSOC); 
 
-        $orders = []; 
+        $statuses = []; 
 
         foreach($db_order_statuses as $db_order_status){ 
             $db_id = $db_order_status["id"];

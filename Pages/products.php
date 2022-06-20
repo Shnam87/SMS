@@ -31,9 +31,9 @@ Template::header("SMS");
                     </a>
                 </h2>
             </div>
-            <div class="card-desc">
+            <!-- <div class="card-desc">
                 <p><?= $product->description ?></p>
-            </div>
+            </div> -->
             <div class="card-price">
                 <h4><?= $product->price ?> SEK</h4>
             </div>
