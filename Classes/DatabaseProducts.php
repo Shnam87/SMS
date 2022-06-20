@@ -13,8 +13,10 @@ class DatabaseProducts extends DatabaseConnection
             $stmt->execute();
             $result = $stmt->get_result();
             $db_product = mysqli_fetch_assoc($result);
+
             
-            $product = new Product($db_product["title"], $db_product["description"], $db_product["price"], $db_product["id"]);
+            
+            $product = new Product($db_product["title"], $db_product["description"], $db_product["price"], $db_product["img-url"], $db_product["id"]);
 
             return $product;
     }
@@ -32,8 +34,11 @@ class DatabaseProducts extends DatabaseConnection
             $db_title = $db_product["title"];
             $db_description = $db_product["description"];
             $db_price = $db_product["price"];
+            $db_img_url = $db_product["img-url"];
+          
+            $products[] = new Product($db_title, $db_description, $db_price, $db_img_url, $db_id);
 
-            $products[] = new Product($db_title, $db_description, $db_price, $db_id); 
+    
         }
         
         return $products;
@@ -42,15 +47,13 @@ class DatabaseProducts extends DatabaseConnection
     // CREATE
     public function create_product(Product $product)
     {
-        $query = "INSERT INTO products (title, description, price) VALUES (?, ?, ?)";
-
+        $query = "INSERT INTO products (title, `description`, price, `img-url`) VALUES (?, ?, ?, ?)";
         $stmt = mysqli_prepare($this->conn, $query);
-
         $title = $product->title;
         $description = $product->description;
         $price = $product->price;
-
-        $stmt->bind_param("ssi", $title, $description, $price); 
+        $img_url = $product->img_url;
+        $stmt->bind_param("ssis", $title, $description, $price, $img_url); 
         $success = $stmt->execute(); 
 
         return $success;

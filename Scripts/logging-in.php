@@ -29,6 +29,6 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 if ($success) {
     header("Location: /sms");
 } else {
-    echo "Username or password is incorrect";
+    header ("Location: /sms/pages/login.php?error=wrong_login");
     die();
 }

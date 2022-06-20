@@ -8,30 +8,43 @@
     padding: 0;
 }
 
-
 html{
     display: flex;
     justify-content: space-evenly;
     background-color: #fff;
 }
 
+/*============================*/
+/*========== HEADER ==========*/
+/*============================*/
+
 header{
     position: relative;
+}
+
+
+
+.sms-logo{
+    width: 300px;
+    height: 100%;
+    margin: 20px;
 }
 
 .icons-contianer{
     display: flex;
     flex-direction: row;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 10px;
+    top: 15px;
     gap: 10px;
     padding: 5px;
-    
 }
 
 .icons-contianer a {
     color: black;
+    display: inherit;
+    font-size: 25px;
+    align-items: center;
 }
 
 .my-site-btn{ 
@@ -41,19 +54,17 @@ header{
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    
 }
 
 .my-site-btn:hover{ 
     display: flex;
     flex-direction: row;
     background: lightgray;
-
-
 }
 
 .my-site-btn p{ 
   margin: 3px;
+  font-size: 14px;
 }
 
 .icons-contianer a:link {
@@ -76,6 +87,14 @@ header{
     border: 3px dashed dimgrey;
     box-shadow: -4px 4px 12px 4px grey;
 
+}
+
+.error-msg {
+    color: red;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 .nav-link,
@@ -149,6 +168,69 @@ header{
 #password {
     background-image: url("./lock_black_24dp.svg");
 }
+
+/*****************/
+/* Contact Form */
+
+.contact-container {
+    border: 6px double lightgrey;
+    background-color: lightskyblue;
+    border-radius: 25px;
+    padding: 12px;
+}
+
+.chat-container {
+    border: 4px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 70%;
+    display: block;
+    margin-left: 0px;
+    margin-right: auto;
+}
+  
+div.admin {
+    border-color: #ccc;
+    background-color: #ddd;
+    display: block;
+    margin-left: auto;
+    margin-right: 0px;
+}
+  
+.chat-container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+  
+.chat-msg {
+    float: left;
+}
+
+h3.admin{
+    float: right;
+}
+
+.contact-form {
+    display: flex;
+    align-items: center;
+}
+
+.contact-text {
+    width: 84%;
+}
+
+.contact-btn {
+    width: 14%;
+    height: 50px;
+    margin-left: 1.5%;
+}
+
+
+
+
 
 /*==============================*/
 /*========== PRODUCT ==========*/
@@ -434,6 +516,24 @@ img {
     margin: 0 1rem 0 1rem;
 } */
 
+
+/*=============================*/
+/*========== MY PAGE ==========*/
+/*=============================*/
+
+.mypage-orders-container table, th, td {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+
+.mypage-orders-container th {
+    text-align: left;
+}
+
+.mypage-orders-container table{
+    width: 100%;
+}
+
 /*============================*/
 /*========== FOOTER ==========*/
 /*============================*/
@@ -500,5 +600,3 @@ a:hover {
     color: black;
     border-radius: 2px;
 }  */
-
-

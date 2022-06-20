@@ -18,8 +18,9 @@ if (
     $existing_user = $users_db->get_one_by_username($username);
 
     if ($existing_user) {
+        header("Location: /sms/pages/login.php?error=username_taken");
         //print_r("This username is taken, please try again");
-        die("This username is taken, please try again");
+        die();
         //exit();
     } else {
         $success = $users_db->add_user($user);

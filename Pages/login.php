@@ -21,6 +21,9 @@ Template::header("Login / Register");
             <input type="password" id="password" class="login-field" required name="password" placeholder="Password"> <br>
             <input type="submit" class="btn-login" value="login">
         </form>
+        <?php if (isset($_GET["error"]) && $_GET["error"] == "wrong_login") : ?>
+            <h3 class="error-msg">Username or password is incorrect</h3>
+        <?php endif ; ?>
         <h3 class="g-login-text">Or with a google account:</h3>
         <?= $googleLoginButton ?>
     </section>
@@ -36,6 +39,9 @@ Template::header("Login / Register");
             <input type="password" id="password" class="registering-field" required name="confirm-password" placeholder="Confirm password"> <br>
             <input type="submit" class="btn-register" value="Register">
         </form>
+        <?php if (isset($_GET["error"]) && $_GET["error"] == "username_taken") : ?>
+            <h3 class="error-msg">This Username is already taken, choose a another one</h3>
+        <?php endif ; ?>
     </section>
 
 </main>

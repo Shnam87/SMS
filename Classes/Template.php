@@ -19,7 +19,7 @@ class Template
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title><?= $title ?> - Skön text</title>
+            <title><?= $title ?></title>
             <link rel="stylesheet" href="/sms/assets/style.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -27,7 +27,7 @@ class Template
 
         <body>
             <header>
-                <h1><?= $title ?></h1>
+                <a href="/sms"><img src="/../SMS/Assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
                 <nav>
                     <a href="/sms" class="nav-link">Home</a> |
                     <a href="/sms/pages/products.php" class="nav-link">Products</a> |
@@ -40,13 +40,15 @@ class Template
                     <?php if (!$isLoggedIn) : ?>
                         <button class="my-site-btn">
                             <a href="/sms/pages/login.php"><span class="material-icons">login</span>
-                            <span> Login/Register</span></a>
+                                <p> Login/Register</p>
+                            </a>
                         </button>
 
                     <?php else : ?>
                         <button class="my-site-btn">
-                            <a href="" class="material-symbols-outlined">person</a>
-                            <p> My page</p>
+                            <a href="/sms/pages/my-page.php" class="material-symbols-outlined">person
+                                <p> My page</p>
+                            </a>
                         </button>
                         <a href="/sms/scripts/logging-out.php"><span class="material-icons">logout</span></a>
 

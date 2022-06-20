@@ -70,10 +70,11 @@ if (!$isLoggedIn || !$isAdmin) {
 
     <h2>FOR RODUCTS</h2>
     <div class="product-form-container">
-        <form action="/sms/scripts/post-product.php" method="post">
+        <form action="/sms/scripts/post-product.php" method="post" enctype="multipart/form-data">
             <input type="text" name="title" placeholder="Name">
             <input type="number" name="price" placeholder="Price">
             <textarea type="text" name="description" rows="5" cols="100" placeholder="Description"></textarea>
+            <input type="file" name="image" accept="image/*" ><br>
             <input type="submit" value="Save">
         </form>
     </div>
