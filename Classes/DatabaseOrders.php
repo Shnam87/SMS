@@ -21,31 +21,37 @@ class DatabaseOrders extends DatabaseConnection
 
      // GET ALL 
      public function get_all(){
-        $query = "SELECT * from orders ORDER BY id DESC";
+            // $query = "SELECT * from orders ORDER BY id DESC";
+        $query = 
+        "SELECT orders.id, orders.date, orders.user_id, orders.status, users.username from orders
+        JOIN users ON users.id = orders.user_id
+        ORDER BY orders.id DESC";
+
         $result = mysqli_query($this->conn, $query);
         $db_orders = mysqli_fetch_all($result, MYSQLI_ASSOC); 
-
+        
         $orders = []; 
 
         foreach($db_orders as $db_order){ 
             $db_id = $db_order["id"];
-            $db_user_id = $db_order["user_id"];
+                // $db_user_id = $db_order["user_id"];
+            $db_username = $db_order["username"];
             $db_status = $db_order["status"];
             $db_date = $db_order["date"];
 
-            $orders[] = new Order($db_user_id, $db_date, $db_status, $db_id); 
+            $orders[] = new Order($db_username, $db_date, $db_status, $db_id); 
         }
         
         return $orders;
     }
 
     // UPDATE
-    public function update(Order $order, $id){
-        $query = "UPDATE orders SET `status` = ?, `date`= ? WHERE id = ?";
+    public function update(Order $order, $order_status, $order_id){
+        $query = "UPDATE orders SET `date` = ?, `status`= ? WHERE id = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
-        $stmt->bind_param("ssi", $order->date, $order->status, $id);
+        $stmt->bind_param("ssi", $order->date, $order->status, $order_id);
 
         return $stmt->execute();
     }
@@ -114,4 +120,21 @@ class DatabaseOrders extends DatabaseConnection
         return $loans; */
     }
 
+    public function statuses(){
+        $query = "SELECT * FROM order_statuses";
+        $result = mysqli_query($this->conn, $query);
+        $db_order_statuses = mysqli_fetch_all($result, MYSQLI_ASSOC); 
+
+        $orders = []; 
+
+        foreach($db_order_statuses as $db_order_status){ 
+            $db_id = $db_order_status["id"];
+            $db_status = $db_order_status["status"];
+
+            $statuses[] = new Status($db_status, $db_id); 
+        }
+        
+        return $statuses;
+
+    }
 }

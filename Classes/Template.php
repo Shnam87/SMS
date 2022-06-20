@@ -1,14 +1,15 @@
 <?php
+ require_once __DIR__ . "/DatabaseUsers.php";
+ require_once __DIR__ . "/../google-config.php";
+
 
 class Template
 {
 
     public static function header($title)
-    { ?>
-        <?php
-        require_once __DIR__ . "/DatabaseUsers.php";
-        require_once __DIR__ . "/../google-config.php";
-
+    {
+        
+       
         $isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
         $isAdmin = (isset($_SESSION["user"]->role) && $_SESSION["user"]->role == "admin");
         ?>
@@ -26,7 +27,7 @@ class Template
 
         <body>
             <header>
-                <a href="/sms"><img src="../assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
+                <a href="/sms"><img src="/../sms/assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
                 <nav>
                 <?php if ($isLoggedIn && $isAdmin): ?>
                     <ul class="header-navbar">

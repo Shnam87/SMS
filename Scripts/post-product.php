@@ -17,29 +17,11 @@ if(!$is_admin){
 
 $success = false;
 
-
-/* if (isset($_POST["title"]) && isset ($_POST["description"]) && isset ($_POST["price"])){
-    $db = new DatabaseProducts();
-    $product = new Product($_POST["title"], $_POST["description"], $_POST["price"]);
-    $success = $db->create_product($product);
-}else{
-    echo "Invalid input";
-}
-      
-if($success){
-    header("Location: /sms/pages/admin.php");
-    die();
-}else{
-    echo "Error saving product to database";
-} */
-
-
-
 if (isset($_POST["title"]) && isset ($_POST["description"]) && isset ($_POST["price"])){
     $upload_directory = __DIR__ . "/../assets/uploads/";
-    $upload_name = basename($_FILES["image"]["name"]); //katt.jpeg
-    $name_parts = explode(".", $upload_name); //["katt", "jpeg"]
-    $file_extension = end($name_parts); //
+    $upload_name = basename($_FILES["image"]["name"]);
+    $name_parts = explode(".", $upload_name);
+    $file_extension = end($name_parts);
     $timestamp = time();
     $file_name = "{$timestamp}.{$file_extension}";
     $full_upload_path = $upload_directory . $file_name;
@@ -72,7 +54,3 @@ if($success){
 }else{
     echo "Error saving product to database";
 }
-
-
-
-

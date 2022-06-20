@@ -21,23 +21,20 @@ Template::header("Product");
     <section class="product-wrapper">
         <section class="img-container">
             <img src="<?= $product->img_url ?>" alt="Product image">
-            <!-- <img src="https://www.elgiganten.se/image/dv_web_D180001002838537/361908/iphone-13-pro-max-5g-smartphone-1tb-silver--pdp_zoom-3000--pdp_main-960.jpg" alt=""> -->
         </section>
 
         <section class="product-info-container">
             <h1><?= $product->title ?></h1>
-            <p>
-                <b>Description:</b>
-                <?= $product->description ?>
-            </p>
-
-            <p>
-                <b>Price:</b>
-                <?= $product->price ?> SEK
-            </p>
+            <p><b>Description:</b><?= $product->description ?></p>
+            <p><b>Price:</b><?= $product->price ?> SEK</p>
             <hr>
-
-            <button class="button-cart">Add to cart</button>
+        
+            <div class="button-cart">
+                <form action="/sms/scripts/add-to-cart.php" method="post">
+                    <input type="hidden" name="product-id" value="<?= $product->id ?>">
+                    <input class="btn btn-add" type="submit" value="Add to cart">
+                </form>
+            </div>
         </section>
     </section>
 </main>
