@@ -14,6 +14,12 @@ html{
     background-color: #fff;
 }
 
+hr {
+    border-top: 3px dashed #008080;
+    border-bottom: 3px dotted #66CDAA;
+    margin: 5px;
+}
+
 /*============================*/
 /*========== HEADER ==========*/
 /*============================*/
@@ -125,28 +131,47 @@ header{
 .user-info,
 .login-field,
 .registering-field {
-    box-shadow: -10px 10px 10px grey, 10px 10px 10px grey;
-    margin: 1%;
+    box-shadow: -8px 8px 12px 1px grey;
+    margin: 2%;
     padding: 1%;
     width: 200px;
-    height: 35px;
+    height: 40px;
     border: none;
     outline: none;
     font-size: 18px;
 
 }
 
-.btn-edit,
-.btn-delete,
-.btn-login,
+.btn-contact, .btn-all-contact, .btn-edit-me, .btn-delete-me, select[name^=user-id],
+.btn-update-me, .btn-edit, .btn-delete, .btn-login,
 .btn-register {
-    box-shadow: -10px 10px 10px grey, 10px 10px 10px grey;
-    margin: 1.8%;
-   
-    width: 125px;
+    box-shadow: -8px 8px 12px 1px grey; /* -12 10 10 1-- -10 10 12 2 , 2 2 10 1 */
+    margin: 2%;
+    width: 150px;
     height: 40px;
     border: none;
     font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-contact, .btn-all-contact, .btn-edit-me, .btn-delete-me, select[name^=user-id] {
+    width: 250px;
+    height: 45px;
+}
+
+.btn-update-me {
+    width: 200px;
+}
+
+.edit-account-main {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 2px 30px;
+}
+
+.user-option {
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -175,8 +200,10 @@ header{
 .contact-container {
     border: 6px double lightgrey;
     background-color: lightskyblue;
-    border-radius: 25px;
-    padding: 12px;
+    border-radius: 40px;
+    margin: 8px 1px 20px;
+/*    margin-bottom: 20px;  */
+    padding: 4px 12px;
 }
 
 .chat-container {
@@ -209,7 +236,7 @@ div.admin {
     float: left;
 }
 
-h3.admin{
+.chat-msg.admin{
     float: right;
 }
 
@@ -228,8 +255,9 @@ h3.admin{
     margin-left: 1.5%;
 }
 
-
-
+.contact-history {
+   margin: 1px 1px 1px 25px;
+}
 
 
 /*==============================*/

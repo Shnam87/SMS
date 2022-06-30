@@ -4,19 +4,11 @@ require_once __DIR__ . "/../Classes/DatabaseSupport.php";
 require_once __DIR__ . "/../Classes/DatabaseUsers.php";
 require_once __DIR__ . "/../google-config.php";
 
-$user_id = $_SESSION["user"]->id;
-$user_role = $_SESSION["user"]->role;
+$isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
+$user_id = isset($_POST["user-id"]) ? (int)$_POST["user-id"] : null;
 
 $messages_db = new DatabaseSupport;
 $messages = $messages_db->get_all_by_user_id($user_id);
-
-/*
-var_dump($_SESSION["user"]);
-var_dump($user_id);
-var_dump($user_role);
-*/
-
-$isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
 
 if (!$isLoggedIn) {
     header("Location: /sms");
@@ -26,14 +18,14 @@ if (!$isLoggedIn) {
 Template::header("Contact");
 ?>
 
-<h2>Send us a message: </h2>
+<h2>Send a reply: </h2>
 
 <div class="contact-container">
-    <form action="/sms/scripts/post-contact.php" method="post" class="contact-form">
+    <form action="/sms/scripts/admin-reply-contact.php" method="post" class="contact-form">
+        <input type="hidden" name="user-id" value="<?= $user_id ?>">
         <textarea class="contact-text" placeholder="Type your message..." name="contact-msg" required></textarea>
         <button type="submit" class="contact-btn">Send Message</button>
     </form>
-
     <?php if (isset($_GET["error"]) && $_GET["error"] == "msg_error") : ?>
         <h3 class="error-msg">Error: could not send your message, please try again later</h3>
     <?php endif; ?>
@@ -46,6 +38,7 @@ Template::header("Contact");
             </div>
         </div>
     <?php endforeach ?>
+
 </div>
 
 <?php

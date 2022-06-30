@@ -66,6 +66,7 @@ class Template
                 <h3 class="header-text">Welcome <i><?= $_SESSION['user']->username ?>!</i> </h3>
             <?php endif; ?>
 
+            <hr>
         <?php  }
 
 

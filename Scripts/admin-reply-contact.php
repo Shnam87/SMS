@@ -4,14 +4,20 @@ require_once __DIR__ . "/../Classes/DatabaseUsers.php";
 
 session_start();
 
-$user_id = $_SESSION["user"]->id;
+$success = false;
+
+$user_id = (int)$_POST["user-id"];
 $user_role = $_SESSION["user"]->role;
 
-$success = false;
+/*
+var_dump($user_id);
+var_dump($user_role);
+var_dump((int)$_POST["user-id"]);
+*/
 
 if (isset($_POST["contact-msg"])) {
 
-    $user_id = $_SESSION["user"]->id;
+    $user_id = (int)$_POST["user-id"];
     $sent_by = $_SESSION["user"]->role;
     $message = $_POST["contact-msg"];
 
@@ -26,9 +32,8 @@ if (isset($_POST["contact-msg"])) {
 }
 
 if ($success) {
-    header("Location: /sms/pages/contact.php");
+    header("Location: /sms/pages/my-page.php");
 } else {
-    header ("Location: /sms/pages/contact.php?error=msg_error");
+    header("Location: /sms/pages/contact3.php?error=msg_error");
     die();
 }
-

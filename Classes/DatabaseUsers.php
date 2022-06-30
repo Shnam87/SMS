@@ -29,7 +29,6 @@ class DatabaseUsers extends DatabaseConnection
 
     public function get_all()
     {
-        // SELECT `username`, `role` FROM `users`; 
         $query = "SELECT * FROM `users`; ";
         $result = mysqli_query($this->conn, $query);
 
@@ -44,6 +43,24 @@ class DatabaseUsers extends DatabaseConnection
             $users[] = new User($username, $role, $id);
         }
         return $users;
+    }
+
+    public function get_all_regular_users()
+    {
+        $query = 'SELECT * FROM `users` WHERE `role` != "admin"; ';
+        $result = mysqli_query($this->conn, $query);
+
+        $db_users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $regular_users = [];
+
+        foreach ($db_users as $db_user) {
+            $username = $db_user["username"];
+            $role = $db_user["role"];
+            $id = $db_user["id"];
+
+            $regular_users[] = new User($username, $role, $id);
+        }
+        return $regular_users;
     }
 
     public function get_one_by_id($id)
@@ -115,6 +132,26 @@ class DatabaseUsers extends DatabaseConnection
         $query = "UPDATE `users` SET `username` = ?, `role` = ? WHERE `users`.`id` = ? ";
         $stmt = mysqli_prepare($this->conn, $query);
         $stmt->bind_param("ssi", $user->username, $user->role, $user->id);
+
+        return $stmt->execute();
+    }
+
+    public function update_my_username(User $user, $id)
+    {
+        $query = "UPDATE `users` SET `username` = ? WHERE `users`.`id` = ?";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("si", $user->username, $id);
+
+        return $stmt->execute();
+    }
+
+    public function update_password($new_password_hash, $id)
+    {
+        $query = "UPDATE `users` SET `password_hash` = ? WHERE `users`.`id` = ? ";
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        $stmt->bind_param("si", $new_password_hash, $id);
 
         return $stmt->execute();
     }

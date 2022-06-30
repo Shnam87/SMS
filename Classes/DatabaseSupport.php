@@ -6,10 +6,6 @@ class DatabaseSupport extends DatabaseConnection
 {
     public function save_contact(Support $support)
     {
-        /*
-        INSERT INTO `support` (`id`, `user_id`, `sent_by`, `message`, `date`) 
-        VALUES (NULL, '6', 'regular user', 'Har ni fixat mitt packet eller inte?', CURRENT_TIMESTAMP);
-        */
         $query = "INSERT INTO `support` (`user_id`, `sent_by`, `message`) VALUES (?, ?, ?);";
         $stmt = mysqli_prepare($this->conn, $query);
         $stmt->bind_param("iss", $support->user_id, $support->sent_by, $support->message);
@@ -46,7 +42,6 @@ class DatabaseSupport extends DatabaseConnection
         foreach ($db_supports as $db_support) {
             $db_support_id = (int)$db_support[`support_id`];
             $db_support_user_id = (int)$db_support[`user_id`];
-            $db_support_username = $db_support[`user`];
             $db_support_sent_by = $db_support[`sent_by`];
             $db_support_message = $db_support[`message`];
             $db_support_date = $db_support[`date`];
