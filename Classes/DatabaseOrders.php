@@ -24,8 +24,8 @@ class DatabaseOrders extends DatabaseConnection
     public function get_all()
     {
         // $query = "SELECT * from orders ORDER BY id DESC";
-        $query = "SELECT orders.`id`, orders.`date`, orders.`users_id`, orders.`status`, users.`username` 
-                    From orders JOIN users ON users.`id` = orders.`users_id`
+        $query = "SELECT orders.`id`, orders.`date`, orders.`user_id`, orders.`status`, users.`username` 
+                    From orders JOIN users ON users.`id` = orders.`user_id`
                     ORDER BY orders.id DESC ";
         $result = mysqli_query($this->conn, $query);
         $db_orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -108,7 +108,7 @@ class DatabaseOrders extends DatabaseConnection
     public function get_order_by_user_id($users_id)
     {
 
-        $query = "SELECT * FROM orders WHERE `users_id` = ?";
+        $query = "SELECT * FROM orders WHERE `user_id` = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
