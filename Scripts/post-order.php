@@ -1,6 +1,7 @@
 <?php 
 require_once __DIR__ . "/../classes/DatabaseOrders.php";
 require_once __DIR__ . "/../Classes/User.php";
+require_once __DIR__ . "/../Classes/Product.php";
 
 session_start();
 
@@ -24,6 +25,7 @@ if( $is_logged_in && count($cart) > 0){
     }
 
     $success = true;
+    var_dump($_SESSION);
     var_dump($order);
     var_dump($cart);
 

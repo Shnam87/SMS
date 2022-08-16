@@ -122,7 +122,7 @@ class DatabaseOrders extends DatabaseConnection
             $db_id = $db_order_status["id"];
             $db_status = $db_order_status["status"];
 
-            $statuses[] = new Status($db_status, $db_id);
+          //  $statuses[] = new Status($db_status, $db_id);
         }
 
         return $statuses;
@@ -131,7 +131,7 @@ class DatabaseOrders extends DatabaseConnection
     public function get_order_by_user_id($users_id)
     {
 
-        $query = "SELECT * FROM orders WHERE `user_id` = ?";
+        $query = "SELECT * FROM orders WHERE `users_id` = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
