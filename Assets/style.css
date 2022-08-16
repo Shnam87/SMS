@@ -232,9 +232,9 @@ h3.admin{
 
 
 
-/*==============================*/
+/*=============================*/
 /*========== PRODUCT ==========*/
-/*==============================*/
+/*=============================*/
 
 .product-site-container{
     font-size: 0.8725rem;
@@ -281,8 +281,8 @@ h3.admin{
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%
 }   
 
 .product-info-container{
@@ -533,6 +533,58 @@ img {
 .task-btns-item {
     margin: 0 1rem 0 1rem;
 } */
+
+/*==========================*/
+/*========== CART ==========*/
+/*==========================*/
+
+.cart-wrapper{
+    max-width: 800px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.cart-wrapper h1{
+    text-align: center;
+    padding: 30px;
+}
+
+.cart-list{
+    list-style-type: none;
+    margin-top: 1px;
+    border-bottom: 1px solid lightgray;
+}
+
+.cart-list-item{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 32px;
+}
+
+.cart-list-item img{
+    margin-right: 25px;
+    width: 112px;
+}
+
+.cart-item-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+    margin-right: 25px;
+}
+
+.cart-item-price{
+    width: 30%;
+    text-align: right;
+}
+
+.cart-total{
+    text-align: right;
+}
+
+
+
 
 /*============================*/
 /*========== FOOTER ==========*/

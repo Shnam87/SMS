@@ -7,23 +7,40 @@ $products = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
 
 Template::header("Cart"); ?>
 
-<div id="product-details" hidden>
+<!-- <div id="product-details" hidden>
     <img src="" id="product-img">
     <p id= "product-title"></p>
     <p id= "product-description"></p>
     <p id= "product-price"></p>
-</div>
+</div> -->
 
-<?php foreach ($products as $product) : ?> 
-    <div    >
-        <img src="<?= $product->img_url ?>" width="50" height="50" alt="Product image">
-        <b><?= $product->title ?></b>
-        <i><?= $product->title ?></i>
-        <p><?= $product->description ?></p>
+<section class="cart-wrapper">
+    <h1>My Cart</h1>
+    <ul class="cart-list">
+    <?php foreach ($products as $product) : ?> 
+        <li class="cart-list-item">
+            <img src="<?= $product->img_url ?>" width="50" height="50" alt="Product image">
+            <div class="cart-item-details">
+                <a class="products-title-link" href="/sms/pages/product.php?id=<?= $product->id ?>"><?= $product->title ?></a>
+                <p><?= $product->description ?></p>
+            </div>
+            <h3 class="cart-item-price"><?= $product->price ?> SEK</h3>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+    <span class="cart-total">
+        <h3>Total: 4000 SEK</h3>
+    </span>
+    <div>
+        <form action="/sms/scripts/post-order.php" method="post">
+            <!-- <input type="hidden" name="product-id" value="<?= $product->id ?>"> -->
+            <input class="btn btn-add" type="submit" value="Pleace order">
+        </form>
     </div>
+</section>
 
 <?php
 
-endforeach;
-
 Template::footer();
+
+?>

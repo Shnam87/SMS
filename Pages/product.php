@@ -29,7 +29,7 @@ Template::header("Product");
             <p><b>Price:</b><?= $product->price ?> SEK</p>
             <hr>
         
-            <div class="button-cart">
+            <div>
                 <form action="/sms/scripts/add-to-cart.php" method="post">
                     <input type="hidden" name="product-id" value="<?= $product->id ?>">
                     <input class="btn btn-add" type="submit" value="Add to cart">

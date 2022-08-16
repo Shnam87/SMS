@@ -71,21 +71,43 @@ class DatabaseOrders extends DatabaseConnection
 
     public function save(Order $order)
     {
-        $query = "INSERT INTO orders (`user_id`, `status`, `date`) VALUES (?, ?, ?)";
+        $query = "INSERT INTO orders (`users_id`, `status`, `date`) VALUES (?, ?, ?)";
 
         $stmt = mysqli_prepare($this->conn, $query);
-        $stmt->bind_param("ssi", $order->user_id, $order->status, $order->date);
+        $stmt->bind_param("iss", $order->user_id, $order->status, $order->date);
 
         $success = $stmt->execute();
 
-        $order_id = ($this->conn->insert_id);
+        return $success;
+
+
+        
+
+      /*   $order_id = ($this->conn->insert_id);
 
         if ($success) {
             return $order_id;
         } else {
             return false;
-        }
+        } */
     }
+
+    public function create_product_order($order_id, $product_id)
+    {
+        $query = "INSERT INTO product_orders (`order_id`, `product_id`) VALUES (?, ?)";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+        
+        $stmt->bind_param("ii", $order_id, $product_id);
+
+        $success = $stmt->execute();
+
+        return $success;
+    }
+
+
+
+
 
     public function statuses()
     {
