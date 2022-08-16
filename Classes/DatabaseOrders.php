@@ -39,7 +39,7 @@ class DatabaseOrders extends DatabaseConnection
             $db_status = $db_order["status"];
             $db_date = $db_order["date"];
 
-            $orders[] = new Order($db_username, $db_date, $db_status, $db_id);
+            $orders[] = new Order($db_username, $db_status, $db_date, $db_id);
         }
 
         return $orders;
@@ -122,7 +122,7 @@ class DatabaseOrders extends DatabaseConnection
             $db_id = $db_order_status["id"];
             $db_status = $db_order_status["status"];
 
-          //  $statuses[] = new Status($db_status, $db_id);
+            $statuses[] = new Status($db_status, $db_id);
         }
 
         return $statuses;

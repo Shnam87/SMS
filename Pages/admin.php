@@ -169,15 +169,15 @@ if (!$isLoggedIn || !$isAdmin) {
                 <thead>
                     <tr>
                         <th class="order-table-head">Order #</th>
-                        <th class="order-table-head">Date | Status</th>
-                        <!-- <th class="order-table-head">Status</th> -->
                         <th class="order-table-head">Customer</th>
-                        <!-- <th class="order-table-head">Update</th>  -->
+                        <th class="order-table-head">Date</th>
+                        <th class="order-table-head">Status</th>
+                        <th class="order-table-head">Update</th>
                         <th class="order-table-head">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($orders as $order) : ?>
+                    <?php foreach ($orders as $order) : var_dump($order) ?>
                         <tr>
                             <td>
                                 <p>
@@ -185,10 +185,20 @@ if (!$isLoggedIn || !$isAdmin) {
                                 </p>
                             </td>
                             <td>
+                                <p>
+                                    <?= $order->user_id ?>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <?= $order->date ?>
+                                </p>
+                            </td>
+                            <td>
                                 <form action="/sms/scripts/post-edit-order.php" method="post">
-                                    <label for=""><?= $order->date ?></label>
-                                    <input type="text" name="order-date" value="<?= $order->date ?>" placeholder="Date">
-                                    <label for=""><?= $order->status ?></label>
+                                    <!-- <label for=""><?= $order->date ?></label>
+                                    <input type="text" name="order-date" value="<?= $order->date ?>" placeholder="Date"> -->
+                                    <p><?= $order->status ?></p>
                                     <select name="order-status">
                                         <option value="">Status</option>
                                         <?php foreach ($statuses as $status) : ?>
@@ -201,7 +211,7 @@ if (!$isLoggedIn || !$isAdmin) {
                                 </form>
                             </td>
                             <td>
-                                <p><?= $order->user_id ?></p>
+                                <p></p>
                             </td>
                             <td>
                                 <form action="/sms/scripts/post-delete-order.php" method="post">

@@ -24,6 +24,7 @@ class Order
         return "{$this->user_id}, {$this->status}, {$this->date}";
     }
 }
+
 /* class Order
 {
     public $id;
@@ -51,7 +52,7 @@ class Order
     }
 } */
 
-/* class Status
+class Status
 {
     public $id;
     public $status;
@@ -70,4 +71,3 @@ class Order
         return "{$this->id} | {$this->status}";
     }
 }
- */
