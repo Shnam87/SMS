@@ -26,6 +26,9 @@ hr {
 
 header{
     position: relative;
+
+
+    
 }
 
 
@@ -260,9 +263,9 @@ div.admin {
 }
 
 
-/*==============================*/
+/*=============================*/
 /*========== PRODUCT ==========*/
-/*==============================*/
+/*=============================*/
 
 .product-site-container{
     font-size: 0.8725rem;
@@ -309,8 +312,8 @@ div.admin {
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%
 }   
 
 .product-info-container{
@@ -467,6 +470,24 @@ img {
     padding: 20px;
   }
 
+
+/*=============================*/
+/*========== MY PAGE ==========*/
+/*=============================*/
+
+.mypage-orders-container table, th, td {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+
+.mypage-orders-container th {
+    text-align: left;
+}
+
+.mypage-orders-container table{
+    width: 100%;
+}
+
 /*========== ADMIN / ORDERS ==========*/
 
 #admin-order-container{
@@ -544,23 +565,57 @@ img {
     margin: 0 1rem 0 1rem;
 } */
 
+/*==========================*/
+/*========== CART ==========*/
+/*==========================*/
 
-/*=============================*/
-/*========== MY PAGE ==========*/
-/*=============================*/
-
-.mypage-orders-container table, th, td {
-    border-bottom: 1px solid black;
-    border-collapse: collapse;
+.cart-wrapper{
+    max-width: 800px;
+    padding: 20px;
+    margin-bottom: 30px;
 }
 
-.mypage-orders-container th {
-    text-align: left;
+.cart-wrapper h1{
+    text-align: center;
+    padding: 30px;
 }
 
-.mypage-orders-container table{
-    width: 100%;
+.cart-list{
+    list-style-type: none;
+    margin-top: 1px;
+    border-bottom: 1px solid lightgray;
 }
+
+.cart-list-item{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 32px;
+}
+
+.cart-list-item img{
+    margin-right: 25px;
+    width: 112px;
+}
+
+.cart-item-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+    margin-right: 25px;
+}
+
+.cart-item-price{
+    width: 30%;
+    text-align: right;
+}
+
+.cart-total{
+    text-align: right;
+}
+
+
+
 
 /*============================*/
 /*========== FOOTER ==========*/

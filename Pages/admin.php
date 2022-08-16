@@ -14,15 +14,14 @@ $users = $users_db->get_all();
 //var_dump($_SESSION);
 
 
-require_once __DIR__ . "/../classes/Product.php";
 
 $products_db = new DatabaseProducts();
 $products = $products_db->get_all();
 
 
-$order_db = new DatabaseOrders();
+/* $order_db = new DatabaseOrders();
 $orders = $order_db->get_all();
-$statuses = $order_db->statuses();
+$statuses = $order_db->statuses(); */
 
 
 
@@ -69,7 +68,7 @@ if (!$isLoggedIn || !$isAdmin) {
 <div id="admin-product-container">
 
     <h2>FOR RODUCTS</h2>
-    <div class="product-form-container">
+  <!--   <div class="product-form-container">
         <form action="/sms/scripts/post-product.php" method="post" enctype="multipart/form-data">
             <input type="text" name="title" placeholder="Name">
             <input type="number" name="price" placeholder="Price">
@@ -77,19 +76,52 @@ if (!$isLoggedIn || !$isAdmin) {
             <input type="file" name="image" accept="image/*" ><br>
             <input type="submit" value="Save">
         </form>
-    </div>
+    </div> -->
 
     <table class="products-table">
         <thead>
             <tr>
-                <th></th>
                 <th class="products-table-head">Name</th>
                 <th class="products-table-head">Description</th>
                 <th class="products-table-head">Price</th>
+                <th class="products-table-head">Img</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($products as $product) : ?>
+                <tr>
+                <form action="/sms/scripts/post-edit-product.php" method="post" enctype="multipart/form-data">
+                <td>
+                    <input type="text" name="title" placeholder="Tilte" value="<?= $product->title?>"><br>
+                </td>
+                <td>
+                    <textarea name="description" placeholder="Description"><?= $product->description?></textarea>
+                </td>
+                <td>
+                    <input type="number" name="price" placeholder="Price" value="<?= $product->price?>">
+                </td>
+                <td>
+                <input type="file" name="image" accept="image/*">
+                </td>
+                <input type="hidden" name="id" value="<?= $product->id; ?>">
+                <td>
+                <input type="submit" value="Save">
+                </td>
+
+                </form>
+
+                <td>
+                <form action="/sms/scripts/delete-product.php" method="post">
+                            <input type="hidden" name="id" value="<?= $product->id ?>">
+                            <input class="btn-add" type="submit" value="Delete">
+                </form>
+                </td>
+
+
+                </tr>
+                
+
+<!-- 
                 <tr>
                     <td>
                         <p>IMAGE</p>
@@ -120,12 +152,14 @@ if (!$isLoggedIn || !$isAdmin) {
                         </form>
 
                     </td>
-                </tr>
+                </tr> -->
             <?php endforeach; ?>
         </tbody>
 
     </table>
 </div>
+
+<hr>
 
 <div id="admin-order-container">
     <div class="admin-order-wrapper">
