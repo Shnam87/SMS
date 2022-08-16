@@ -19,9 +19,9 @@ $products_db = new DatabaseProducts();
 $products = $products_db->get_all();
 
 
-/* $order_db = new DatabaseOrders();
+$order_db = new DatabaseOrders();
 $orders = $order_db->get_all();
-$statuses = $order_db->statuses(); */
+$statuses = $order_db->statuses(); 
 
 
 

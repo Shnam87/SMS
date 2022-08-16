@@ -131,7 +131,7 @@ class DatabaseOrders extends DatabaseConnection
     public function get_order_by_user_id($users_id)
     {
 
-        $query = "SELECT * FROM orders WHERE `users_id` = ?";
+        $query = "SELECT * FROM orders WHERE `user_id` = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
 

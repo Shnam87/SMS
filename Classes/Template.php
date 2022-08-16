@@ -8,8 +8,6 @@ class Template
 
     public static function header($title)
     {
-        
-       
         $isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
         $isAdmin = (isset($_SESSION["user"]->role) && $_SESSION["user"]->role == "admin");
         ?>

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../classes/Template.php";
+require_once __DIR__ . "/../Classes/Template.php";
 require_once __DIR__ . "/../Classes/DatabaseUsers.php";
 require_once __DIR__ . "/../Classes/DatabaseOrders.php";
 require_once __DIR__ . "/../google-config.php";
