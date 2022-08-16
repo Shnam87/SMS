@@ -123,4 +123,5 @@ class DatabaseOrders extends DatabaseConnection
 
         return $orders;
     }
+
 }

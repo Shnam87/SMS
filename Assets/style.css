@@ -467,6 +467,24 @@ img {
     padding: 20px;
   }
 
+
+/*=============================*/
+/*========== MY PAGE ==========*/
+/*=============================*/
+
+.mypage-orders-container table, th, td {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+
+.mypage-orders-container th {
+    text-align: left;
+}
+
+.mypage-orders-container table{
+    width: 100%;
+}
+
 /*========== ADMIN / ORDERS ==========*/
 
 #admin-order-container{
@@ -543,24 +561,6 @@ img {
 .task-btns-item {
     margin: 0 1rem 0 1rem;
 } */
-
-
-/*=============================*/
-/*========== MY PAGE ==========*/
-/*=============================*/
-
-.mypage-orders-container table, th, td {
-    border-bottom: 1px solid black;
-    border-collapse: collapse;
-}
-
-.mypage-orders-container th {
-    text-align: left;
-}
-
-.mypage-orders-container table{
-    width: 100%;
-}
 
 /*============================*/
 /*========== FOOTER ==========*/

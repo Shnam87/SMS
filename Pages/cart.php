@@ -1,32 +1,29 @@
-<?php 
-require_once __DIR__ . "/../Classes/DatabaseOrders.php";
-require_once __DIR__ . "/../Classes/Template.php";
+<?php
+require_once __DIR__ ."/../classes/Product.php";
+require_once __DIR__ ."/../classes/Template.php";
 
-$order_db = new DatabaseOrders();
-$orders = $order_db->get_all();
 
-Template::header("SMS");
-?>
+$products = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
 
-<div class="create-order-container">
-    <div class="create-order-input">
-        <form action="/sms/scripts/post-cart.php" method="post">
-            <input class="input-field" autofocus required type="text" name="create-order" placeholder="Order">
-            <input class="create-btn" type="submit" value="Create">
-        </form><br>
-    </div>
+Template::header("Cart"); ?>
+
+<div id="product-details" hidden>
+    <img src="" id="product-img">
+    <p id= "product-title"></p>
+    <p id= "product-description"></p>
+    <p id= "product-price"></p>
 </div>
 
-<form action="/sms/scripts/order.php" method="post">
-        <select name="book-id">
-            <?php foreach($books as $book): ?>
-            <option value="<?= $book->id; ?>"><?= $book; ?></option>
-            <?php endforeach; ?> 
-            <br>
-            <input type="submit" value="Borrow">
-        </select>
-    </form>
+<?php foreach ($products as $product) : ?> 
+    <div    >
+        <img src="<?= $product->img_url ?>" width="50" height="50" alt="Product image">
+        <b><?= $product->title ?></b>
+        <i><?= $product->title ?></i>
+        <p><?= $product->description ?></p>
+    </div>
 
 <?php
+
+endforeach;
+
 Template::footer();
-?>

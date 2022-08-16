@@ -1,14 +1,15 @@
 <?php
+ require_once __DIR__ . "/DatabaseUsers.php";
+ require_once __DIR__ . "/../google-config.php";
+
 
 class Template
 {
 
     public static function header($title)
-    { ?>
-        <?php
-        require_once __DIR__ . "/DatabaseUsers.php";
-        require_once __DIR__ . "/../google-config.php";
-
+    {
+        
+       
         $isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
         $isAdmin = (isset($_SESSION["user"]->role) && $_SESSION["user"]->role == "admin");
         ?>
