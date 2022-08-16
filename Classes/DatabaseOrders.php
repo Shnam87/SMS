@@ -71,7 +71,7 @@ class DatabaseOrders extends DatabaseConnection
 
     public function save(Order $order)
     {
-        $query = "INSERT INTO orders (`users_id`, `status`, `date`) VALUES (?, ?, ?)";
+        $query = "INSERT INTO orders (`user_id`, `status`, `date`) VALUES (?, ?, ?)";
 
         $stmt = mysqli_prepare($this->conn, $query);
         $stmt->bind_param("iss", $order->user_id, $order->status, $order->date);
