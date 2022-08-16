@@ -68,7 +68,7 @@ if (!$isLoggedIn || !$isAdmin) {
 <div id="admin-product-container">
 
     <h2>FOR RODUCTS</h2>
-  <!--   <div class="product-form-container">
+    <div class="product-form-container">
         <form action="/sms/scripts/post-product.php" method="post" enctype="multipart/form-data">
             <input type="text" name="title" placeholder="Name">
             <input type="number" name="price" placeholder="Price">
@@ -76,7 +76,7 @@ if (!$isLoggedIn || !$isAdmin) {
             <input type="file" name="image" accept="image/*" ><br>
             <input type="submit" value="Save">
         </form>
-    </div> -->
+    </div>
 
     <table class="products-table">
         <thead>
