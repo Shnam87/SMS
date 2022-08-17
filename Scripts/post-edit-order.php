@@ -25,7 +25,8 @@ if(isset($_POST["order-status"]) && isset($_POST["order-id"])){
 if($success){
     header("Location: /sms/pages/admin.php");
 } else{
-    echo "Error updating order.";
+    // echo "Error updating order.";
+    var_dump($order);
 }
 
 

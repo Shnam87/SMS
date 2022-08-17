@@ -48,13 +48,21 @@ class DatabaseOrders extends DatabaseConnection
     // UPDATE
     public function update(Order $order, $order_status, $order_id)
     {
-        $query = "UPDATE orders SET `date` = ?, `status`= ? WHERE id = ?";
+        $query = "UPDATE orders SET `status`= ? WHERE id = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
-        $stmt->bind_param("ssi", $order->date, $order->status, $order_id);
+        $stmt->bind_param("si", $order_status, $order_id);
 
         return $stmt->execute();
+
+        // $query = "UPDATE orders SET `date` = ?, `status`= ? WHERE id = ?";
+
+        // $stmt = mysqli_prepare($this->conn, $query);
+
+        // $stmt->bind_param("ssi", $order->date, $order->status, $order_id);
+
+        // return $stmt->execute();
     }
 
     // DELETE
@@ -105,10 +113,6 @@ class DatabaseOrders extends DatabaseConnection
         return $success;
     }
     
-
-
-
-
 
     public function statuses()
     {

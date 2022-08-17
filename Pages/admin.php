@@ -196,17 +196,14 @@ if (!$isLoggedIn || !$isAdmin) {
                             </td>
                             <td>
                                 <form action="/sms/scripts/post-edit-order.php" method="post">
-                                    <!-- <label for=""><?= $order->date ?></label>
-                                    <input type="text" name="order-date" value="<?= $order->date ?>" placeholder="Date"> -->
-                                    <p><?= $order->status ?></p>
+                                    <!-- <p><?= $order->status ?></p> -->
                                     <select name="order-status">
-                                        <option value="">Status</option>
+                                        <option value=""><?= $order->status ?></option>
                                         <?php foreach ($statuses as $status) : ?>
                                             <option name="order-status" value="<?= $status->status; ?>"><?= $status; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <input type="hidden" name="order-id" value="<?= $order->id ?>">
-
                                     <input type="submit" value="Update">
                                 </form>
                             </td>
