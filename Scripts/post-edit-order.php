@@ -10,7 +10,7 @@ $orders = $order_db->get_all();
 
 $success = false;
 
-if(isset($_POST["order-date"]) && isset($_POST["order-status"]) && isset($_POST["order-id"])){
+if(isset($_POST["order-status"]) && isset($_POST["order-id"])){
     $db = new DatabaseOrders();
 
     $order = new Order($_POST["order-id"], $_POST["order-date"], $_POST["order-status"]);
