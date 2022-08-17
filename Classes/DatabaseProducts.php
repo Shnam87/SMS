@@ -23,7 +23,7 @@ class DatabaseProducts extends DatabaseConnection
     
     // GET ALL 
     public function get_all(){
-        $query = "SELECT * from products";
+        $query = "SELECT * FROM products";
         $result = mysqli_query($this->conn, $query);
         $db_products = mysqli_fetch_all($result, MYSQLI_ASSOC); // tar in data från db och gör array
 
