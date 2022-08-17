@@ -81,7 +81,7 @@ Template::header("SMS");
                                 <input type="text" name="order-date" value="<?= $order->date ?>" placeholder="Date">
                                 <label for=""><?= $order->status ?></label>
                                 <select name="order-status">
-                                    <option value="">Status</option>
+                                    <option value=""><?= $order->status ?></option>
                                     <?php foreach($statuses as $status): ?>
                                         <option name="order-status" value="<?= $status->status; ?>"><?= $status; ?></option>
                                     <?php endforeach; ?> 
