@@ -1,7 +1,6 @@
 <?php
 
 require_once __DIR__ . "/Classes/DatabaseUsers.php";
-require_once __DIR__ . "/classes/User.php";
 
 //Include Google Configuration File
 require_once __DIR__ . "/google-config.php";
@@ -44,7 +43,7 @@ if (isset($_GET["code"])) {
         $user = new User($data['email']);
         $db = new DatabaseUsers();
 
-        $user->id = $db->getGoogleUser($user);
+        $user = $db->get_google_user($user);
 
         $_SESSION["loggedIn"] = true;
         $_SESSION["user"] = $user;

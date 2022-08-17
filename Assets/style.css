@@ -1,44 +1,156 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 *{
     box-sizing: border-box;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Lato', sans-serif;
     margin: 0;
     padding: 0;
 }
 
-
 html{
+    display: flex;
+    justify-content: space-evenly;
     background-color: #fff;
 }
 
-nav {
-    margin: 0.3% 0.5%;
-    padding: 0.3% 0.5%;
+hr {
+    border-top: 3px dashed #008080;
+    border-bottom: 3px dotted #66CDAA;
+    margin: 5px;
+}
+
+/*============================*/
+/*========== HEADER ==========*/
+/*============================*/
+
+header{
+    position: relative;
+
+
+    
+}
+
+
+
+.sms-logo{
+    width: 300px;
+    height: 100%;
+    margin: 20px;
+}
+
+.icons-contianer{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    gap: 10px;
+    padding: 5px;
+}
+
+.icons-contianer a {
+    color: black;
+    display: inherit;
+    font-size: 25px;
+    align-items: center;
+}
+
+.my-site-btn{ 
+    display: flex;
+    flex-direction: row;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.my-site-btn:hover{ 
+    display: flex;
+    flex-direction: row;
+    background: lightgray;
+}
+
+.my-site-btn p{ 
+  margin: 3px;
+  font-size: 14px;
+}
+
+.icons-contianer a:link {
+    text-decoration: none;
+}
+
+.login-page-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 5px;
+}
+
+.login-section,
+.register-section {
+    margin: 2%;
+
+}
+
+.login-hr {
+    border: 3px dashed dimgrey;
+    box-shadow: -4px 4px 12px 4px grey;
+
+}
+
+.error-msg {
+    color: red;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.nav-link,
+.header-text {
+    margin: 1%;
+}
+
+.admin-nav-link {
+    float: right;
 }
 
 .google-btn {
-    background-image: url("./btn_google_signin.png");
-    width: 191px;
-    height: 46px;
+    background-image: url("./btn_google_signin.jpg");
+    width: 270px;
+    height: 65px;
     border: none;
+    margin: 3% 1%;
 
 }
 
+.login-page-h2 {
+    margin: 3% 0.5%;
+}
+.g-login-text {
+    margin: 4% 1% 2%;
+}
+
+.user-info,
 .login-field,
 .registering-field {
-    box-shadow: -10px 10px 10px grey, 10px 10px 10px grey;
+    box-shadow: -8px 8px 12px 1px grey;
+    margin: 2%;
+    padding: 1%;
     width: 200px;
-    height: 30px;
+    height: 40px;
     border: none;
     outline: none;
     font-size: 18px;
 
 }
 
-.btn {
-    box-shadow: -10px 10px 10px grey, 10px 10px 10px grey;
-    width: 100px;
+.btn-contact, .btn-all-contact, .btn-edit-me, .btn-delete-me, select[name^=user-id],
+.btn-update-me, .btn-edit, .btn-delete, .btn-login,
+.btn-register {
+    box-shadow: -8px 8px 12px 1px grey; /* -12 10 10 1-- -10 10 12 2 , 2 2 10 1 */
+    margin: 2%;
+    width: 150px;
     height: 40px;
     border: none;
     font-size: 20px;
@@ -46,7 +158,182 @@ nav {
     cursor: pointer;
 }
 
+.btn-contact, .btn-all-contact, .btn-edit-me, .btn-delete-me, select[name^=user-id] {
+    width: 250px;
+    height: 45px;
+}
 
+.btn-update-me {
+    width: 200px;
+}
+
+.edit-account-main {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 2px 30px;
+}
+
+.user-option {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-register,
+.registering-field {
+    margin: 4%;
+}
+
+#password,
+#username {
+    box-sizing: border-box;
+    background-image: url("./person_black_24dp.svg");
+    background-position: 1px 6px; 
+    background-repeat: no-repeat;
+    padding: 2px 2px 2px 30px;
+}
+
+#password {
+    background-image: url("./lock_black_24dp.svg");
+}
+
+/*****************/
+/* Contact Form */
+
+.contact-container {
+    border: 6px double lightgrey;
+    background-color: lightskyblue;
+    border-radius: 40px;
+    margin: 8px 1px 20px;
+/*    margin-bottom: 20px;  */
+    padding: 4px 12px;
+}
+
+.chat-container {
+    border: 4px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 70%;
+    display: block;
+    margin-left: 0px;
+    margin-right: auto;
+}
+  
+div.admin {
+    border-color: #ccc;
+    background-color: #ddd;
+    display: block;
+    margin-left: auto;
+    margin-right: 0px;
+}
+  
+.chat-container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+  
+.chat-msg {
+    float: left;
+}
+
+.chat-msg.admin{
+    float: right;
+}
+
+.contact-form {
+    display: flex;
+    align-items: center;
+}
+
+.contact-text {
+    width: 84%;
+}
+
+.contact-btn {
+    width: 14%;
+    height: 50px;
+    margin-left: 1.5%;
+}
+
+.contact-history {
+   margin: 1px 1px 1px 25px;
+}
+
+
+/*=============================*/
+/*========== PRODUCT ==========*/
+/*=============================*/
+
+.product-site-container{
+    font-size: 0.8725rem;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.product-nav{
+    padding: 0;
+    margin: 0;
+}
+
+.product-nav-a, a:link {
+    color: rgb(59, 59, 59);
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+.product-nav-p{
+    color: gray;
+    display: inline;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.button-cart {
+    width: 100px;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: none;
+    background: #6E6D70;
+    box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.product-wrapper{
+    
+    display: flex;
+    margin: 30px auto;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+
+img {
+    width: auto;
+    height: 100%
+}   
+
+.product-info-container{
+    display: flex;
+    flex-direction: column;
+  
+    background: #fff;
+    max-width: 400px;
+    width: 100%;
+    gap: 30px;
+    padding: 25px;
+}
+
+.img-container{
+    padding: 25px;
+
+    max-width: 400px;
+    height: 500px;
+    text-align: center;
+}
 
 
 /*==============================*/
@@ -141,6 +428,65 @@ nav {
     border: 2px solid rebeccapurple;
 }
 
+.product-form-container form{
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.products-table{
+    font-size: 0.75rem;
+}
+
+.product-form-container input, textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .product-form-container input[type=submit] {
+    width: 100%;
+    background-color:#6E6D70;;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .product-form-container input[type=submit]:hover {
+    background-color: #4e7050;
+  }
+  
+  .product-form-container {
+    /* max-width: 500px; */
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+
+/*=============================*/
+/*========== MY PAGE ==========*/
+/*=============================*/
+
+.mypage-orders-container table, th, td {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+
+.mypage-orders-container th {
+    text-align: left;
+}
+
+.mypage-orders-container table{
+    width: 100%;
+}
 
 /*========== ADMIN / ORDERS ==========*/
 
@@ -219,6 +565,58 @@ nav {
     margin: 0 1rem 0 1rem;
 } */
 
+/*==========================*/
+/*========== CART ==========*/
+/*==========================*/
+
+.cart-wrapper{
+    max-width: 800px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.cart-wrapper h1{
+    text-align: center;
+    padding: 30px;
+}
+
+.cart-list{
+    list-style-type: none;
+    margin-top: 1px;
+    border-bottom: 1px solid lightgray;
+}
+
+.cart-list-item{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 32px;
+}
+
+.cart-list-item img{
+    margin-right: 25px;
+    width: 112px;
+}
+
+.cart-item-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+    margin-right: 25px;
+}
+
+.cart-item-price{
+    width: 30%;
+    text-align: right;
+}
+
+.cart-total{
+    text-align: right;
+}
+
+
+
+
 /*============================*/
 /*========== FOOTER ==========*/
 /*============================*/
@@ -285,5 +683,3 @@ a:hover {
     color: black;
     border-radius: 2px;
 }  */
-
-
