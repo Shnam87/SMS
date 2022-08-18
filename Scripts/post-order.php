@@ -15,9 +15,17 @@ $cart = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
 
 if( $is_logged_in && count($cart) > 0){
    
-    $date = date("Y-m-d H:i:s");
+    // $date = date("Y-m-d H:i:s");
 
-    $order = new Order($user->id, 'approved', $date);
+    // $order = new Order($user->id, 'approved', $date);
+
+    // $status = "approved";
+    
+    $order = new Order($user->id);
+
+
+
+
     $orders_db = new DatabaseOrders(); 
 
     $order_id = $orders_db->save($order);
