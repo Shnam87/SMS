@@ -1,9 +1,11 @@
 <?php 
+
 require_once __DIR__ . "/../classes/DatabaseOrders.php";
 require_once __DIR__ . "/../Classes/User.php";
 require_once __DIR__ . "/../Classes/Product.php";
 
 session_start();
+
 
 $is_logged_in = isset($_SESSION["user"]);
 $user = $is_logged_in ? $_SESSION["user"] : null;

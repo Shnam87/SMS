@@ -5,8 +5,6 @@ require_once __DIR__ . "/../classes/DatabaseOrders.php";
 
 require_once __DIR__ . "/../classes/Template.php";
 
-// session_start();
-
 $users_db = new DatabaseUsers();
 // $user_role = $_SESSION['user']->user_role;
 $users = $users_db->get_all();
@@ -195,16 +193,15 @@ if (!$isLoggedIn || !$isAdmin) {
                                 </p>
                             </td>
                             <td>
-                                <form action="/sms/scripts/post-edit-order.php" method="post">
-                                    
+                                <form action="/sms/scripts/post-edit-order.php" method="post"> 
                                     <select name="order-status">
                                         <option value=""><?= $order->status ?></option>
                                         <?php foreach ($statuses as $status) : ?>
                                             <option name="order-status" value="<?= $status->status; ?>"><?= $status; ?></option>
                                         <?php endforeach; ?>
+                                        <input type="hidden" name="order-id" value="<?= $order->id ?>"> 
                                     </select>
-                                    <input type="hidden" name="order-id" value="<?= $order->id ?>">
-                                    <input type="hidden" name="order-date" value="<?= $order->date ?>">
+                                    
                                     <input type="submit" value="Update">
                                 </form>
                             </td>

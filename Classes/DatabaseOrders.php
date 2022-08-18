@@ -39,7 +39,7 @@ class DatabaseOrders extends DatabaseConnection
             $db_status = $db_order["status"];
             $db_date = $db_order["date"];
 
-            $orders[] = new Order($db_username, $db_status, $db_date, $db_id);
+            $orders[] = new Order($db_username, $db_date, $db_status, $db_id);
         }
 
         return $orders;
@@ -48,21 +48,14 @@ class DatabaseOrders extends DatabaseConnection
     // UPDATE
     public function update(Order $order, $order_status, $order_id)
     {
-        $query = "UPDATE orders SET `status`= ?, `date`= ? WHERE id = ?";
+        $query = "UPDATE orders SET `status`= ? WHERE id = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
-        $stmt->bind_param("ssi", $order->status, $order->date, $order_id);
+        $stmt->bind_param("si", $order->status, $order_id);
 
         return $stmt->execute();
-
-        // $query = "UPDATE orders SET `date` = ?, `status`= ? WHERE id = ?";
-
-        // $stmt = mysqli_prepare($this->conn, $query);
-
-        // $stmt->bind_param("ssi", $order->date, $order->status, $order_id);
-
-        // return $stmt->execute();
+        
     }
 
     // DELETE
@@ -79,10 +72,10 @@ class DatabaseOrders extends DatabaseConnection
 
     public function save(Order $order)
     {
-        $query = "INSERT INTO orders (`user_id`, `status`, `date`) VALUES (?, ?, ?)";
+        $query = "INSERT INTO orders (`user_id`, `status`) VALUES (?, ?)";
 
         $stmt = mysqli_prepare($this->conn, $query);
-        $stmt->bind_param("iss", $order->user_id, $order->status, $order->date);
+        $stmt->bind_param("is", $order->user_id, $order->status);
 
         $success = $stmt->execute();
 
