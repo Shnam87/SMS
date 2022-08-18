@@ -1,32 +1,46 @@
-<?php 
-require_once __DIR__ . "/../Classes/DatabaseOrders.php";
-require_once __DIR__ . "/../Classes/Template.php";
+<?php
+require_once __DIR__ ."/../classes/Product.php";
+require_once __DIR__ ."/../classes/Template.php";
 
-$order_db = new DatabaseOrders();
-$orders = $order_db->get_all();
 
-Template::header("SMS");
-?>
+$products = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
 
-<div class="create-order-container">
-    <div class="create-order-input">
-        <form action="/sms/scripts/post-cart.php" method="post">
-            <input class="input-field" autofocus required type="text" name="create-order" placeholder="Order">
-            <input class="create-btn" type="submit" value="Create">
-        </form><br>
+Template::header("Cart"); ?>
+
+<!-- <div id="product-details" hidden>
+    <img src="" id="product-img">
+    <p id= "product-title"></p>
+    <p id= "product-description"></p>
+    <p id= "product-price"></p>
+</div> -->
+
+<section class="cart-wrapper">
+    <h1>My Cart</h1>
+    <ul class="cart-list">
+    <?php foreach ($products as $product) : ?> 
+        <li class="cart-list-item">
+            <img src="<?= $product->img_url ?>" width="50" height="50" alt="Product image">
+            <div class="cart-item-details">
+                <a class="products-title-link" href="/sms/pages/product.php?id=<?= $product->id ?>"><?= $product->title ?></a>
+                <p><?= $product->description ?></p>
+            </div>
+            <h3 class="cart-item-price"><?= $product->price ?> SEK</h3>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+    <span class="cart-total">
+        <h3>Total: 4000 SEK</h3>
+    </span>
+    <div>
+        <form action="/sms/scripts/post-order.php" method="post">
+            <!-- <input type="hidden" name="product-id" value="<?= $product->id ?>"> -->
+            <input class="btn btn-add" type="submit" value="Pleace order">
+        </form>
     </div>
-</div>
-
-<form action="/sms/scripts/order.php" method="post">
-        <select name="book-id">
-            <?php foreach($books as $book): ?>
-            <option value="<?= $book->id; ?>"><?= $book; ?></option>
-            <?php endforeach; ?> 
-            <br>
-            <input type="submit" value="Borrow">
-        </select>
-    </form>
+</section>
 
 <?php
+
 Template::footer();
+
 ?>

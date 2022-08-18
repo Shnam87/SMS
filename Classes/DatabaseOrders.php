@@ -24,8 +24,8 @@ class DatabaseOrders extends DatabaseConnection
     public function get_all()
     {
         // $query = "SELECT * from orders ORDER BY id DESC";
-        $query = "SELECT orders.`id`, orders.`date`, orders.`users_id`, orders.`status`, users.`username` 
-                    From orders JOIN users ON users.`id` = orders.`users_id`
+        $query = "SELECT orders.`id`, orders.`date`, orders.`user_id`, orders.`status`, users.`username` 
+                    FROM orders JOIN users ON users.`id` = orders.`user_id`
                     ORDER BY orders.id DESC ";
         $result = mysqli_query($this->conn, $query);
         $db_orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -39,7 +39,7 @@ class DatabaseOrders extends DatabaseConnection
             $db_status = $db_order["status"];
             $db_date = $db_order["date"];
 
-            $orders[] = new Order($db_username, $db_date, $db_status, $db_id);
+            $orders[] = new Order($db_username, $db_status, $db_date, $db_id);
         }
 
         return $orders;
@@ -48,13 +48,14 @@ class DatabaseOrders extends DatabaseConnection
     // UPDATE
     public function update(Order $order, $order_status, $order_id)
     {
-        $query = "UPDATE orders SET `date` = ?, `status`= ? WHERE id = ?";
+        $query = "UPDATE orders SET `status`= ? WHERE id = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
-        $stmt->bind_param("ssi", $order->date, $order->status, $order_id);
+        $stmt->bind_param("si", $order->status, $order_id);
 
         return $stmt->execute();
+        
     }
 
     // DELETE
@@ -71,21 +72,40 @@ class DatabaseOrders extends DatabaseConnection
 
     public function save(Order $order)
     {
-        $query = "INSERT INTO orders (`user_id`, `status`, `date`) VALUES (?, ?, ?)";
+        $query = "INSERT INTO orders (`user_id`) VALUES (?)";
 
         $stmt = mysqli_prepare($this->conn, $query);
-        $stmt->bind_param("ssi", $order->user_id, $order->status, $order->date);
+        $stmt->bind_param("i", $order->user_id);
 
         $success = $stmt->execute();
 
-        $order_id = ($this->conn->insert_id);
+        return $success;
+
+
+        
+
+      /*   $order_id = ($this->conn->insert_id);
 
         if ($success) {
             return $order_id;
         } else {
             return false;
-        }
+        } */
     }
+
+    public function create_product_order($order_id, $product_id)
+    {
+        $query = "INSERT INTO product_orders (`order_id`, `product_id`) VALUES (?, ?)";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+        
+        $stmt->bind_param("ii", $order_id, $product_id);
+
+        $success = $stmt->execute();
+
+        return $success;
+    }
+    
 
     public function statuses()
     {
@@ -93,7 +113,7 @@ class DatabaseOrders extends DatabaseConnection
         $result = mysqli_query($this->conn, $query);
         $db_order_statuses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-        $statuses = [];
+        $statuses = []; 
 
         foreach ($db_order_statuses as $db_order_status) {
             $db_id = $db_order_status["id"];
@@ -108,7 +128,7 @@ class DatabaseOrders extends DatabaseConnection
     public function get_order_by_user_id($users_id)
     {
 
-        $query = "SELECT * FROM orders WHERE `users_id` = ?";
+        $query = "SELECT * FROM orders WHERE `user_id` = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
@@ -123,4 +143,5 @@ class DatabaseOrders extends DatabaseConnection
 
         return $orders;
     }
+
 }

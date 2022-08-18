@@ -59,11 +59,19 @@ class DatabaseProducts extends DatabaseConnection
         return $success;
     }
 
-    // UPDATE
+/*     // UPDATE
     public function update_product(Product $product){
         $query  = "UPDATE products SET title = ?, description = ?, price = ? WHERE id = ?";
         $stmt = mysqli_prepare($this->conn, $query);
         $stmt->bind_param("ssii", $product->title, $product->description, $product->price, $product->id); 
+        return $stmt->execute();
+    } */
+
+    public function update_product(Product $product, $id){
+        $query  = "UPDATE products SET title = ?, `description` = ?, price = ?, `img-url`=? WHERE id = ?";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("ssisi", $product->title, $product->description, $product->price, $product->img_url, $id); 
+        
         return $stmt->execute();
     }
 

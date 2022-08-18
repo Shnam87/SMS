@@ -19,9 +19,9 @@ $orders = $order_db->get_by_id($order_id);
 
 var_dump($orders);
 Template::header("SMS");
-?>
+?> 
 
- <div class="edit-order-container"> 
+<div class="edit-order-container"> 
     <div class="edit-order-box">
         <h2>Edit order: <?= $order->id ?></h2><br>
         <form action="/sms/scripts/post-edit-order.php" method="post">
@@ -32,7 +32,7 @@ Template::header("SMS");
             <input class="input-submit" type="submit" value="Save">
         </form><br>
     </div>
-</div>   
+</div> 
 
 <?php
 Template::footer();

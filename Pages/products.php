@@ -1,7 +1,7 @@
 <?php
+require_once __DIR__ . "/../classes/Template.php";
 require_once __DIR__ . "/../classes/DatabaseProducts.php";
 require_once __DIR__ . "/../classes/Product.php";
-require_once __DIR__ . "/../classes/Template.php";
 
 $products_db = new DatabaseProducts();
 $products = $products_db->get_all();
@@ -24,8 +24,9 @@ Template::header("Products");
     <?php foreach($products as $product): ?>
         <div class="product-card">
             <div class="card-img">
-                <img src="<?= $product->img_url ?>" alt="Product image">
+                <img src="<?= $product->img_url ?>"alt="Product image">
             </div>
+
             <div class="card-title">
                 <h2>
                     <a class="products-title-link" href="/sms/pages/product.php?id=<?= $product->id ?>">
@@ -40,20 +41,16 @@ Template::header("Products");
                 <h4><?= $product->price ?> SEK</h4>
             </div>
             <div class="card-btn">
-                <form action="/sms/pages/cart.php" method="post">
+                <form action="/sms/scripts/add-to-cart.php" method="post">
                     <input type="hidden" name="product-id" value="<?= $product->id ?>">
-                    <input class="btn-add" type="submit" value="Add to cart">
+                    <input class="btn btn-add" type="submit" value="Add to cart">
                 </form>
-
-                
             </div>
         </div> 
     <?php endforeach; ?>
 </div>
 
 <?php
-// var_dump($products);
-
 Template::footer();
 ?>
 

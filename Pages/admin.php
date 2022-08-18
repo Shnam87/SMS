@@ -5,8 +5,6 @@ require_once __DIR__ . "/../classes/DatabaseOrders.php";
 
 require_once __DIR__ . "/../classes/Template.php";
 
-// session_start();
-
 $users_db = new DatabaseUsers();
 // $user_role = $_SESSION['user']->user_role;
 $users = $users_db->get_all();
@@ -14,7 +12,6 @@ $users = $users_db->get_all();
 //var_dump($_SESSION);
 
 
-require_once __DIR__ . "/../classes/Product.php";
 
 $products_db = new DatabaseProducts();
 $products = $products_db->get_all();
@@ -22,7 +19,7 @@ $products = $products_db->get_all();
 
 $order_db = new DatabaseOrders();
 $orders = $order_db->get_all();
-$statuses = $order_db->statuses();
+$statuses = $order_db->statuses(); 
 
 
 
@@ -82,14 +79,47 @@ if (!$isLoggedIn || !$isAdmin) {
     <table class="products-table">
         <thead>
             <tr>
-                <th></th>
                 <th class="products-table-head">Name</th>
                 <th class="products-table-head">Description</th>
                 <th class="products-table-head">Price</th>
+                <th class="products-table-head">Img</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($products as $product) : ?>
+                <tr>
+                <form action="/sms/scripts/post-edit-product.php" method="post" enctype="multipart/form-data">
+                <td>
+                    <input type="text" name="title" placeholder="Tilte" value="<?= $product->title?>"><br>
+                </td>
+                <td>
+                    <textarea name="description" placeholder="Description"><?= $product->description?></textarea>
+                </td>
+                <td>
+                    <input type="number" name="price" placeholder="Price" value="<?= $product->price?>">
+                </td>
+                <td>
+                <input type="file" name="image" accept="image/*">
+                </td>
+                <input type="hidden" name="id" value="<?= $product->id; ?>">
+                <td>
+                <input type="submit" value="Save">
+                </td>
+
+                </form>
+
+                <td>
+                <form action="/sms/scripts/delete-product.php" method="post">
+                            <input type="hidden" name="id" value="<?= $product->id ?>">
+                            <input class="btn-add" type="submit" value="Delete">
+                </form>
+                </td>
+
+
+                </tr>
+                
+
+<!-- 
                 <tr>
                     <td>
                         <p>IMAGE</p>
@@ -120,12 +150,14 @@ if (!$isLoggedIn || !$isAdmin) {
                         </form>
 
                     </td>
-                </tr>
+                </tr> -->
             <?php endforeach; ?>
         </tbody>
 
     </table>
 </div>
+
+<hr>
 
 <div id="admin-order-container">
     <div class="admin-order-wrapper">
@@ -135,15 +167,15 @@ if (!$isLoggedIn || !$isAdmin) {
                 <thead>
                     <tr>
                         <th class="order-table-head">Order #</th>
-                        <th class="order-table-head">Date | Status</th>
-                        <!-- <th class="order-table-head">Status</th> -->
                         <th class="order-table-head">Customer</th>
-                        <!-- <th class="order-table-head">Update</th>  -->
+                        <th class="order-table-head">Date</th>
+                        <th class="order-table-head">Status</th>
+                        <th class="order-table-head">Update</th>
                         <th class="order-table-head">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($orders as $order) : ?>
+                    <?php foreach ($orders as $order) : var_dump($order) ?>
                         <tr>
                             <td>
                                 <p>
@@ -151,23 +183,30 @@ if (!$isLoggedIn || !$isAdmin) {
                                 </p>
                             </td>
                             <td>
-                                <form action="/sms/scripts/post-edit-order.php" method="post">
-                                    <label for=""><?= $order->date ?></label>
-                                    <input type="text" name="order-date" value="<?= $order->date ?>" placeholder="Date">
-                                    <label for=""><?= $order->status ?></label>
+                                <p>
+                                    <?= $order->user_id ?>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <?= $order->date ?>
+                                </p>
+                            </td>
+                            <td>
+                                <form action="/sms/scripts/post-edit-order.php" method="post"> 
                                     <select name="order-status">
-                                        <option value="">Status</option>
+                                        <option value=""><?= $order->status ?></option>
                                         <?php foreach ($statuses as $status) : ?>
                                             <option name="order-status" value="<?= $status->status; ?>"><?= $status; ?></option>
                                         <?php endforeach; ?>
+                                        <input type="hidden" name="order-id" value="<?= $order->id ?>"> 
                                     </select>
-                                    <input type="hidden" name="order-id" value="<?= $order->id ?>">
-
+                                    
                                     <input type="submit" value="Update">
                                 </form>
                             </td>
                             <td>
-                                <p><?= $order->user_id ?></p>
+                                <p></p>
                             </td>
                             <td>
                                 <form action="/sms/scripts/post-delete-order.php" method="post">
