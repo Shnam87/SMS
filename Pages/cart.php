@@ -3,7 +3,17 @@ require_once __DIR__ ."/../classes/Product.php";
 require_once __DIR__ ."/../classes/Template.php";
 
 
+
 $products = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
+
+$total = 0;
+
+foreach($products as $product) {
+    $total += $product->price;
+}
+
+
+
 
 Template::header("Cart"); ?>
 
@@ -29,9 +39,11 @@ Template::header("Cart"); ?>
     <?php endforeach; ?>
     </ul>
     <span class="cart-total">
-        <h3>Total: 4000 SEK</h3>
+        <h3><?= $total ?>SEK</h3>      
     </span>
+   
     <div>
+ 
         <form action="/sms/scripts/post-order.php" method="post">
             <!-- <input type="hidden" name="product-id" value="<?= $product->id ?>"> -->
             <input class="btn btn-add" type="submit" value="Pleace order">

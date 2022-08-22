@@ -10,6 +10,7 @@ class Template
     {
         $isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
         $isAdmin = (isset($_SESSION["user"]->role) && $_SESSION["user"]->role == "admin");
+        $cart_count = isset($_SESSION["cart"]) ? count($_SESSION["cart"]) : 0;
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -54,7 +55,7 @@ class Template
                     <?php endif; ?>
 
                     <span class="material-symbols-outlined">favorite</span>
-                    <a href="/sms/pages/cart.php"><span class="material-symbols-outlined">shopping_cart</span></a>
+                    <a href="/sms/pages/cart.php"><span class="material-symbols-outlined">shopping_cart</span><p><?=$cart_count?></p></a>
                 </nav>
             </header>
             <hr>
