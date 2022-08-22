@@ -5,8 +5,6 @@ require_once __DIR__ . "/../classes/DatabaseOrders.php";
 
 require_once __DIR__ . "/../classes/Template.php";
 
-// session_start();
-
 $users_db = new DatabaseUsers();
 // $user_role = $_SESSION['user']->user_role;
 $users = $users_db->get_all();
@@ -169,15 +167,15 @@ if (!$isLoggedIn || !$isAdmin) {
                 <thead>
                     <tr>
                         <th class="order-table-head">Order #</th>
-                        <th class="order-table-head">Date | Status</th>
-                        <!-- <th class="order-table-head">Status</th> -->
                         <th class="order-table-head">Customer</th>
-                        <!-- <th class="order-table-head">Update</th>  -->
+                        <th class="order-table-head">Date</th>
+                        <th class="order-table-head">Status</th>
+                        <th class="order-table-head">Update</th>
                         <th class="order-table-head">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($orders as $order) : ?>
+                    <?php foreach ($orders as $order) : var_dump($order) ?>
                         <tr>
                             <td>
                                 <p>
@@ -185,23 +183,30 @@ if (!$isLoggedIn || !$isAdmin) {
                                 </p>
                             </td>
                             <td>
-                                <form action="/sms/scripts/post-edit-order.php" method="post">
-                                    <label for=""><?= $order->date ?></label>
-                                    <input type="text" name="order-date" value="<?= $order->date ?>" placeholder="Date">
-                                    <label for=""><?= $order->status ?></label>
+                                <p>
+                                    <?= $order->user_id ?>
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    <?= $order->date ?>
+                                </p>
+                            </td>
+                            <td>
+                                <form action="/sms/scripts/post-edit-order.php" method="post"> 
                                     <select name="order-status">
-                                        <option value="">Status</option>
+                                        <option value=""><?= $order->status ?></option>
                                         <?php foreach ($statuses as $status) : ?>
                                             <option name="order-status" value="<?= $status->status; ?>"><?= $status; ?></option>
                                         <?php endforeach; ?>
+                                        <input type="hidden" name="order-id" value="<?= $order->id ?>"> 
                                     </select>
-                                    <input type="hidden" name="order-id" value="<?= $order->id ?>">
-
+                                    
                                     <input type="submit" value="Update">
                                 </form>
                             </td>
                             <td>
-                                <p><?= $order->user_id ?></p>
+                                <p></p>
                             </td>
                             <td>
                                 <form action="/sms/scripts/post-delete-order.php" method="post">

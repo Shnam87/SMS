@@ -1,9 +1,11 @@
 <?php 
+
 require_once __DIR__ . "/../classes/DatabaseOrders.php";
 require_once __DIR__ . "/../Classes/User.php";
 require_once __DIR__ . "/../Classes/Product.php";
 
 session_start();
+
 
 $is_logged_in = isset($_SESSION["user"]);
 $user = $is_logged_in ? $_SESSION["user"] : null;
@@ -13,9 +15,17 @@ $cart = isset($_SESSION["cart"]) ? $_SESSION["cart"] : [];
 
 if( $is_logged_in && count($cart) > 0){
    
-    $date = date("Y-m-d H:i:s");
+    // $date = date("Y-m-d H:i:s");
 
-    $order = new Order($user->id, 'approved', $date);
+    // $order = new Order($user->id, 'approved', $date);
+
+    // $status = "approved";
+    
+    $order = new Order($user->id);
+
+
+
+
     $orders_db = new DatabaseOrders(); 
 
     $order_id = $orders_db->save($order);

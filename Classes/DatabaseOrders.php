@@ -25,7 +25,7 @@ class DatabaseOrders extends DatabaseConnection
     {
         // $query = "SELECT * from orders ORDER BY id DESC";
         $query = "SELECT orders.`id`, orders.`date`, orders.`user_id`, orders.`status`, users.`username` 
-                    From orders JOIN users ON users.`id` = orders.`user_id`
+                    FROM orders JOIN users ON users.`id` = orders.`user_id`
                     ORDER BY orders.id DESC ";
         $result = mysqli_query($this->conn, $query);
         $db_orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -39,7 +39,7 @@ class DatabaseOrders extends DatabaseConnection
             $db_status = $db_order["status"];
             $db_date = $db_order["date"];
 
-            $orders[] = new Order($db_username, $db_date, $db_status, $db_id);
+            $orders[] = new Order($db_username, $db_status, $db_date, $db_id);
         }
 
         return $orders;
@@ -48,13 +48,14 @@ class DatabaseOrders extends DatabaseConnection
     // UPDATE
     public function update(Order $order, $order_status, $order_id)
     {
-        $query = "UPDATE orders SET `date` = ?, `status`= ? WHERE id = ?";
+        $query = "UPDATE orders SET `status`= ? WHERE id = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
 
-        $stmt->bind_param("ssi", $order->date, $order->status, $order_id);
+        $stmt->bind_param("si", $order->status, $order_id);
 
         return $stmt->execute();
+        
     }
 
     // DELETE
@@ -71,10 +72,10 @@ class DatabaseOrders extends DatabaseConnection
 
     public function save(Order $order)
     {
-        $query = "INSERT INTO orders (`user_id`, `status`, `date`) VALUES (?, ?, ?)";
+        $query = "INSERT INTO orders (`user_id`) VALUES (?)";
 
         $stmt = mysqli_prepare($this->conn, $query);
-        $stmt->bind_param("iss", $order->user_id, $order->status, $order->date);
+        $stmt->bind_param("i", $order->user_id);
 
         $success = $stmt->execute();
 
@@ -106,23 +107,19 @@ class DatabaseOrders extends DatabaseConnection
     }
     
 
-
-
-
-
     public function statuses()
     {
         $query = "SELECT * FROM order_statuses";
         $result = mysqli_query($this->conn, $query);
         $db_order_statuses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-        $statuses = [];
+        $statuses = []; 
 
         foreach ($db_order_statuses as $db_order_status) {
             $db_id = $db_order_status["id"];
             $db_status = $db_order_status["status"];
 
-          //  $statuses[] = new Status($db_status, $db_id);
+            $statuses[] = new Status($db_status, $db_id);
         }
 
         return $statuses;
