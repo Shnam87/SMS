@@ -683,3 +683,42 @@ a:hover {
     color: black;
     border-radius: 2px;
 }  */
+
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 28px;
+    font-weight: bold;
+    transition: 0.4s;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .accordion:hover {
+    background-color: #ccc;
+  }
+  
+  /* Style the accordion panel. Note: hidden by default */
+  .panel {
+    /* 
+    padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+ */
+    padding: 10px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+  }
+
+.underrubrik {
+    font-size: 14px;
+}
