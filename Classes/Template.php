@@ -32,7 +32,7 @@ class Template
                     <a href="/sms" class="nav-link">Home</a> |
                     <a href="/sms/pages/products.php" class="nav-link">Products</a> |
                     <?php if ($isLoggedIn && $isAdmin) : ?>
-                        <a href="/sms/pages/admin.php" class="nav-link admin-nav-link">Admin page</a>
+                        <a href="/sms/pages/admin.php" class="nav-link admin-nav-link">Admin</a>
                     <?php endif; ?>
                 </nav>
 
@@ -47,7 +47,7 @@ class Template
                     <?php else : ?>
                         <button class="my-site-btn">
                             <a href="/sms/pages/my-page.php" class="material-symbols-outlined">person
-                                <p> My page</p>
+                                <p> My Account</p>
                             </a>
                         </button>
                         <a href="/sms/scripts/logging-out.php"><span class="material-icons">logout</span></a>
@@ -58,15 +58,16 @@ class Template
                     <a href="/sms/pages/cart.php"><span class="material-symbols-outlined">shopping_cart</span><p><?=$cart_count?></p></a>
                 </nav>
             </header>
-            <hr>
-
+         
+        
             <?php if (!$isLoggedIn) : ?>
-                <h3 class="header-text">Register or login to your account to be able to complete your purchase.</h3>
+                <h3 class="header-text">You're currently not logged in, please register an account or login to access the site in full.</h3>
             <?php else : ?>
-                <h3 class="header-text">Welcome <i><?= $_SESSION['user']->username ?>!</i> </h3>
+                <h3 class="header-text">Hello, <i><?= $_SESSION['user']->username ?>!</i> </h3>
             <?php endif; ?>
+         
 
-            <hr>
+           
         <?php  }
 
 

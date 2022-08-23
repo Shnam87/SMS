@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 *{
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
+    font-family: "Raleway";
     margin: 0;
     padding: 0;
 }
@@ -26,12 +26,7 @@ hr {
 
 header{
     position: relative;
-
-
-    
 }
-
-
 
 .sms-logo{
     width: 300px;
@@ -80,31 +75,79 @@ header{
     text-decoration: none;
 }
 
-.login-page-main {
+/*============================*/
+/*===== LOGIN / REGISTER =====*/
+/*============================*/
+
+.login-container{
+    /* border: 2px solid orange; */
+    box-shadow: 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     display: flex;
-    justify-content: space-between;
-    padding: 30px 5px;
+    justify-content: center;
+    margin: 2rem 0;
 }
 
-.login-section,
-.register-section {
-    margin: 2%;
-
+.section-wrapper{
+    /* border: 2px solid red; */
+    border-right: 2px solid gray;
+    align-items: center;
+    width: 50%;  
 }
 
-.login-hr {
-    border: 3px dashed dimgrey;
-    box-shadow: -4px 4px 12px 4px grey;
-
-}
-
-.error-msg {
-    color: red;
+.login-h2{
+    text-transform: uppercase;
+    font-family: "Playfair Display";
+    font-weight: 400;
     text-align: center;
+    
+}
+
+.login-h3{
+    font-family: "Raleway";
+    text-align: center;
+}
+
+.login-wrapper{
+    /* border: 2px solid yellow; */
+    margin-top: 20px;
+    align-self: center;
+    align-items: center;
+}
+
+.login-error-msg{
+    color: red;
+    font-family: "Lato";
+    font-size: 1.2rem;
+    margin: 10px;
+    /* text-align: center;
     font-style: italic;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 20px; */
 }
+
+.login-input{
+    box-shadow: 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;;
+    /* border: 1px solid salmon; */
+    width: 50%;
+    height: 3.5rem;
+    margin: 0.5rem;
+    font-size: 1rem;
+}
+
+.login-btn{
+    border: none;
+    border-radius: 5px;
+    background-color: yellow;
+    width: 50%;
+    height: 3.5rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+
+
+
 
 .nav-link,
 .header-text {
@@ -117,10 +160,12 @@ header{
 
 .google-btn {
     background-image: url("./btn_google_signin.jpg");
+    border-radius: 5px;
     width: 270px;
     height: 65px;
     border: none;
     margin: 3% 1%;
+    cursor: pointer;
 
 }
 
@@ -142,8 +187,9 @@ header{
     border: none;
     outline: none;
     font-size: 18px;
+} 
 
-}
+
 
 .btn-contact, .btn-all-contact, .btn-edit-me, .btn-delete-me, select[name^=user-id],
 .btn-update-me, .btn-edit, .btn-delete, .btn-login,
@@ -188,7 +234,7 @@ header{
 #username {
     box-sizing: border-box;
     background-image: url("./person_black_24dp.svg");
-    background-position: 1px 6px; 
+    background-position: 1px 12px; 
     background-repeat: no-repeat;
     padding: 2px 2px 2px 30px;
 }
