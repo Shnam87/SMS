@@ -35,6 +35,9 @@ Template::header("Cart"); ?>
                 <p><?= $product->description ?></p>
             </div>
             <h3 class="cart-item-price"><?= $product->price ?> SEK</h3>
+            <!-- <form action="/sms/scripts/post-delete-cart-item.php" method="post">
+                <input type="submit" value="Delete">
+            </form> -->
         </li>
     <?php endforeach; ?>
     </ul>
