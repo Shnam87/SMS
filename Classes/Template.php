@@ -27,16 +27,7 @@ class Template
 
         <body>
             <header>
-                <a href="/sms"><img src="/../SMS/Assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
-                <nav>
-                    <a href="/sms" class="nav-link">Home</a> |
-                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
-                    <?php if ($isLoggedIn && $isAdmin) : ?>
-                        <a href="/sms/pages/admin.php" class="nav-link admin-nav-link">Admin page</a>
-                    <?php endif; ?>
-                </nav>
-
-                <nav class="icons-contianer">
+            <nav class="icons-contianer">
                     <?php if (!$isLoggedIn) : ?>
                         <button class="my-site-btn">
                             <a href="/sms/pages/login.php"><span class="material-icons">login</span>
@@ -57,6 +48,17 @@ class Template
                     <span class="material-symbols-outlined">favorite</span>
                     <a href="/sms/pages/cart.php"><span class="material-symbols-outlined">shopping_cart</span><p><?=$cart_count?></p></a>
                 </nav>
+                <a href="/sms"><img src="/../SMS/Assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
+
+                <nav class="header-nav">
+                    <a href="/sms" class="nav-link">Home</a> |
+                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
+                    <?php if ($isLoggedIn && $isAdmin) : ?>
+                        <a href="/sms/pages/admin.php" class="nav-link admin-nav-link">Admin page</a>
+                    <?php endif; ?>
+                </nav>
+
+                
             </header>
             <hr>
 

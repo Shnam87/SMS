@@ -35,9 +35,7 @@ if( $is_logged_in && count($cart) > 0){
     }
 
     $success = true;
-    var_dump($_SESSION);
-    var_dump($order);
-    var_dump($cart);
+  
 
     foreach($cart as $product){
         var_dump("hej");
@@ -54,7 +52,7 @@ if( $is_logged_in && count($cart) > 0){
     }   
     
 } else{
-    echo "Invalid input.";
+    header("Location: /sms/pages/login.php");
 }
 
 

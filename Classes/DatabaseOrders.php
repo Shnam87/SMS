@@ -55,7 +55,6 @@ class DatabaseOrders extends DatabaseConnection
         $stmt->bind_param("si", $order->status, $order_id);
 
         return $stmt->execute();
-        
     }
 
     // DELETE
@@ -80,17 +79,6 @@ class DatabaseOrders extends DatabaseConnection
         $success = $stmt->execute();
 
         return $success;
-
-
-        
-
-      /*   $order_id = ($this->conn->insert_id);
-
-        if ($success) {
-            return $order_id;
-        } else {
-            return false;
-        } */
     }
 
     public function create_product_order($order_id, $product_id)
@@ -98,14 +86,14 @@ class DatabaseOrders extends DatabaseConnection
         $query = "INSERT INTO product_orders (`order_id`, `product_id`) VALUES (?, ?)";
 
         $stmt = mysqli_prepare($this->conn, $query);
-        
+
         $stmt->bind_param("ii", $order_id, $product_id);
 
         $success = $stmt->execute();
 
         return $success;
     }
-    
+
 
     public function statuses()
     {
@@ -113,7 +101,7 @@ class DatabaseOrders extends DatabaseConnection
         $result = mysqli_query($this->conn, $query);
         $db_order_statuses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-        $statuses = []; 
+        $statuses = [];
 
         foreach ($db_order_statuses as $db_order_status) {
             $db_id = $db_order_status["id"];
@@ -143,5 +131,4 @@ class DatabaseOrders extends DatabaseConnection
 
         return $orders;
     }
-
 }
