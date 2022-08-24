@@ -12,7 +12,7 @@ Template::header("Login / Register");
 <main class="login-container">
     <div class="section-wrapper">
         <h2 class="login-h2">Login</h2>
-        <h3 class="login-h3">Welcome back! Please login to your account:</h3>
+        <h3 class="login-h3">Welcome back!</h3>
         <div class="login-wrapper">
             <?php if (isset($_GET["error"]) && $_GET["error"] == "wrong_login") : ?>
                 <h3 class="login-error-msg">Incorrect username and/or password. Try again.</h3>
@@ -39,8 +39,7 @@ Template::header("Login / Register");
                 <input type="password" id="password" class="login-input" required name="password" placeholder="Password"> <br>
                 <input type="password" id="password" class="login-input" required name="confirm-password" placeholder="Confirm password"> <br>
                 <input type="submit" class="login-btn" value="Register">
-            </form>
-            
+            </form>  
         </div>
     </div>
 </main>

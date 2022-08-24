@@ -61,7 +61,7 @@ class Template
          
         
             <?php if (!$isLoggedIn) : ?>
-                <h3 class="header-text">You're currently not logged in, please register an account or login to access the site in full.</h3>
+                <h3 class="header-text">You're currently in observer mode, please login or register an account in order to experience the site in full.</h3>
             <?php else : ?>
                 <h3 class="header-text">Hello, <i><?= $_SESSION['user']->username ?>!</i> </h3>
             <?php endif; ?>
