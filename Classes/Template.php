@@ -27,48 +27,72 @@ class Template
 
         <body>
             <header>
-            <nav class="icons-contianer">
-                    <?php if (!$isLoggedIn) : ?>
-                        <button class="my-site-btn">
-                            <a href="/sms/pages/login.php"><span class="material-icons">login</span>
-                                <p> Login/Register</p>
-                            </a>
-                        </button>
+                <section class="header-top-section">
+                    <div class="left-container">
+                        
+                        
+                        
+                        <?php if ($isLoggedIn && $isAdmin) : ?>
+                                    <button class="header-nav-btn" id="admin-btn">
+                                        <a href="/sms/pages/admin.php" class="top-header-link">Admin page</a>
+                                    </button>
+                        <?php endif; ?>
 
-                    <?php else : ?>
-                        <button class="my-site-btn">
-                            <a href="/sms/pages/my-page.php" class="material-symbols-outlined">person
-                                <p> My page</p>
-                            </a>
-                        </button>
-                        <a href="/sms/scripts/logging-out.php"><span class="material-icons">logout</span></a>
+                        <?php if (!$isLoggedIn) : ?>
+                            <p class="header-text">Register or login to your account to be able to complete your purchase.</p>
+                            <?php else : ?>
+                                <p class="header-text">Welcome <i><?= $_SESSION['user']->username ?>!</i> </p>
+                        <?php endif; ?>
+                        
 
-                    <?php endif; ?>
+                    </div>
 
-                    <span class="material-symbols-outlined">favorite</span>
-                    <a href="/sms/pages/cart.php"><span class="material-symbols-outlined">shopping_cart</span><p><?=$cart_count?></p></a>
-                </nav>
-                <a href="/sms"><img src="/../SMS/Assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
+                    
+                    <div class="right-container">
+                        <nav class="icons-contianer">
 
-                <nav class="header-nav">
-                    <a href="/sms" class="nav-link">Home</a> |
-                    <a href="/sms/pages/products.php" class="nav-link">Products</a> |
-                    <?php if ($isLoggedIn && $isAdmin) : ?>
-                        <a href="/sms/pages/admin.php" class="nav-link admin-nav-link">Admin page</a>
-                    <?php endif; ?>
-                </nav>
+                            <?php if (!$isLoggedIn) : ?>
+                                <button class="header-nav-btn">
+                                    <a href="/sms/pages/login.php" class="top-header-link">
+                                        <span class="material-icons">login</span>
+                                        <p> Login/Register</p>
+                                    </a>
+                                </button>
 
+                            <?php else : ?>
+                                <button class="header-nav-btn">
+                                    <a href="/sms/pages/my-page.php" class="top-header-link"> 
+                                        <span class="material-symbols-outlined">person</span>
+                                        <p> My page</p>
+                                    </a>
+                                </button>
+                                <a href="/sms/scripts/logging-out.php" class="top-header-link">
+                                    <span class="material-icons">logout</span>
+                                </a>
+
+                            <?php endif; ?>
+
+                            <!-- <span class="material-symbols-outlined">favorite</span> -->
+                            <a href="/sms/pages/cart.php" class="top-header-link">
+                                <span class="material-symbols-outlined">shopping_cart</span>
+                            <p class="count-cart"><?=$cart_count?></p></a>
+                        
+                        
+                        </nav>
+
+                    </div>
+
+                </section>   
                 
+                <section class="header-bottom-section">
+                    <a href="/sms"><img src="/../SMS/Assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
+                    <nav class="header-nav">
+                        <a href="/sms" class="nav-link"><b>HOME</b></a>
+                        <a href="/sms/pages/products.php" class="nav-link"><b>PRODUCTS</b></a>
+                    </nav>
+                </section>
+
             </header>
-            <hr>
-
-            <?php if (!$isLoggedIn) : ?>
-                <h3 class="header-text">Register or login to your account to be able to complete your purchase.</h3>
-            <?php else : ?>
-                <h3 class="header-text">Welcome <i><?= $_SESSION['user']->username ?>!</i> </h3>
-            <?php endif; ?>
-
-            <hr>
         <?php  }
 
 
@@ -79,18 +103,18 @@ class Template
                     <div class='footer-container'>
                         <div class='footer-box box-1'>
                             <h3 class='footer-h3'>About</h3>
-                            <p class='footer-p'><a href=''>Our mission explained</a></p>
-                            <p class='footer-p'><a href=''>Annual charity report</a></p>
+                            <p class='footer-p'>Our mission explained</p>
+                            <p class='footer-p'>Annual charity report</p>
                         </div>
                         <div class='footer-box box-2'>
                             <h3 class='footer-h3'>Info</h3>
-                            <p class='footer-p'><a href=''>Shipping and tracking</a></p>
-                            <p class='footer-p'><a href=''>FAQs</a></p>
+                            <p class='footer-p'>Shipping and tracking</p>
+                            <p class='footer-p'>FAQs</p>
                         </div>
                         <div class='footer-box box-3'>
                             <h3 class='footer-h3'>Contact</h3>
-                            <p class='footer-p'><a href="mailto:sms@sms.com">Email us</a></p>
-                            <p class='footer-p'><a href="tel:+4686736000">08 - 673 60 00</a></p>
+                            <p class='footer-p'>mailto:sms@sms.com</p>
+                            <p class='footer-p'>tel:+4686736000</p>
                         </div>
                     </div>
                     <div class='footer-row'>

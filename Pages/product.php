@@ -11,11 +11,9 @@ Template::header("Product");
 ?>
 
 <main class="product-site-container">
-
     <nav class="product-nav">
         <a class="product-nav-a" href="/sms/pages/products.php">Products</a>
-        <p class="product-nav-p">/  <?= $product->title ?></p>
-   
+        <p class="product-nav-p">/ <?= $product->title ?></p>
     </nav>
 
     <section class="product-wrapper">
@@ -28,7 +26,7 @@ Template::header("Product");
             <p><b>Description:</b><?= $product->description ?></p>
             <p><b>Price:</b><?= $product->price ?> SEK</p>
             <hr>
-        
+
             <div>
                 <form action="/sms/scripts/add-to-cart.php" method="post">
                     <input type="hidden" name="product-id" value="<?= $product->id ?>">
@@ -40,7 +38,5 @@ Template::header("Product");
 </main>
 
 <?php
-
 Template::footer();
-
 ?>
