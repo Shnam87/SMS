@@ -556,6 +556,12 @@ img {
     margin-bottom: 1.2rem;
 }
 
+.card-img-tag {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+}
+
 .products-h2>a {
     font-family: "Raleway";
     text-decoration: none;

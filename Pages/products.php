@@ -25,7 +25,7 @@ Template::header("Products");
         <?php foreach($products as $product): ?>
             <div class="product-card">
                 <div class="card-img">
-                    <img src="<?= $product->img_url ?>"alt="product image">
+                    <img class="card-img-tag" src="<?= $product->img_url ?>"alt="product image">
                 </div>
 
                 <div class="card-title">
