@@ -9,7 +9,7 @@ $googleLoginButton = '<a href="' . $google_client->createAuthUrl() . '"> <button
 Template::header("Login / Register");
 ?>
 
-<main class="login-container">
+<main class="login-page-main">
     <div class="section-wrapper">
         <h2 class="login-h2">Login</h2>
         <h3 class="login-h3">Welcome back!</h3>
