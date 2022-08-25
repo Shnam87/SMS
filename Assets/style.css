@@ -519,10 +519,15 @@ img {
 
 .img-container{
     padding: 25px;
-
     max-width: 400px;
     height: 500px;
     text-align: center;
+}
+
+.img-container-tag {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /*==============================*/
@@ -557,9 +562,9 @@ img {
 }
 
 .card-img-tag {
-    width: auto;
-    height: 100%;
-    object-fit: cover;
+    width: 100%;
+    height: 10rem;
+    object-fit: contain;
 }
 
 .products-h2>a {

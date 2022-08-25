@@ -18,7 +18,7 @@ Template::header("Product");
 
     <section class="product-wrapper">
         <section class="img-container">
-            <img src="<?= $product->img_url ?>" alt="Product image">
+            <img class="img-container-tag" src="<?= $product->img_url ?>" alt="Product image">
         </section>
 
         <section class="product-info-container">
