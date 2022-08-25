@@ -158,6 +158,23 @@ header{
     cursor: pointer;
 }
 
+.btn-empty-cart, .product-btn-delete, .product-btn-edit {
+    box-shadow: -8px 8px 12px 1px grey;
+    border: none;
+    width: 90px;
+    height: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-empty-cart {
+    width: 220px;
+    height: 50px;
+    padding: 10px;
+    border: thick double #32a1ce;
+}
+
 .btn-contact, .btn-all-contact, .btn-edit-me, .btn-delete-me, select[name^=user-id] {
     width: 250px;
     height: 45px;
@@ -416,6 +433,7 @@ img {
 /*========== ADMIN ==========*/
 /*===========================*/
 
+/*
 #admin-user-container{
     border: 2px solid blue;
 }
@@ -427,6 +445,7 @@ img {
 #admin-order-container{
     border: 2px solid rebeccapurple;
 }
+*/
 
 .product-form-container form{
     gap: 5px;
@@ -440,8 +459,8 @@ img {
 
 .product-form-container input, textarea {
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    padding: 8px;
+    margin: 5px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -491,7 +510,7 @@ img {
 /*========== ADMIN / ORDERS ==========*/
 
 #admin-order-container{
-    width: 60%;
+    width: 100%;
     border: 2px solid orange;
 }
 .admin-order-wrapper {
@@ -525,6 +544,25 @@ img {
     border-bottom: 2px solid black;
 }
 
+.products-table-head {
+    font-size: 16px;
+    font-weight: 900;
+    border-bottom: 2px solid black;
+}
+
+.product-desc {
+    width: 300px;
+}
+
+.product-price {
+    width: 60px;
+}
+
+.product-img {
+    width: 150px;
+    margin: 10px;
+}
+
 .admin-order-edit{
     text-decoration: none;
     border: 2px solid #4f6b38;
@@ -533,10 +571,12 @@ img {
 }
 
 .order-btn {
-    border: 2px solid red;
+/*    border: 2px solid red;
     background-color: pink;
-    color: black;
+*/    color: black;
     font-size: 1rem;
+    width: 100px;
+    height: 30px;
 }
 
 /* .create-task-edit-link, .create-btn {
@@ -614,8 +654,13 @@ img {
     text-align: right;
 }
 
+.empty-cart {
+    text-align: center;
+}
 
-
+.empty-cart h3 {
+    margin-bottom: 10px;
+}
 
 /*============================*/
 /*========== FOOTER ==========*/
@@ -684,6 +729,9 @@ a:hover {
     border-radius: 2px;
 }  */
 
+#accordion {
+    width: 900px;
+}
 
 .accordion {
     background-color: #eee;
