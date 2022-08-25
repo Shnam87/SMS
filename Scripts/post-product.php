@@ -1,13 +1,13 @@
 <?php
 
-require_once __DIR__ ."/../classes/DatabaseProducts.php";
-require_once __DIR__ ."/../classes/Product.php";
+require_once __DIR__ . "/../classes/DatabaseProducts.php";
+require_once __DIR__ . "/../classes/Product.php";
 
 session_start();
 
 $success = false;
 
-if (isset($_POST["title"]) && isset ($_POST["description"]) && isset ($_POST["price"])){
+if (isset($_POST["title"]) && isset($_POST["description"]) && isset($_POST["price"])) {
     $upload_directory = __DIR__ . "/../assets/uploads/";
     $upload_name = basename($_FILES["image"]["name"]);
     $name_parts = explode(".", $upload_name);
@@ -18,7 +18,7 @@ if (isset($_POST["title"]) && isset ($_POST["description"]) && isset ($_POST["pr
     $file_relative_url = "/sms/assets/uploads/{$file_name}";
     $success = move_uploaded_file($_FILES["image"]["tmp_name"], $full_upload_path);
 
-    if($success){
+    if ($success) {
         $product = new Product(
             $_POST["title"],
             $_POST["description"],
@@ -29,18 +29,16 @@ if (isset($_POST["title"]) && isset ($_POST["description"]) && isset ($_POST["pr
         $products_db = new DatabaseProducts();
 
         $success = $products_db->create_product($product);
-    
-    }else {
+    } else {
         die("Error uploadning image.");
     }
- 
-}else{
+} else {
     die("Invalid input.");
 }
 
-if($success){
+if ($success) {
     header("Location: /sms/pages/admin.php");
     die();
-}else{
+} else {
     echo "Error saving product to database.";
 }

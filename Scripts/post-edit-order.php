@@ -9,25 +9,24 @@ $orders = $order_db->get_all();
 
 $success = false;
 
-if(isset($_POST["order-status"]) && isset($_POST["order-id"])){
+if (isset($_POST["order-status"]) && isset($_POST["order-id"])) {
     $db = new DatabaseOrders();
 
     $order = new Order(
-        $_POST["order-id"], 
-        $_POST["order-status"]);
+        $_POST["order-id"],
+        $_POST["order-status"]
+    );
 
     $id = $_POST["order-id"];
 
-    $success = $db->update($order, $order_status, $id);   
-    
-} else{
+    $success = $db->update($order, $order_status, $id);
+} else {
     echo "Invalid input.";
     die();
 }
 
-if($success){
+if ($success) {
     header("Location: /sms/pages/admin.php");
-} else{
+} else {
     echo "Error updating order.";
 }
-

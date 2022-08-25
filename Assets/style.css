@@ -224,6 +224,12 @@ header{
     align-self: center;
     align-items: center;
 }
+.success-msg {
+    color: green;
+    font-family: "Lato";
+    text-align: center;
+    margin: 10px;
+}
 
 .login-error-msg{
     color: red;

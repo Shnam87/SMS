@@ -28,7 +28,6 @@ if (isset($_POST["contact-msg"])) {
 if ($success) {
     header("Location: /sms/pages/contact.php");
 } else {
-    header ("Location: /sms/pages/contact.php?error=msg_error");
+    header("Location: /sms/pages/contact.php?error=msg_error");
     die();
 }
-

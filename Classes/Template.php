@@ -1,6 +1,6 @@
 <?php
- require_once __DIR__ . "/DatabaseUsers.php";
- require_once __DIR__ . "/../google-config.php";
+require_once __DIR__ . "/DatabaseUsers.php";
+require_once __DIR__ . "/../google-config.php";
 
 class Template
 {
@@ -9,9 +9,10 @@ class Template
         $isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
         $isAdmin = (isset($_SESSION["user"]->role) && $_SESSION["user"]->role == "admin");
         $cart_count = isset($_SESSION["cart"]) ? count($_SESSION["cart"]) : 0;
-        ?>
+?>
         <!DOCTYPE html>
         <html lang="en">
+
         <head>
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,20 +23,20 @@ class Template
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         </head>
+
         <body>
             <header>
                 <section class="header-top-section">
                     <div class="left-container">
                         <?php if ($isLoggedIn && $isAdmin) : ?>
-                                    <button class="header-nav-btn" id="admin-btn">
-                                        <a href="/sms/pages/admin.php" class="top-header-link">Admin Dashboard</a>
-                                    </button>
+                            <button class="header-nav-btn" id="admin-btn">
+                                <a href="/sms/pages/admin.php" class="top-header-link">Admin Dashboard</a>
+                            </button>
                         <?php endif; ?>
-
                         <?php if (!$isLoggedIn) : ?>
                             <p class="header-text">You're currently in observer mode, please login or register an account in order to experience the site in full.</p>
-                            <?php else : ?>
-                                <p class="header-text">Welcome, <i><?= $_SESSION['user']->username ?>!</i> </p>
+                        <?php else : ?>
+                            <p class="header-text">Welcome, <i><?= $_SESSION['user']->username ?>!</i> </p>
                         <?php endif; ?>
                     </div>
                     <div class="right-container">
@@ -50,7 +51,7 @@ class Template
                                 </button>
                             <?php else : ?>
                                 <button class="header-nav-btn">
-                                    <a href="/sms/pages/my-page.php" class="top-header-link"> 
+                                    <a href="/sms/pages/my-page.php" class="top-header-link">
                                         <span class="material-symbols-outlined">person</span>
                                         <p> My Account</p>
                                     </a>
@@ -61,10 +62,11 @@ class Template
                             <?php endif; ?>
                             <a href="/sms/pages/cart.php" class="top-header-link">
                                 <span class="material-symbols-outlined">shopping_cart</span>
-                            <p class="count-cart"><?=$cart_count?></p></a>
+                                <p class="count-cart"><?= $cart_count ?></p>
+                            </a>
                         </nav>
                     </div>
-                </section>   
+                </section>
                 <section class="header-bottom-section">
                     <a href="/sms"><img src="/../SMS/Assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
                     <nav class="header-nav">
@@ -113,6 +115,7 @@ class Template
                 </div>
             </footer>
         </body>
+
         </html>
 <?php  }
 }

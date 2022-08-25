@@ -9,7 +9,6 @@ if (isset($_POST["id"])) {
     $userId = $_POST["id"];
 
     $success = $db->delete_user($userId);
-    
 } else {
     echo "Invalid input.";
 }
