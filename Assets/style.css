@@ -302,7 +302,7 @@ header{
     font-size: 18px;
 } 
 
-.btn-contact, .btn-all-contact, .btn-edit-me, .btn-delete-me, select[name^=user-id],
+.btn-contact, .btn-all-contact, .btn-edit-me, select[name^=user-id],
 .btn-update-me, .btn-edit, .btn-delete, .btn-login,
 .btn-register {
     box-shadow: -8px 8px 12px 1px grey; /* -12 10 10 1-- -10 10 12 2 , 2 2 10 1 */
@@ -313,6 +313,22 @@ header{
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.btn-delete-me {
+    border: 2px solid red;
+    background-color: pink;
+    text-transform: uppercase;
+    margin: 2%;
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.delete-me-tag {
+    margin-top: 2rem;
 }
 
 .btn-empty-cart, .product-btn-delete, .product-btn-edit {

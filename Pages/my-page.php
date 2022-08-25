@@ -32,6 +32,8 @@ Template::header("My page");
         <input type="submit" class="btn btn-edit-me" value="Edit my info">
     </form>
 
+    <p class="delete-me-tag">WARNING: Clicking the button below will <u>instantaneously</u> and <u>permanently</u> delete your account.</p>
+
     <form method="POST" action="/sms/scripts/delete-me.php">
         <input type="hidden" name="id" value="<?= $user->id ?>">
         <input type="submit" class="btn btn-delete-me" value="Delete my account">
