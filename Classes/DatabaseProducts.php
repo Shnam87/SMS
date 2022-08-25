@@ -14,8 +14,6 @@ class DatabaseProducts extends DatabaseConnection
             $result = $stmt->get_result();
             $db_product = mysqli_fetch_assoc($result);
 
-            
-            
             $product = new Product($db_product["title"], $db_product["description"], $db_product["price"], $db_product["img-url"], $db_product["id"]);
 
             return $product;
@@ -37,7 +35,6 @@ class DatabaseProducts extends DatabaseConnection
             $db_img_url = $db_product["img-url"];
           
             $products[] = new Product($db_title, $db_description, $db_price, $db_img_url, $db_id);
-
     
         }
         

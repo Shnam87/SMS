@@ -4,7 +4,6 @@ require_once __DIR__ . "/Order.php";
 
 class DatabaseOrders extends DatabaseConnection
 {
-
     // GET ONE 
     public function get_by_id($id)
     {

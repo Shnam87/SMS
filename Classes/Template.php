@@ -33,15 +33,11 @@ class Template
                         <?php endif; ?>
 
                         <?php if (!$isLoggedIn) : ?>
-                            <p class="header-text">Register or login to your account to be able to complete your purchase.</p>
+                            <p class="header-text">You're currently in observer mode, please login or register an account in order to experience the site in full.</p>
                             <?php else : ?>
-                                <p class="header-text">Welcome, <i><?= $_SESSION['user']->username ?>!</i> </p>
+                                <p class="header-text">Welcome back, <i><?= $_SESSION['user']->username ?>!</i> </p>
                         <?php endif; ?>
-                        
-
                     </div>
-
-                    
                     <div class="right-container">
                         <nav class="icons-contianer">
 
@@ -49,10 +45,9 @@ class Template
                                 <button class="header-nav-btn">
                                     <a href="/sms/pages/login.php" class="top-header-link">
                                         <span class="material-icons">login</span>
-                                        <p> Login/Register</p>
+                                        <p> Login / Register</p>
                                     </a>
                                 </button>
-
                             <?php else : ?>
                                 <button class="header-nav-btn">
                                     <a href="/sms/pages/my-page.php" class="top-header-link"> 
@@ -63,21 +58,13 @@ class Template
                                 <a href="/sms/scripts/logging-out.php" class="top-header-link">
                                     <span class="material-icons">logout</span>
                                 </a>
-
                             <?php endif; ?>
-
-                            <!-- <span class="material-symbols-outlined">favorite</span> -->
                             <a href="/sms/pages/cart.php" class="top-header-link">
                                 <span class="material-symbols-outlined">shopping_cart</span>
                             <p class="count-cart"><?=$cart_count?></p></a>
-                        
-                        
                         </nav>
-
                     </div>
-
                 </section>   
-                
                 <section class="header-bottom-section">
                     <a href="/sms"><img src="/../SMS/Assets/sms_logo.png" alt="sms-logo" class="sms-logo"></a>
                     <nav class="header-nav">
@@ -85,11 +72,8 @@ class Template
                         <a href="/sms/pages/products.php" class="nav-link"><b>PRODUCTS</b></a>
                     </nav>
                 </section>
-
             </header>
         <?php  }
-
-
     public static function footer()
     { ?>
             <footer>
@@ -129,8 +113,6 @@ class Template
                 </div>
             </footer>
         </body>
-
         </html>
-
 <?php  }
 }
