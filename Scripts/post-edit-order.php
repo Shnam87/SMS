@@ -14,7 +14,6 @@ if(isset($_POST["order-status"]) && isset($_POST["order-id"])){
 
     $order = new Order(
         $_POST["order-id"], 
-        // $_POST["order-date"], 
         $_POST["order-status"]);
 
     $id = $_POST["order-id"];
@@ -30,26 +29,5 @@ if($success){
     header("Location: /sms/pages/admin.php");
 } else{
     echo "Error updating order.";
-    // var_dump($order);
 }
 
-
-// $success = false;
-
-// if(isset($_POST["order-date"]) && isset($_POST["order-status"]) && isset($_POST["user-id"]) && isset($_POST["order-id"])){
-//     $db = new DatabaseOrders();
-
-//     $order = new Order($_POST["order-date"], $_POST["order-status"], $_POST["user-id"], $_POST["order-id"]);
-
-//     $id = $_POST["order-id"];
-//     $success = $db->update($order, $id);   
-    
-// } else{
-//     echo "Invalid input.";
-// }
-
-// if($success){
-//     header("Location: /sms/pages/admin.php?id=" . $_POST["order-id"]);
-// } else{
-//     echo "Error updating order.";
-// }

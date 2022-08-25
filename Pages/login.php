@@ -1,7 +1,6 @@
 <?php
 
 require_once __DIR__ . "/../Classes/Template.php";
-// require_once __DIR__ . "/../Classes/DatabaseUsers.php";
 require_once __DIR__ . "/../google-config.php";
 
 $googleLoginButton = '<a href="' . $google_client->createAuthUrl() . '"> <button class="google-btn"> </button> </a>';
@@ -10,7 +9,7 @@ Template::header("Login / Register");
 ?>
 
 <main class="login-page-main">
-    <div class="section-wrapper">
+    <div class="section-wrapper wrapper-one">
         <h2 class="login-h2">Login</h2>
         <h3 class="login-h3">Welcome back!</h3>
         <div class="login-wrapper">

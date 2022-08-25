@@ -20,14 +20,7 @@ if (
     $verify_password = $my_info->test_password($_POST["old-password"]);
 
     if ($verify_password) {
-        // var_dump($verify_password);
-        // var_dump($_SESSION["user"]);
-
         $new_password = $_POST["new-password"];
-        // var_dump($new_password);
-
-        // $user = new User($username);
-        // $user->hash_password($new_password);
 
         $new_password_hash = password_hash($new_password, null);
         $id = $_SESSION["user"]->id;
@@ -41,6 +34,6 @@ if (
         session_destroy();
         header("Location: /sms");
     } else {
-        echo "ERROR: Unable to update password";
+        echo "ERROR: Unable to update password.";
     }
 }

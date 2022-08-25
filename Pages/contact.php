@@ -10,11 +10,6 @@ $user_role = $_SESSION["user"]->role;
 $messages_db = new DatabaseSupport;
 $messages = $messages_db->get_all_by_user_id($user_id);
 
-/*
-var_dump($_SESSION["user"]);
-var_dump($user_id);
-var_dump($user_role);
-*/
 
 $isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
 
@@ -27,7 +22,6 @@ Template::header("Contact");
 ?>
 
 <h2>Send us a message: </h2>
-
 <div class="contact-container">
     <form action="/sms/scripts/post-contact.php" method="post" class="contact-form">
         <textarea class="contact-text" placeholder="Type your message..." name="contact-msg" required></textarea>

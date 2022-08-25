@@ -19,5 +19,5 @@ if ($success) {
     session_destroy();
     header("Location: /sms");
 } else {
-    echo "Error: could not delete user";
+    echo "Error: could not delete user.";
 }

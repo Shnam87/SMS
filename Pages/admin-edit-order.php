@@ -1,16 +1,6 @@
 <?php 
-// require_once __DIR__ . "/../classes/DatabaseConnection.php";
 require_once __DIR__ . "/../Classes/DatabaseOrders.php";
 require_once __DIR__ . "/../classes/Template.php";
-
-// session_start();
-
-// $is_logged_in = (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]); // true om inloggad, false om ej
-// $user = $_SESSION["user"];
-
-// if(!$is_logged_in || $order->user_id != $user->id){
-//     header("Location: /sms");   
-// }
 
 $order_id = $_GET["id"];
 

@@ -22,15 +22,6 @@ class DatabaseSupport extends DatabaseConnection
 
     public function get_all()
     {
-        /*
-        $query = "SELECT support.`id`, `user_id`, users.`username`, `sent_by`, `message`, `date` 
-                    FROM support JOIN users ON users.`id` = support.`user_id`; ";
-        
-        $query = 
-        "SELECT support.`id` as `support_id`, `user_id`, users.`username`, `sent_by`, `message`, `date` 
-        FROM support JOIN users ON users.`id` = support.`user_id`;";
-        */
-
         $query = "SELECT support.`id` as `support_id`, `user_id`, 
                     users.`username` as `user`, `sent_by`, `message`, `date` 
                     FROM support JOIN users ON users.`id` = support.`user_id`;";

@@ -12,11 +12,11 @@ if(isset($_POST["id"])){
     $success = $db->delete_product($product_id);
 }
 else{
-    echo "Invalid input";
+    echo "Invalid input.";
 }
 
 if($success){
     header("Location: /sms/pages/admin.php");
 } else {
-    echo"Error removing product from database";
+    echo"Error removing product from database.";
 }

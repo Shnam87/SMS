@@ -111,10 +111,7 @@ class DatabaseUsers extends DatabaseConnection
             $success = $stmt->execute();
 
             if ($success) {
-
                 $user = $this->get_one_by_id($stmt->insert_id);
-
-                // $user->id = $stmt->insert_id;
             } else {
 
                 var_dump($stmt->error);
@@ -123,7 +120,7 @@ class DatabaseUsers extends DatabaseConnection
         } else {
             $user = $db_user;
         }
-        // return $user->id;
+        
         return $user;
     }
 

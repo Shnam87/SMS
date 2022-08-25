@@ -9,12 +9,6 @@ $success = false;
 $user_id = (int)$_POST["user-id"];
 $user_role = $_SESSION["user"]->role;
 
-/*
-var_dump($user_id);
-var_dump($user_role);
-var_dump((int)$_POST["user-id"]);
-*/
-
 if (isset($_POST["contact-msg"])) {
 
     $user_id = (int)$_POST["user-id"];

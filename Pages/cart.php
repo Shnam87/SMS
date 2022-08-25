@@ -12,13 +12,6 @@ foreach ($products as $product) {
 
 Template::header("Cart"); ?>
 
-<!-- <div id="product-details" hidden>
-    <img src="" id="product-img">
-    <p id= "product-title"></p>
-    <p id= "product-description"></p>
-    <p id= "product-price"></p>
-</div> -->
-
 <main>
     <section class="cart-wrapper">
         <h1>My Cart</h1>
@@ -48,7 +41,6 @@ Template::header("Cart"); ?>
             </span>
             <div>
                 <form action="/sms/scripts/post-order.php" method="post">
-                    <!-- <input type="hidden" name="product-id" value="<?= $product->id ?>"> -->
                     <input class="btn btn-add" type="submit" value="Pleace order">
                 </form>
             </div>

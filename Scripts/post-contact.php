@@ -20,7 +20,7 @@ if (isset($_POST["contact-msg"])) {
 
     $success = $db->save_contact($support);
 } else {
-    echo "ERROR: Invalid input";
+    echo "ERROR: Invalid input.";
     var_dump($_POST);
     die();
 }

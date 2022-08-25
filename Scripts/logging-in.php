@@ -21,7 +21,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         }
     }
 } else {
-    echo "ERROR: Invalid input";
+    echo "ERROR: Invalid input.";
     var_dump($_POST);
     die();
 }

@@ -21,8 +21,6 @@ $orders = $db->get_order_by_user_id($user->id);
 Template::header("My page");
 ?>
 
-<!-- <h3>Hello <?= $_SESSION['user']->username ?>!</h3> -->
-
 <main>
 
     <?php if ($isLoggedIn && !$isAdmin) : ?>
@@ -39,10 +37,6 @@ Template::header("My page");
         <input type="submit" class="btn btn-delete-me" value="Delete my account">
     </form>
     <hr>
-
-    <?php // var_dump($_SESSION); 
-    ?>
-    <!-- <hr> -->
 
     <?php if ($isLoggedIn && $isAdmin) : ?>
         <?php
@@ -64,14 +58,6 @@ Template::header("My page");
         <br>
         <hr>
     <?php endif; ?>
-
-    <?php
-    /*
-    if (isset($_POST["user-id"])) {
-        var_dump((int)$_POST["user-id"]);
-    }
-    */
-    ?>
 
     <div class="mypage-orders-container">
         <h2>Your orders</h2>

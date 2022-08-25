@@ -9,17 +9,6 @@ $products = $products_db->get_all();
 Template::header("Products");
 ?>
 
-<!-- <div class="products-main">
-    <div class="prod-container">
-        <div class="prod-box prod-box-1">
-            <h2>New Arrivals</h2>
-        </div>
-        <div class="prod-box prod-box-2">
-            <p>Get back-to-school ready with everything you need to dominate this fall!</p>
-        </div>
-    </div>
-</div> -->
-
 <main>
     <div class="product-card-container">
         <?php foreach($products as $product): ?>
@@ -35,9 +24,6 @@ Template::header("Products");
                         </a>
                     </h2>
                 </div>
-                <!-- <div class="card-desc">
-                    <p><?= $product->description ?></p>
-                </div> -->
                 <div class="card-price">
                     <h4 class="products-h4"><?= $product->price ?> SEK</h4>
                 </div>
@@ -46,7 +32,6 @@ Template::header("Products");
                         <input type="hidden" name="product-id" value="<?= $product->id ?>">
                         <input class="products-btn-add" type="submit" value="Add to cart">
                     </form>
-                
             </div> 
         <?php endforeach; ?>
     </div>

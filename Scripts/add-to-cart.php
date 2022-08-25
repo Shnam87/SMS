@@ -22,10 +22,10 @@ if(isset($_POST["product-id"])){
     }
 
 }else{
-    die("Invalid input");
+    die("Invalid input.");
 }
 
-die("Error adding produict");
+die("Error adding product.");
  
 
 

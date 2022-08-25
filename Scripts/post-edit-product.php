@@ -2,34 +2,18 @@
 
 require_once __DIR__ ."/../classes/DatabaseProducts.php";
 require_once __DIR__ ."/../classes/Product.php";
+
 $success = false;
 
-
-/* if (isset($_POST["title"]) && isset ($_POST["description"]) && isset ($_POST["price"]) && isset ($_POST["id"])){
-
-    $db = new DatabaseProducts();
-    $product = new Product($_POST["title"], $_POST["description"], $_POST["price"], $_POST["id"]);
-    $success = $db->update_product($product);
-}
-else{
-    echo "Invalid input";
-}
-
-
-if($success){
-    header("Location: /sms/pages/admin.php");
-} else {
-    echo"Error uppdating product in database";
-} */
 
 if (isset($_POST["title"]) && isset ($_POST["description"]) && isset ($_POST["price"]) && isset ($_POST["id"])){
     $upload_directory = __DIR__ . "/../assets/uploads/";
     
-    $upload_name = basename($_FILES["image"]["name"]); //katt.jpeg
+    $upload_name = basename($_FILES["image"]["name"]);
     
-    $name_parts = explode(".", $upload_name); //["katt", "jpeg"]
+    $name_parts = explode(".", $upload_name); 
     
-    $file_extension = end($name_parts); //
+    $file_extension = end($name_parts); 
     
     $timestamp = time();
 
@@ -60,7 +44,7 @@ if (isset($_POST["title"]) && isset ($_POST["description"]) && isset ($_POST["pr
  
 }
 else{
-    die("Invalid input");
+    die("Invalid input.");
 }
 
 
@@ -69,5 +53,5 @@ if($success){
     header("Location: /sms/pages/admin.php");
     die();
 }else{
-    die("Error saving product");
+    die("Error saving product.");
 }

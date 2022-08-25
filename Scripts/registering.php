@@ -19,22 +19,19 @@ if (
 
     if ($existing_user) {
         header("Location: /sms/pages/login.php?error=username_taken");
-        //print_r("This username is taken, please try again");
         die();
-        //exit();
     } else {
         $success = $users_db->add_user($user);
     }
 
 } else {
-    echo "ERROR: Invalid input";
-    var_dump($_POST);
+    echo "ERROR: Invalid input.";
     die();
 }
 
 if ($success) {
     header("Location: /sms");
 } else {
-    echo "ERROR: Unable to save user";
+    echo "ERROR: Unable to save user.";
     die();
 }

@@ -22,7 +22,6 @@ class DatabaseOrders extends DatabaseConnection
     // GET ALL 
     public function get_all()
     {
-        // $query = "SELECT * from orders ORDER BY id DESC";
         $query = "SELECT orders.`id`, orders.`date`, orders.`user_id`, orders.`status`, users.`username` 
                     FROM orders JOIN users ON users.`id` = orders.`user_id`
                     ORDER BY orders.id DESC ";
@@ -33,7 +32,6 @@ class DatabaseOrders extends DatabaseConnection
 
         foreach ($db_orders as $db_order) {
             $db_id = $db_order["id"];
-            // $db_user_id = $db_order["user_id"];
             $db_username = $db_order["username"];
             $db_status = $db_order["status"];
             $db_date = $db_order["date"];
