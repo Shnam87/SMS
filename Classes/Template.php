@@ -2,10 +2,8 @@
  require_once __DIR__ . "/DatabaseUsers.php";
  require_once __DIR__ . "/../google-config.php";
 
-
 class Template
 {
-
     public static function header($title)
     {
         $isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
@@ -14,7 +12,6 @@ class Template
         ?>
         <!DOCTYPE html>
         <html lang="en">
-
         <head>
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,24 +22,20 @@ class Template
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         </head>
-
         <body>
             <header>
                 <section class="header-top-section">
                     <div class="left-container">
-                        
-                        
-                        
                         <?php if ($isLoggedIn && $isAdmin) : ?>
                                     <button class="header-nav-btn" id="admin-btn">
-                                        <a href="/sms/pages/admin.php" class="top-header-link">Admin page</a>
+                                        <a href="/sms/pages/admin.php" class="top-header-link">Admin</a>
                                     </button>
                         <?php endif; ?>
 
                         <?php if (!$isLoggedIn) : ?>
                             <p class="header-text">Register or login to your account to be able to complete your purchase.</p>
                             <?php else : ?>
-                                <p class="header-text">Welcome <i><?= $_SESSION['user']->username ?>!</i> </p>
+                                <p class="header-text">Welcome, <i><?= $_SESSION['user']->username ?>!</i> </p>
                         <?php endif; ?>
                         
 
