@@ -81,7 +81,7 @@ if (!$isLoggedIn || !$isAdmin) {
                                         <input type="number" class="product-price" name="price" placeholder="Price" value="<?= $product->price ?>">
                                     </td>
                                     <td>
-                                        <input type="file" class="product-img" name="image" accept="image/*">
+                                        <input required type="file" class="product-img" name="image" accept="image/*">
                                     </td>
                                     <input type="hidden" name="id" value="<?= $product->id; ?>">
                                     <td>

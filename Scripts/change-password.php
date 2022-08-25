@@ -32,7 +32,7 @@ if (
 
     if ($success) {
         session_destroy();
-        header("Location: /sms");
+        header("Location: /sms/pages/login.php");
     } else {
         echo "ERROR: Unable to update password.";
     }

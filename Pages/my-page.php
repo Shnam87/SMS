@@ -22,7 +22,27 @@ Template::header("My page");
 ?>
 
 <main>
-
+    <div class="mypage-orders-container">
+            <h2>Your orders</h2>
+            <table class="users-orders-table">
+                <thead>
+                    <tr>
+                        <th class="orders-table-head">Order Number</th>
+                        <th class="orders-table-head">Ordered On</th>
+                        <th class="orders-table-head">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($orders as $order) : ?>
+                        <tr>
+                            <td><?= $order["id"] ?></td>
+                            <td><?= $order["date"] ?></td>
+                            <td><?= $order["status"] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     <?php if ($isLoggedIn && !$isAdmin) : ?>
         <a href="/sms/pages/contact.php"> <button class="btn btn-contact"> Contact Support </button> </a>
     <?php endif; ?>
@@ -47,6 +67,10 @@ Template::header("My page");
         ?>
 
         <br>
+        <div>
+            <h1>Chat Function</h1>
+            <p>Choose which user to interact with.</p>
+        </div>
         <form action="/sms/pages/user-contact.php" method="post">
             <select class="user-option" name="user-id">
                 <option class="user-option" selected> Choose a user: </option>
@@ -60,28 +84,6 @@ Template::header("My page");
         <br>
         <hr>
     <?php endif; ?>
-
-    <div class="mypage-orders-container">
-        <h2>Your orders</h2>
-        <table class="users-orders-table">
-            <thead>
-                <tr>
-                    <th class="orders-table-head">Order Number</th>
-                    <th class="orders-table-head">Ordered On</th>
-                    <th class="orders-table-head">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($orders as $order) : ?>
-                    <tr>
-                        <td><?= $order["id"] ?></td>
-                        <td><?= $order["date"] ?></td>
-                        <td><?= $order["status"] ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
 </main>
 
 <?php

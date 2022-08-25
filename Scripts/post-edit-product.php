@@ -25,8 +25,6 @@ if (isset($_POST["title"]) && isset($_POST["description"]) && isset($_POST["pric
 
     $success = move_uploaded_file($_FILES["image"]["tmp_name"], $full_upload_path);
 
-    var_dump($full_upload_path, $success, $_FILES);
-
     if ($success) {
         $product = new Product(
             $_POST["title"],

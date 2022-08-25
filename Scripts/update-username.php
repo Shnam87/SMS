@@ -21,7 +21,7 @@ if (isset($username) && isset($id) && $user_info->id === $id) {
 
 if ($success) {
     session_destroy();
-    header("Location: /sms");
+    header("Location: /sms/pages/login.php");
 } else {
     echo "Error: could not update user.";
 }
