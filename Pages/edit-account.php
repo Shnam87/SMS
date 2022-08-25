@@ -17,17 +17,12 @@ if (!$isLoggedIn || $user->id != $userId) {
     die();
 }
 
-/*
-var_dump($_SESSION);
-var_dump($user->id);
-var_dump($userId);
-var_dump($_SESSION["user"]->role);
-var_dump($_SESSION["user"]->username);
-*/
-
 ?>
-<h2><ins>NOTE</ins>:<i> upon changing your username or password, you will also be logged out and will need to log in again </i></h2>
-<hr>
+<div class="edit-account">
+    <h2><ins>NOTE</ins>:<i> upon changing your username or password, you will also be logged out and will need to log in again </i></h2>
+    <hr>
+</div>
+
 <main class="edit-account-main">
     <section>
         <form action="/sms/scripts/update-username.php" method="post">
