@@ -23,14 +23,14 @@ if (
     } else {
         $success = $users_db->add_user($user);
     }
-
 } else {
     echo "ERROR: Invalid input.";
     die();
 }
 
 if ($success) {
-    header("Location: /sms");
+    header("Location: /sms/pages/login.php?success=req_success");
+    /*    header("Location: /sms"); */
 } else {
     echo "ERROR: Unable to save user.";
     die();

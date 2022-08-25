@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ ."/../classes/DatabaseOrders.php";
-require_once __DIR__ ."/../classes/Template.php";
+require_once __DIR__ . "/../classes/DatabaseOrders.php";
+require_once __DIR__ . "/../classes/Template.php";
 
 
 $order_id = $_GET["id"];
@@ -24,6 +24,6 @@ Template::header("SMS");
     <input type="submit" value="Save">
 </form>
 
-<?php  
+<?php
 
 Template::footer();

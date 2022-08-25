@@ -30,7 +30,7 @@ if (!$isLoggedIn || !$isAdmin) {
 }
 ?>
 
- <main>
+<main>
     <div id="accordion">
         <button class="accordion">Manage users:
             <p class="underrubrik"> Click to edit users </p>
@@ -56,7 +56,7 @@ if (!$isLoggedIn || !$isAdmin) {
         </button>
         <div class="panel">
             <div id="admin-product-container">
-        
+
 
                 <table class="products-table">
                     <thead>
@@ -101,7 +101,7 @@ if (!$isLoggedIn || !$isAdmin) {
                             </tr>
 
 
-                           
+
                         <?php endforeach; ?>
                     </tbody>
 
@@ -126,7 +126,7 @@ if (!$isLoggedIn || !$isAdmin) {
             <p class="underrubrik">Click to update orders</p>
         </button>
         <div class="panel">
-           
+
             <div id="admin-order-container">
                 <div class="admin-order-wrapper">
                     <fieldset class="order-fieldset">
@@ -138,7 +138,7 @@ if (!$isLoggedIn || !$isAdmin) {
                                     <th class="order-table-head">Customer</th>
                                     <th class="order-table-head">Date</th>
                                     <th class="order-table-head">Status</th>
-                                    
+
                                     <th class="order-table-head">Delete</th>
                                 </tr>
                             </thead>
@@ -173,7 +173,7 @@ if (!$isLoggedIn || !$isAdmin) {
                                                 <input type="submit" class="order-btn btn-edit" value="Update">
                                             </form>
                                         </td>
-                                        
+
                                         <td>
                                             <form action="/sms/scripts/post-delete-order.php" method="post">
                                                 <input type="hidden" name="order-id" value="<?= $order->id ?>">
@@ -188,7 +188,7 @@ if (!$isLoggedIn || !$isAdmin) {
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 </main>
 
 <?php

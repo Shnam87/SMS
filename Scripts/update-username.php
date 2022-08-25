@@ -15,7 +15,6 @@ if (isset($username) && isset($id) && $user_info->id === $id) {
     $user = new User($username);
 
     $success = $db->update_my_username($user, $id);
-
 } else {
     echo "ERROR: Invalid input";
 }

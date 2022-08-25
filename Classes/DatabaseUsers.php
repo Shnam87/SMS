@@ -120,7 +120,7 @@ class DatabaseUsers extends DatabaseConnection
         } else {
             $user = $db_user;
         }
-        
+
         return $user;
     }
 

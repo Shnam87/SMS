@@ -10,28 +10,26 @@ class Order
 
     public function __construct($user_id, $status = null, $date = false, $id = 0)
     {
-        if ($id > 0){
+        if ($id > 0) {
             $this->id = $id;
         }
-        
-        if($status){
+
+        if ($status) {
             $this->status = $status;
         }
 
-        if($date){
+        if ($date) {
             $this->date = $date;
         }
 
         $this->user_id = $user_id;
- 
-        
     }
 
     public function __toString()
     {
         return "{$this->user_id}, {$this->status}, {$this->date}";
     }
-} 
+}
 
 class Status
 {
@@ -40,7 +38,7 @@ class Status
 
     public function __construct($status, $id = 0)
     {
-        if($id > 0){
+        if ($id > 0) {
             $this->id = $id;
         }
 
