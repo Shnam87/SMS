@@ -21,26 +21,32 @@ if (!$isLoggedIn) {
 Template::header("Contact");
 ?>
 
-<h2>Send us a message: </h2>
-<div class="contact-container">
-    <form action="/sms/scripts/post-contact.php" method="post" class="contact-form">
-        <textarea class="contact-text" placeholder="Type your message..." name="contact-msg" required></textarea>
-        <button type="submit" class="contact-btn">Send Message</button>
-    </form>
+<main>
+    <nav class="product-nav">
+        <a class="product-nav-a" href="/sms/pages/my-page.php">My Account</a>
+        <p class="product-nav-p">/ Chat </p>
+    </nav>
+    <h2>Send us a message: </h2>
+    <div class="contact-container">
+        <form action="/sms/scripts/post-contact.php" method="post" class="contact-form">
+            <textarea class="contact-text" placeholder="Type your message..." name="contact-msg" required></textarea>
+            <button type="submit" class="contact-btn">Send Message</button>
+        </form>
+        <p>We'll get back to you within 24 hours.</p>
+        <?php if (isset($_GET["error"]) && $_GET["error"] == "msg_error") : ?>
+            <h3 class="error-msg">Error: could not send your message, please try again later</h3>
+        <?php endif; ?>
 
-    <?php if (isset($_GET["error"]) && $_GET["error"] == "msg_error") : ?>
-        <h3 class="error-msg">Error: could not send your message, please try again later</h3>
-    <?php endif; ?>
-
-    <?php foreach ($messages as $message) : ?>
-        <div class="chat-container <?= $message["sent_by"] ?>">
-            <div class="chat-msg <?= $message["sent_by"] ?>">
-                <h3><?= $message["message"] ?></h3>
-                <h6 class="chat-msg <?= $message["sent_by"] ?>"><?= $message["date"] ?></h6>
+        <?php foreach ($messages as $message) : ?>
+            <div class="chat-container <?= $message["sent_by"] ?>">
+                <div class="chat-msg <?= $message["sent_by"] ?>">
+                    <h3><?= $message["message"] ?></h3>
+                    <h6 class="chat-msg <?= $message["sent_by"] ?>"><?= $message["date"] ?></h6>
+                </div>
             </div>
-        </div>
-    <?php endforeach ?>
-</div>
+        <?php endforeach ?>
+    </div>
+</main>
 
 <?php
 Template::footer();

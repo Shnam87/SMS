@@ -64,9 +64,9 @@ Template::header("My page");
         <table class="users-orders-table">
             <thead>
                 <tr>
-                    <th class="orders-table-head">Order no.</th>
-                    <th class="orders-table-head">Order date</th>
-                    <th class="orders-table-head">Order status</th>
+                    <th class="orders-table-head">Order Number</th>
+                    <th class="orders-table-head">Ordered On</th>
+                    <th class="orders-table-head">Status</th>
                 </tr>
             </thead>
             <tbody>

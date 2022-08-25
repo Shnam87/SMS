@@ -30,14 +30,13 @@ class Template
                     <div class="left-container">
                         <?php if ($isLoggedIn && $isAdmin) : ?>
                             <button class="header-nav-btn" id="admin-btn">
-                                <a href="/sms/pages/admin.php" class="top-header-link">Admin</a>
+                                <a href="/sms/pages/admin.php" class="top-header-link">Admin Dashboard</a>
                             </button>
                         <?php endif; ?>
-
                         <?php if (!$isLoggedIn) : ?>
                             <p class="header-text">You're currently in observer mode, please login or register an account in order to experience the site in full.</p>
                         <?php else : ?>
-                            <p class="header-text">Welcome back, <i><?= $_SESSION['user']->username ?>!</i> </p>
+                            <p class="header-text">Welcome, <i><?= $_SESSION['user']->username ?>!</i> </p>
                         <?php endif; ?>
                     </div>
                     <div class="right-container">
@@ -94,8 +93,8 @@ class Template
                         </div>
                         <div class='footer-box box-3'>
                             <h3 class='footer-h3'>Contact</h3>
-                            <p class='footer-p'>mailto:sms@sms.com</p>
-                            <p class='footer-p'>tel:+4686736000</p>
+                            <p class='footer-p'>email: sms@sms.com</p>
+                            <p class='footer-p'>phone: +46 (0)8 673 6000</p>
                         </div>
                     </div>
                     <div class='footer-row'>
