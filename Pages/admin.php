@@ -2,7 +2,6 @@
 require_once __DIR__ . "/../classes/DatabaseProducts.php";
 require_once __DIR__ . "/../classes/DatabaseUsers.php";
 require_once __DIR__ . "/../classes/DatabaseOrders.php";
-
 require_once __DIR__ . "/../classes/Template.php";
 
 $users_db = new DatabaseUsers();
@@ -11,16 +10,14 @@ $users = $users_db->get_all();
 $products_db = new DatabaseProducts();
 $products = $products_db->get_all();
 
-
 $order_db = new DatabaseOrders();
 $orders = $order_db->get_all();
 $statuses = $order_db->statuses();
 
-Template::header("SMS");
+Template::header("Admin Dashbord");
 ?>
 
 <?php
-
 $isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
 $isAdmin = (isset($_SESSION["user"]->role) && $_SESSION["user"]->role == "admin");
 
@@ -38,12 +35,10 @@ if (!$isLoggedIn || !$isAdmin) {
         <div class="panel">
             <div id="admin-user-container">
                 <?php foreach ($users as $user) : ?>
-
-                    <form action="/sms/scripts/update-user.php" method="post">
+                    <form class="users-form" action="/sms/scripts/update-user.php" method="post">
                         <input type="text" class="user-info" required name="username" placeholder="Username" value="<?= $user->username ?>">
                         <input type="text" class="user-info" required name="role" placeholder="Role" value="<?= $user->role ?>">
                         <input type="hidden" name="id" value="<?= $user->id; ?>">
-
                         <input type="submit" class="btn btn-edit" value="Update User">
                         <input type="submit" class="btn btn-delete" formaction="/sms/scripts/delete-user.php" value="Delete User">
                     </form>
@@ -56,8 +51,6 @@ if (!$isLoggedIn || !$isAdmin) {
         </button>
         <div class="panel">
             <div id="admin-product-container">
-
-
                 <table class="products-table">
                     <thead>
                         <tr>
@@ -87,24 +80,16 @@ if (!$isLoggedIn || !$isAdmin) {
                                     <td>
                                         <input type="submit" class="product-btn-edit" value="Update">
                                     </td>
-
                                 </form>
-
                                 <td>
                                     <form action="/sms/scripts/delete-product.php" method="post">
                                         <input type="hidden" name="id" value="<?= $product->id ?>">
                                         <input class="product-btn-delete" type="submit" value="Delete">
                                     </form>
                                 </td>
-
-
                             </tr>
-
-
-
                         <?php endforeach; ?>
                     </tbody>
-
                 </table>
 
                 <div class="product-form-container">
@@ -116,17 +101,13 @@ if (!$isLoggedIn || !$isAdmin) {
                         <input type="submit" value="Save">
                     </form>
                 </div>
-
-
             </div>
-
         </div>
 
         <button class="accordion">Manage orders:
             <p class="underrubrik">Click to update orders</p>
         </button>
         <div class="panel">
-
             <div id="admin-order-container">
                 <div class="admin-order-wrapper">
                     <fieldset class="order-fieldset">
@@ -138,7 +119,6 @@ if (!$isLoggedIn || !$isAdmin) {
                                     <th class="order-table-head">Customer</th>
                                     <th class="order-table-head">Date</th>
                                     <th class="order-table-head">Status</th>
-
                                     <th class="order-table-head">Delete</th>
                                 </tr>
                             </thead>
@@ -169,11 +149,9 @@ if (!$isLoggedIn || !$isAdmin) {
                                                     <?php endforeach; ?>
                                                     <input type="hidden" name="order-id" value="<?= $order->id ?>">
                                                 </select>
-
                                                 <input type="submit" class="order-btn btn-edit" value="Update">
                                             </form>
                                         </td>
-
                                         <td>
                                             <form action="/sms/scripts/post-delete-order.php" method="post">
                                                 <input type="hidden" name="order-id" value="<?= $order->id ?>">

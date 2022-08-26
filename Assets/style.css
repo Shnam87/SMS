@@ -126,14 +126,14 @@ header{
 .header-nav{
     margin: 0;
     text-align: center;
-    padding: 15px;
+    padding: 10px;
 }
 
 .header-nav a{
     text-decoration: none;
     color: rgb(74, 73, 73);
     display: inline;
-    margin: 10px;
+    margin: 30px;
 }
 
 .header-nav a:link {
@@ -151,7 +151,7 @@ header{
 .sms-logo {
     width: 300px;
     height: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 /*============================*/
@@ -300,18 +300,18 @@ header{
 .user-info {
     box-shadow: -8px 8px 12px 1px grey;
     margin: 2%;
-    padding: 1%;
-    width: 200px;
+    padding: 10px;
+    width: 250px;
     height: 40px;
     border: none;
     outline: none;
-    font-size: 18px;
+    font-size: 20px;
 } 
 
 .btn-contact, .btn-all-contact, .btn-edit-me, select[name^=user-id],
-.btn-update-me, .btn-edit, .btn-delete, .btn-login,
+.btn-update-me, .btn-edit, .btn-delete, .btn-delete-modal, .btn-login,
 .btn-register {
-    box-shadow: -8px 8px 12px 1px grey; /* -12 10 10 1-- -10 10 12 2 , 2 2 10 1 */
+    box-shadow: -8px 8px 12px 1px grey;
     margin: 2%;
     width: 150px;
     height: 40px;
@@ -334,7 +334,30 @@ header{
 }
 
 .delete-me-tag {
-    margin-top: 2rem;
+    margin: 1rem;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding: 350px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: rgb(220, 220, 220);
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    border: 10px double red;
+    width: 70%;
 }
 
 .btn-empty-cart, .product-btn-delete, .product-btn-edit {
@@ -354,8 +377,8 @@ header{
     border: thick double #32a1ce;
 }
 
-.btn-contact, .btn-all-contact, .btn-edit-me, .btn-delete-me, select[name^=user-id] {
-    width: 250px;
+.btn-contact, .btn-all-contact, .btn-edit-me, .btn-delete-me, .btn-delete-modal, select[name^=user-id] {
+    width: 300px;
     height: 45px;
 }
 
@@ -542,7 +565,7 @@ img {
 .product-card-container{
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .product-card{
@@ -633,6 +656,11 @@ img {
 /*===========================*/
 /*========== ADMIN ==========*/
 /*===========================*/
+
+/*.users-form {
+    display: flex;
+    justify-content: space-evenly;
+}*/
 
 .product-form-container form{
     gap: 5px;
@@ -771,6 +799,10 @@ img {
 
 .underrubrik {
     font-size: 14px;
+}
+
+.btn-delete, .product-btn-delete {
+    background-color: rgb(255, 100, 100);
 }
 
 /*==========================*/

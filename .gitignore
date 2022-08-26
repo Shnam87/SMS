@@ -4,6 +4,6 @@
 /vendor
 
 /Classes/DatabaseConnection.php
-
+/Assets/uploads
 
 google-config.php

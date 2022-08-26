@@ -2,6 +2,7 @@
 require_once __DIR__ . "/../Classes/Template.php";
 require_once __DIR__ . "/../Classes/DatabaseUsers.php";
 require_once __DIR__ . "/../Classes/DatabaseOrders.php";
+require_once __DIR__ . "/../Classes/DatabaseSupport.php";
 require_once __DIR__ . "/../google-config.php";
 
 $isLoggedIn = (isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]);
@@ -23,7 +24,8 @@ Template::header("My page");
 
 <main>
     <div class="mypage-orders-container">
-            <h2>Your orders</h2>
+        <fieldset class="order-fieldset">
+            <legend class="order-legend">Orders History</legend>
             <table class="users-orders-table">
                 <thead>
                     <tr>
@@ -42,52 +44,79 @@ Template::header("My page");
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        </div>
+        </fieldset>
+    </div>
+    <br>
+    <hr>
     <?php if ($isLoggedIn && !$isAdmin) : ?>
         <a href="/sms/pages/contact.php"> <button class="btn btn-contact"> Contact Support </button> </a>
     <?php endif; ?>
-
     <form method="GET" action="/sms/pages/edit-account.php">
         <input type="hidden" name="id" value="<?= $user->id ?>">
         <input type="submit" class="btn btn-edit-me" value="Edit my info">
     </form>
 
-    <p class="delete-me-tag">WARNING: Clicking the button below will <u>instantaneously</u> and <u>permanently</u> delete your account.</p>
-
-    <form method="POST" action="/sms/scripts/delete-me.php">
-        <input type="hidden" name="id" value="<?= $user->id ?>">
-        <input type="submit" class="btn btn-delete-me" value="Delete my account">
-    </form>
+    <button class="btn btn-delete-modal" id="openModal">Delete my account</button>
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h1 class="delete-me-tag">Are you sure?</h1>
+            <h4 class="delete-me-tag">Clicking the button below will <u> instantaneously</u> and <u> permanently</u> delete your account.</h4>
+            <form method="POST" action="/sms/scripts/delete-me.php">
+                <input type="hidden" name="id" value="<?= $user->id ?>">
+                <input type="submit" class="btn btn-delete-me" value="Yes, delete my account">
+            </form>
+        </div>
+    </div>
     <hr>
-
     <?php if ($isLoggedIn && $isAdmin) : ?>
         <?php
         $users_db = new DatabaseUsers();
         $users = $users_db->get_all_regular_users();
         ?>
-
         <br>
         <div>
-            <h1>Chat Function</h1>
-            <p>Choose which user to interact with.</p>
+            <h1>Contact with users</h1>
+            <!-- <h3>Choose which user to interact with:</h3> -->
         </div>
         <form action="/sms/pages/user-contact.php" method="post">
-            <select class="user-option" name="user-id">
-                <option class="user-option" selected> Choose a user: </option>
+            <select class="user-option" required name="user-id">
+                <option class="user-option" value=""> Choose a user : </option>
                 <?php foreach ($users as $user) : ?>
                     <option class="user-option" value="<?= $user->id ?>"><?= $user->id . " - " . $user->username ?></option>
                 <?php endforeach; ?>
             </select>
-            <input type="submit" class="btn btn-contact" value="Show this user contact">
+            <input type="submit" class="btn btn-contact" value="View & reply to this user">
         </form>
-        <a href="/sms/pages/all-contact.php"> <button class="btn btn-all-contact"> Show all users Contact </button> </a>
+        <!-- <a href="/sms/pages/all-contact.php"> <button class="btn btn-all-contact"> Show all users Contact </button> </a> -->
         <br>
-        <hr>
+        <button class="accordion">Click to view all users contact history.</button>
+        <div class="panel">
+            <?php
+            $users_db = new DatabaseUsers();
+            $messages_db = new DatabaseSupport();
+            $users = $users_db->get_all_regular_users();
+            ?>
+            <br>
+            <div>
+                <?php foreach ($users as $user) : ?>
+                    <h3 class="contact-history">Contact history with <?= $user->username ?>: </h3>
+                    <?php $messages = $messages_db->get_all_by_user_id($user->id); ?>
+                    <div class="contact-container">
+                        <?php foreach ($messages as $message) : ?>
+                            <div class="chat-container <?= $message["sent_by"] ?>">
+                                <div class="chat-msg <?= $message["sent_by"] ?>">
+                                    <h3><?= $message["message"] ?></h3>
+                                    <h6 class="chat-msg <?= $message["sent_by"] ?>"><?= $message["date"] ?></h6>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
     <?php endif; ?>
 </main>
 
 <?php
-
 Template::footer();
-
 ?>
