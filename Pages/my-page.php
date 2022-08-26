@@ -19,7 +19,7 @@ if (!$isLoggedIn) {
 $user = $_SESSION["user"];
 $orders = $db->get_order_by_user_id($user->id);
 
-Template::header("My page");
+Template::header("My account");
 ?>
 
 <main>
@@ -76,7 +76,6 @@ Template::header("My page");
         <br>
         <div>
             <h1>Contact with users</h1>
-            <!-- <h3>Choose which user to interact with:</h3> -->
         </div>
         <form action="/sms/pages/user-contact.php" method="post">
             <select class="user-option" required name="user-id">
@@ -87,7 +86,6 @@ Template::header("My page");
             </select>
             <input type="submit" class="btn btn-contact" value="View & reply to this user">
         </form>
-        <!-- <a href="/sms/pages/all-contact.php"> <button class="btn btn-all-contact"> Show all users Contact </button> </a> -->
         <br>
         <button class="accordion">Click to view all users contact history.</button>
         <div class="panel">
